@@ -10,25 +10,30 @@ type PropsType = {
   placesCount: number;
 }
 
+const NavigaionState = {
+  DEFAULT: true,
+  LOGIN: false,
+};
+
 function App({placesCount}: PropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage placesCount = {placesCount} />}
+          element={<MainPage placesCount = {placesCount} navigationState = {NavigaionState.DEFAULT}/>}
         />
         <Route
           path={AppRoute.Login}
-          element={<LoginPage />}
+          element={<LoginPage navigationState = {NavigaionState.LOGIN}/>}
         />
         <Route
           path={AppRoute.Favorites}
-          element={<Favorites />}
+          element={<Favorites navigationState = {NavigaionState.DEFAULT}/>}
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer />}
+          element={<Offer navigationState = {NavigaionState.DEFAULT}/>}
         />
         <Route
           path="*"

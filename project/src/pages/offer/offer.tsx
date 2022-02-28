@@ -1,9 +1,13 @@
 import Header from '../../components/header/header';
 
-function Offer () : JSX.Element {
+type PropsType = {
+  navigationState: boolean;
+}
+
+function Offer ({navigationState}: PropsType) : JSX.Element {
   return (
     <div className="page">
-      <Header />
+      <Header navigationState = {navigationState}/>
       <main className="page__main page__main--property" >
         <section className="property">
           <div className="property__gallery-container container">

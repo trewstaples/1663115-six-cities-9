@@ -1,9 +1,13 @@
 import Header from '../../components/header/header';
 
-function Favorites () : JSX.Element {
+type PropsType = {
+  navigationState: boolean;
+}
+
+function Favorites ({navigationState}: PropsType) : JSX.Element {
   return (
     <div className="page">
-      <Header />
+      <Header navigationState = {navigationState}/>
 
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
