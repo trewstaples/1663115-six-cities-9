@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function NotFoundPage (): JSX.Element {
   return (
     <div>
@@ -33,6 +35,7 @@ function NotFoundPage (): JSX.Element {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found"><p>404.Страница не найдена</p></b>
+          <Link to="/">Вернуться на главную</Link>
         </section>
       </div>
     </div>
