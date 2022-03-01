@@ -1,13 +1,13 @@
 import Header from '../../components/header/header';
 
-type LoginPropsType = {
-  navigationState: boolean;
+type LoginPagePropsType = {
+  isNavigationState: boolean;
 };
 
-function LoginPage({ navigationState }: LoginPropsType): JSX.Element {
+function LoginPage({ isNavigationState: navigationState }: LoginPagePropsType): JSX.Element {
   return (
     <div className="page page--gray page--login">
-      <Header navigationState={navigationState} />
+      <Header isNavigationState={navigationState} />
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">

@@ -1,8 +1,8 @@
 type HeaderPropsType = {
-  navigationState: boolean;
+  isNavigationState: boolean;
 };
 
-function Header({ navigationState }: HeaderPropsType): JSX.Element {
+function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.Element {
   return (
     <header className="header">
       <div className="container">

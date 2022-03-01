@@ -1,13 +1,13 @@
 import Header from '../../components/header/header';
 
 type FavoritesPropsType = {
-  navigationState: boolean;
-}
+  isNavigationState: boolean;
+};
 
-function Favorites ({navigationState}: FavoritesPropsType) : JSX.Element {
+function Favorites({ isNavigationState: navigationState }: FavoritesPropsType): JSX.Element {
   return (
     <div className="page">
-      <Header navigationState = {navigationState}/>
+      <Header isNavigationState={navigationState} />
 
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
@@ -47,7 +47,7 @@ function Favorites ({navigationState}: FavoritesPropsType) : JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: '100%'}}></span>
+                          <span style={{ width: '100%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -79,7 +79,7 @@ function Favorites ({navigationState}: FavoritesPropsType) : JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: '80%'}}></span>
+                          <span style={{ width: '80%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -122,7 +122,7 @@ function Favorites ({navigationState}: FavoritesPropsType) : JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: '100%'}}></span>
+                          <span style={{ width: '100%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>

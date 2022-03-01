@@ -23,17 +23,17 @@ function App({ placesCount }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} navigationState={NavigaionState.DEFAULT} />} />
-        <Route path={AppRoute.Login} element={<LoginPage navigationState={NavigaionState.LOGIN} />} />
+        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigaionState.DEFAULT} />} />
+        <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigaionState.LOGIN} />} />
         <Route
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favorites navigationState={NavigaionState.DEFAULT} />
+              <Favorites isNavigationState={NavigaionState.DEFAULT} />
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer navigationState={NavigaionState.DEFAULT} />} />
+        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigaionState.DEFAULT} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
