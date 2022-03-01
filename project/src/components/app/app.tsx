@@ -1,14 +1,14 @@
+import { AppRoute } from '../../const';
+import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';
+import Favorites from '../../pages/favorites/favorites';
+import LoginPage from '../../pages/login-page/login-page';
+import MainPage from '../../pages/main-page/main-page';
+import NotFoundPage from '../../pages/not-found-page/not-found-page';
+import Offer from '../../pages/offer/offer';
+import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import { AuthorizationStatus } from '../../const';
-import { AppRoute } from '../../const';
-import MainPage from '../../pages/main-page/main-page';
-import LoginPage from '../../pages/login-page/login-page';
-import Favorites from '../../pages/favorites/favorites';
-import Offer from '../../pages/offer/offer';
-import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import PrivateRoute from '../private-route/private-route';
 
 type PropsType = {
   placesCount: number;

@@ -1,5 +1,5 @@
-import PlaceCard from '../place-card/place-card';
 import Header from '../../components/header/header';
+import PlaceCard from '../place-card/place-card';
 
 type PropsType = {
   placesCount: number;
