@@ -14,7 +14,7 @@ type AppPropsType = {
   placesCount: number;
 };
 
-const NavigaionState = {
+const NavigationState = {
   DEFAULT: true,
   LOGIN: false,
 };
@@ -23,17 +23,17 @@ function App({ placesCount }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigaionState.DEFAULT} />} />
-        <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigaionState.LOGIN} />} />
+        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} />} />
+        <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigationState.LOGIN} />} />
         <Route
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favorites isNavigationState={NavigaionState.DEFAULT} />
+              <Favorites isNavigationState={NavigationState.DEFAULT} />
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigaionState.DEFAULT} />} />
+        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
