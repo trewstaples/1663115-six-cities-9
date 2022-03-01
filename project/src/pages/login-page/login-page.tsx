@@ -1,13 +1,13 @@
 import Header from '../../components/header/header';
 
-type PropsType = {
+type LoginPropsType = {
   navigationState: boolean;
-}
+};
 
-function LoginPage ({navigationState}: PropsType) : JSX.Element {
+function LoginPage({ navigationState }: LoginPropsType): JSX.Element {
   return (
     <div className="page page--gray page--login">
-      <Header navigationState = {navigationState}/>
+      <Header navigationState={navigationState} />
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">
@@ -22,7 +22,9 @@ function LoginPage ({navigationState}: PropsType) : JSX.Element {
                 <label className="visually-hidden">Password</label>
                 <input className="login__input form__input" type="password" name="password" placeholder="Password" required />
               </div>
-              <button className="login__submit form__submit button" type="submit">Sign in</button>
+              <button className="login__submit form__submit button" type="submit">
+                Sign in
+              </button>
             </form>
           </section>
           <section className="locations locations--login locations--current">

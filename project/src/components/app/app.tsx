@@ -10,7 +10,7 @@ import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
-type PropsType = {
+type AppPropsType = {
   placesCount: number;
 };
 
@@ -19,7 +19,7 @@ const NavigaionState = {
   LOGIN: false,
 };
 
-function App({ placesCount }: PropsType): JSX.Element {
+function App({ placesCount }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>

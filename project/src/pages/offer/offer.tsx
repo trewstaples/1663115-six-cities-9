@@ -1,10 +1,10 @@
 import Header from '../../components/header/header';
 
-type PropsType = {
+type OfferPropsType = {
   navigationState: boolean;
 }
 
-function Offer ({navigationState}: PropsType) : JSX.Element {
+function Offer ({navigationState}: OfferPropsType) : JSX.Element {
   return (
     <div className="page">
       <Header navigationState = {navigationState}/>
