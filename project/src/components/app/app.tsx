@@ -9,9 +9,11 @@ import Offer from '../../pages/offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+import { Offers } from '../../types/offer';
 
 type AppPropsType = {
   placesCount: number;
+  offers: Offers;
 };
 
 const NavigationState = {
@@ -19,7 +21,7 @@ const NavigationState = {
   LOGIN: false,
 };
 
-function App({ placesCount }: AppPropsType): JSX.Element {
+function App({ placesCount, offers }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
