@@ -1,5 +1,5 @@
 import Header from '../../components/header/header';
-import PlaceCard from '../place-card/place-card';
+import OffersList from '../offers-list/offers-list';
 import { Offers } from '../../types/offers-types';
 
 type MainPagePropsType = {
@@ -80,10 +80,7 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers }: M
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlaceCard offer={offers[0]} />
-                <PlaceCard offer={offers[1]} />
-                <PlaceCard offer={offers[2]} />
-                <PlaceCard offer={offers[3]} />
+                <OffersList offers={offers} />
               </div>
             </section>
             <div className="cities__right-section">
