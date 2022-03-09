@@ -9,7 +9,7 @@ import Offer from '../../pages/offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import { Offers } from '../../types/offer';
+import { Offers } from '../../types/offers-types';
 
 type AppPropsType = {
   placesCount: number;
@@ -25,7 +25,7 @@ function App({ placesCount, offers }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} />} />
+        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} offers={offers} />} />
         <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigationState.LOGIN} />} />
         <Route
           path={AppRoute.Favorites}
@@ -35,7 +35,7 @@ function App({ placesCount, offers }: AppPropsType): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} />} />
+        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} offer={offers[0]} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

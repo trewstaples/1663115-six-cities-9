@@ -1,7 +1,7 @@
 import App from './components/app/app';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { offers } from './mocks/mocks';
+import { offers } from './mocks/offers-mocks';
 
 const Setting = {
   PLACES_COUNT: 1000,

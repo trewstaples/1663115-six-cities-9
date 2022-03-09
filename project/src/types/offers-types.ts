@@ -4,7 +4,7 @@ type OwnerInfo = {
   pro: string;
 };
 
-export type Offer = {
+export type OfferType = {
   photo: string[];
   title: string;
   description: string;
@@ -14,8 +14,9 @@ export type Offer = {
   bedrooms: number;
   guests: number;
   price: number;
+  favorites: boolean;
   features: string[];
   owner: OwnerInfo;
 };
 
-export type Offers = Offer[];
+export type Offers = OfferType[];

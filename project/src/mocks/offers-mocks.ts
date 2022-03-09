@@ -1,4 +1,4 @@
-import { Offers } from '../types/offer';
+import { Offers } from '../types/offers-types';
 
 export const offers: Offers = [
   {
@@ -12,6 +12,7 @@ export const offers: Offers = [
     bedrooms: 3,
     guests: 4,
     price: 120,
+    favorites: true,
     features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine', 'Heating', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'],
     owner: {
       avatar: 'img/avatar-angelina.jpg',
@@ -25,14 +26,51 @@ export const offers: Offers = [
     description: 'Nice place to stay and have a rest. Everying you need is there. We are happy to meet put guests',
     premium: '',
     type: 'Room',
-    rating: 3,
+    rating: 3.2,
     bedrooms: 1,
-    guests: 2,
+    guests: 2.3,
     price: 80,
-    features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine', 'Cabel TV', 'Fridge'],
+    favorites: false,
+    features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine'],
     owner: {
       avatar: 'img/avatar-angelina.jpg',
       name: 'Michael',
+      pro: '',
+    },
+  },
+  {
+    photo: ['img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg'],
+    title: 'Cool room at city',
+    description: 'Everying you need is there. We are happy to meet put guests. Nice place to stay and have a rest. ',
+    premium: 'Premium',
+    type: 'Room',
+    rating: 4.4,
+    bedrooms: 1,
+    guests: 4,
+    price: 100,
+    favorites: true,
+    features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine', 'Cabel TV', 'Fridge'],
+    owner: {
+      avatar: 'img/avatar-angelina.jpg',
+      name: 'Peter',
+      pro: 'Pro',
+    },
+  },
+  {
+    photo: ['img/apartment-03.jpg', 'img/room.jpg'],
+    title: 'Cool apartment',
+    description: 'Everying you need is there. Nice place to stay and have a rest. We are happy to meet put guests',
+    premium: '',
+    type: 'Apartment',
+    rating: 2.1,
+    bedrooms: 2,
+    guests: 4,
+    price: 90,
+    favorites: false,
+    features: ['Wi-Fi', 'Cabel TV', 'Fridge'],
+    owner: {
+      avatar: 'img/avatar-angelina.jpg',
+      name: 'Kevin',
       pro: '',
     },
   },
