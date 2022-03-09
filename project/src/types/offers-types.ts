@@ -5,7 +5,7 @@ type OwnerInfo = {
 };
 
 export type OfferType = {
-  photo: string[];
+  photos: string[];
   title: string;
   description: string;
   premium: string;

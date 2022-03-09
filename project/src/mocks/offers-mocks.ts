@@ -2,7 +2,7 @@ import { Offers } from '../types/offers-types';
 
 export const offers: Offers = [
   {
-    photo: ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
+    photos: ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     title: 'Beautiful & luxurious apartment at great location',
     description:
       'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
@@ -10,7 +10,7 @@ export const offers: Offers = [
     type: 'Apartment',
     rating: 5,
     bedrooms: 3,
-    guests: 4,
+    guests: 5,
     price: 120,
     favorites: true,
     features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine', 'Heating', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'],
@@ -21,7 +21,7 @@ export const offers: Offers = [
     },
   },
   {
-    photo: ['img/room.jpg', 'img/studio-01.jpg'],
+    photos: ['img/room.jpg', 'img/studio-01.jpg'],
     title: 'Nice room at city',
     description: 'Nice place to stay and have a rest. Everying you need is there. We are happy to meet put guests',
     premium: '',
@@ -39,7 +39,7 @@ export const offers: Offers = [
     },
   },
   {
-    photo: ['img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg'],
+    photos: ['img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg'],
     title: 'Cool room at city',
     description: 'Everying you need is there. We are happy to meet put guests. Nice place to stay and have a rest. ',
     premium: 'Premium',
@@ -57,7 +57,7 @@ export const offers: Offers = [
     },
   },
   {
-    photo: ['img/apartment-03.jpg', 'img/room.jpg'],
+    photos: ['img/apartment-03.jpg', 'img/room.jpg'],
     title: 'Cool apartment',
     description: 'Everying you need is there. Nice place to stay and have a rest. We are happy to meet put guests',
     premium: '',
