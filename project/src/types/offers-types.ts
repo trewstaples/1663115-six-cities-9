@@ -20,3 +20,13 @@ export type OfferType = {
 };
 
 export type Offers = OfferType[];
+
+type ReviewInfo = {
+  avatar: string;
+  name: string;
+  rating: number;
+  date: Date;
+  text: string;
+};
+
+export type Reviews = ReviewInfo[];

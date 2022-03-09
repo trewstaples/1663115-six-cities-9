@@ -10,6 +10,7 @@ import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Offers } from '../../types/offers-types';
+import { reviews } from '../../mocks/reviews-mocks';
 
 type AppPropsType = {
   placesCount: number;
@@ -35,7 +36,7 @@ function App({ placesCount, offers }: AppPropsType): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} offer={offers[0]} />} />
+        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} offer={offers[0]} reviews={reviews} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
