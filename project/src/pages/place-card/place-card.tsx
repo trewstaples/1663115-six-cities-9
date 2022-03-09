@@ -2,11 +2,13 @@ import { OfferType } from '../../types/offers-types';
 
 type PlaceCardPropsType = {
   offer: OfferType;
+  onMouseOver: (offer: OfferType) => void;
 };
 
-function PlaceCard({ offer }: PlaceCardPropsType): JSX.Element {
+function PlaceCard({ offer, onMouseOver }: PlaceCardPropsType): JSX.Element {
   return (
-    <article className="cities__place-card place-card">
+    // eslint-disable-next-line no-console
+    <article className="cities__place-card place-card" onMouseOver={() => onMouseOver(offer)}>
       <div className="place-card__mark">
         <span>{offer.premium}</span>
       </div>
