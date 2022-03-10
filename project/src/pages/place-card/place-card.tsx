@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { OfferType } from '../../types/offers-types';
 
 type PlaceCardPropsType = {
@@ -37,7 +38,7 @@ function PlaceCard({ offer, onMouseOver }: PlaceCardPropsType): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="/">{offer.title}</a>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>

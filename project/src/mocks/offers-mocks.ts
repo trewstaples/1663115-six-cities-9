@@ -2,6 +2,7 @@ import { Offers } from '../types/offers-types';
 
 export const offers: Offers = [
   {
+    id: 0,
     photos: ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     title: 'Beautiful & luxurious apartment at great location',
     description:
@@ -21,6 +22,7 @@ export const offers: Offers = [
     },
   },
   {
+    id: 1,
     photos: ['img/room.jpg', 'img/studio-01.jpg'],
     title: 'Nice room at city',
     description: 'Nice place to stay and have a rest. Everying you need is there. We are happy to meet put guests',
@@ -39,6 +41,7 @@ export const offers: Offers = [
     },
   },
   {
+    id: 2,
     photos: ['img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg'],
     title: 'Cool room at city',
     description: 'Everying you need is there. We are happy to meet put guests. Nice place to stay and have a rest. ',
@@ -57,6 +60,7 @@ export const offers: Offers = [
     },
   },
   {
+    id: 3,
     photos: ['img/apartment-03.jpg', 'img/room.jpg'],
     title: 'Cool apartment',
     description: 'Everying you need is there. Nice place to stay and have a rest. We are happy to meet put guests',

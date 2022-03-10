@@ -1,14 +1,20 @@
 import Header from '../../components/header/header';
-import { OfferType } from '../../types/offers-types';
 import { Reviews } from '../../types/offers-types';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Offers } from '../../types/offers-types';
 
 type OfferPropsType = {
   isNavigationState: boolean;
-  offer: OfferType;
+  offers: Offers;
   reviews: Reviews;
 };
 
-function Offer({ isNavigationState: navigationState, offer, reviews }: OfferPropsType): JSX.Element {
+function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPropsType): JSX.Element {
+  const [param] = useState(Number(useParams().id));
+  let offer;
+  param === undefined ? (offer = offers[0]) : (offer = offers[param]);
+
   return (
     <div className="page">
       <Header isNavigationState={navigationState} />

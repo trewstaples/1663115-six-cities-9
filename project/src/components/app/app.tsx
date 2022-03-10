@@ -36,7 +36,7 @@ function App({ placesCount, offers }: AppPropsType): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} offer={offers[0]} reviews={reviews} />} />
+        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} offers={offers} reviews={reviews} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
