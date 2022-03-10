@@ -1,12 +1,14 @@
 import Header from '../../components/header/header';
-import PlaceCard from '../place-card/place-card';
+import OffersList from '../offers-list/offers-list';
+import { Offers } from '../../types/offers-types';
 
 type MainPagePropsType = {
   placesCount: number;
   isNavigationState: boolean;
+  offers: Offers;
 };
 
-function MainPage({ placesCount, isNavigationState: navigationState }: MainPagePropsType): JSX.Element {
+function MainPage({ placesCount, isNavigationState: navigationState, offers }: MainPagePropsType): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header isNavigationState={navigationState} />
@@ -78,11 +80,7 @@ function MainPage({ placesCount, isNavigationState: navigationState }: MainPageP
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
+                <OffersList offers={offers} />
               </div>
             </section>
             <div className="cities__right-section">

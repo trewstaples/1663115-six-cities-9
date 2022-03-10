@@ -9,9 +9,12 @@ import Offer from '../../pages/offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+import { Offers } from '../../types/offers-types';
+import { reviews } from '../../mocks/reviews-mocks';
 
 type AppPropsType = {
   placesCount: number;
+  offers: Offers;
 };
 
 const NavigationState = {
@@ -19,21 +22,21 @@ const NavigationState = {
   LOGIN: false,
 };
 
-function App({ placesCount }: AppPropsType): JSX.Element {
+function App({ placesCount, offers }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} />} />
+        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} offers={offers} />} />
         <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigationState.LOGIN} />} />
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favorites isNavigationState={NavigationState.DEFAULT} />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <Favorites isNavigationState={NavigationState.DEFAULT} offers={offers} />
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} />} />
+        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} offers={offers} reviews={reviews} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
