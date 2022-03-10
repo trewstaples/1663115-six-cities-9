@@ -8,7 +8,6 @@ type PlaceCardPropsType = {
 
 function PlaceCard({ offer, onMouseOver }: PlaceCardPropsType): JSX.Element {
   return (
-    // eslint-disable-next-line no-console
     <article className="cities__place-card place-card" onMouseOver={() => onMouseOver(offer)}>
       <div className="place-card__mark">
         <span>{offer.premium}</span>
