@@ -1,15 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import 'leaflet/dist/leaflet.css';
 import { City } from '../../types/offers-types';
 import { Icon, Marker } from 'leaflet';
-import { Offers } from '../../types/offers-types';
+import { Offers, OfferType } from '../../types/offers-types';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 
 type MapPropsType = {
   city: City;
   offers: Offers;
+  selectedPoint: OfferType | undefined;
 };
 
 const defaultCustomIcon = new Icon({
@@ -24,7 +24,7 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40],
 });
 
-function Map({ offers, city }: MapPropsType): JSX.Element {
+function Map({ offers, city, selectedPoint }: MapPropsType): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -36,10 +36,10 @@ function Map({ offers, city }: MapPropsType): JSX.Element {
           lng: offer.coordinates.lng,
         });
 
-        marker.setIcon(currentCustomIcon).addTo(map);
+        marker.setIcon(selectedPoint !== undefined && offer.title === selectedPoint.title ? currentCustomIcon : defaultCustomIcon).addTo(map);
       });
     }
-  }, [map, offers]);
+  }, [map, offers, selectedPoint]);
 
   return <section className="cities__map map" style={{ height: '980px' }} ref={mapRef}></section>;
 }

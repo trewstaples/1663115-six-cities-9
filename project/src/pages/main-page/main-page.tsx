@@ -1,8 +1,9 @@
 import { City } from '../../types/offers-types';
 import Header from '../../components/header/header';
 import OffersList from '../offers-list/offers-list';
-import { Offers } from '../../types/offers-types';
+import { Offers, OfferType } from '../../types/offers-types';
 import Map from '../map/map';
+import { useState } from 'react';
 
 type MainPagePropsType = {
   placesCount: number;
@@ -12,6 +13,14 @@ type MainPagePropsType = {
 };
 
 function MainPage({ placesCount, isNavigationState: navigationState, offers, city }: MainPagePropsType): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<OfferType | undefined>(undefined);
+
+  const onListItemHover = (listItemName: string) => {
+    const currentPoint = offers.find((offer) => offer.title === listItemName);
+
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Header isNavigationState={navigationState} />
@@ -83,11 +92,11 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OffersList offers={offers} />
+                <OffersList offers={offers} onListItemHover={onListItemHover} />
               </div>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} city={city} />
+              <Map offers={offers} city={city} selectedPoint={selectedPoint} />
             </div>
           </div>
         </div>
