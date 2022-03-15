@@ -4,8 +4,14 @@ type OwnerInfo = {
   pro: string;
 };
 
+type Coordinates = {
+  lat: number;
+  lng: number;
+};
+
 export type OfferType = {
   id: number;
+  coordinates: Coordinates;
   photos: string[];
   title: string;
   description: string;
