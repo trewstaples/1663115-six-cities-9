@@ -1,6 +1,7 @@
 import { AppRoute } from '../../const';
 import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';
+import { City } from '../../types/offers-types';
 import Favorites from '../../pages/favorites/favorites';
 import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
@@ -15,6 +16,7 @@ import { reviews } from '../../mocks/reviews-mocks';
 type AppPropsType = {
   placesCount: number;
   offers: Offers;
+  city: City;
 };
 
 const NavigationState = {
@@ -22,11 +24,11 @@ const NavigationState = {
   LOGIN: false,
 };
 
-function App({ placesCount, offers }: AppPropsType): JSX.Element {
+function App({ placesCount, offers, city }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} offers={offers} />} />
+        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} offers={offers} city={city} />} />
         <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigationState.LOGIN} />} />
         <Route
           path={AppRoute.Favorites}

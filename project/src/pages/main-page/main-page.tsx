@@ -1,16 +1,17 @@
+import { City } from '../../types/offers-types';
 import Header from '../../components/header/header';
 import OffersList from '../offers-list/offers-list';
 import { Offers } from '../../types/offers-types';
 import Map from '../map/map';
-import { Amsterdam } from '../../mocks/cities';
 
 type MainPagePropsType = {
   placesCount: number;
   isNavigationState: boolean;
   offers: Offers;
+  city: City;
 };
 
-function MainPage({ placesCount, isNavigationState: navigationState, offers }: MainPagePropsType): JSX.Element {
+function MainPage({ placesCount, isNavigationState: navigationState, offers, city }: MainPagePropsType): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header isNavigationState={navigationState} />
@@ -86,7 +87,7 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers }: M
               </div>
             </section>
             <div className="cities__right-section">
-              <Map city={Amsterdam} />
+              <Map offers={offers} city={city} />
             </div>
           </div>
         </div>
