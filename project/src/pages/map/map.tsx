@@ -3,7 +3,7 @@ import React from 'react';
 // import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { City } from '../../types/offers-types';
-import useMap from './use-map';
+import useMap from '../../hooks/use-map';
 import { useRef } from 'react';
 
 type MapPropsType = {
