@@ -1,6 +1,8 @@
 import Header from '../../components/header/header';
 import OffersList from '../offers-list/offers-list';
 import { Offers } from '../../types/offers-types';
+import Map from '../map/map';
+import { Amsterdam } from '../../mocks/cities';
 
 type MainPagePropsType = {
   placesCount: number;
@@ -84,7 +86,7 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers }: M
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map city={Amsterdam} />
             </div>
           </div>
         </div>
