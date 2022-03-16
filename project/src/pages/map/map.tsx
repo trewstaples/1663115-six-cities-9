@@ -9,7 +9,7 @@ import useMap from '../../hooks/use-map';
 type MapPropsType = {
   city: City;
   offers: Offers;
-  selectedPoint: OfferType | undefined;
+  selectedPoint?: OfferType | undefined;
 };
 
 const defaultCustomIcon = new Icon({
