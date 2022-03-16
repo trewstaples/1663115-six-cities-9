@@ -1,3 +1,15 @@
+type Coordinates = {
+  lat: number;
+  lng: number;
+};
+
+export type City = {
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+};
+
 type OwnerInfo = {
   avatar: string;
   name: string;
@@ -6,6 +18,7 @@ type OwnerInfo = {
 
 export type OfferType = {
   id: number;
+  coordinates: Coordinates;
   photos: string[];
   title: string;
   description: string;

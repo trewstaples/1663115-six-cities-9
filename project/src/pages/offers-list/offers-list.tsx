@@ -5,17 +5,23 @@ import { useState } from 'react';
 
 type OffersListPropsType = {
   offers: Offers;
+  onListItemHover: (listItemName: string) => void;
 };
 
-function OffersList({ offers }: OffersListPropsType): JSX.Element {
+function OffersList({ offers, onListItemHover }: OffersListPropsType): JSX.Element {
   const [, setUserOffer] = useState(offers[0]);
+
+  const onMouseOver = (offer: OfferType) => {
+    setUserOffer(offer);
+    onListItemHover(offer.title);
+  };
 
   return (
     <div className="cities__places-list places__list tabs__content">
-      <PlaceCard offer={offers[0]} onMouseOver={(offer: OfferType) => setUserOffer(offer)} />
-      <PlaceCard offer={offers[1]} onMouseOver={(offer: OfferType) => setUserOffer(offer)} />
-      <PlaceCard offer={offers[2]} onMouseOver={(offer: OfferType) => setUserOffer(offer)} />
-      <PlaceCard offer={offers[3]} onMouseOver={(offer: OfferType) => setUserOffer(offer)} />
+      <PlaceCard offer={offers[0]} onMouseOver={onMouseOver} />
+      <PlaceCard offer={offers[1]} onMouseOver={onMouseOver} />
+      <PlaceCard offer={offers[2]} onMouseOver={onMouseOver} />
+      <PlaceCard offer={offers[3]} onMouseOver={onMouseOver} />
     </div>
   );
 }
