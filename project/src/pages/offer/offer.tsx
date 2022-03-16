@@ -20,6 +20,8 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
   let offer;
   param === undefined ? (offer = offers[0]) : (offer = offers[param]);
 
+  const mapOffers = offers.slice(1);
+
   return (
     <div className="page">
       <Header isNavigationState={navigationState} />
@@ -97,7 +99,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
             </div>
           </div>
           <section className="property__map map">
-            <Map offers={offers} city={CITY} />
+            <Map offers={mapOffers} city={CITY} />
           </section>
         </section>
         <div className="container">
