@@ -44,3 +44,8 @@ type ReviewInfo = {
 };
 
 export type Reviews = ReviewInfo[];
+
+export type MapModeType = {
+  map?: string;
+  offer?: string;
+};

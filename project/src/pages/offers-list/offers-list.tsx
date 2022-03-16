@@ -1,28 +1,31 @@
-import { Offers } from '../../types/offers-types';
 import { OfferType } from '../../types/offers-types';
-import PlaceCard from '../place-card/place-card';
+import OfferCard from '../offer-card/offer-card';
 import { useState } from 'react';
 
 type OffersListPropsType = {
-  offers: Offers;
-  onListItemHover: (listItemName: string) => void;
+  offer: OfferType;
+  onListItemHover?: (listItemName: string) => void;
 };
 
-function OffersList({ offers, onListItemHover }: OffersListPropsType): JSX.Element {
-  const [, setUserOffer] = useState(offers[0]);
+function OffersList({ offer, onListItemHover }: OffersListPropsType): JSX.Element {
+  const [, setUserOffer] = useState(offer);
 
-  const onMouseOver = (offer: OfferType) => {
-    setUserOffer(offer);
-    onListItemHover(offer.title);
-  };
+  if (typeof onListItemHover !== 'undefined') {
+    const onMouseOver = (offerCard: OfferType) => {
+      setUserOffer(offerCard);
+      onListItemHover(offerCard.title);
+    };
 
+    return (
+      <article className="cities__place-card place-card" onMouseOver={() => onMouseOver(offer)}>
+        <OfferCard offer={offer} />
+      </article>
+    );
+  }
   return (
-    <div className="cities__places-list places__list tabs__content">
-      <PlaceCard offer={offers[0]} onMouseOver={onMouseOver} />
-      <PlaceCard offer={offers[1]} onMouseOver={onMouseOver} />
-      <PlaceCard offer={offers[2]} onMouseOver={onMouseOver} />
-      <PlaceCard offer={offers[3]} onMouseOver={onMouseOver} />
-    </div>
+    <article className="cities__place-card place-card">
+      <OfferCard offer={offer} />
+    </article>
   );
 }
 

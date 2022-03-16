@@ -3,6 +3,7 @@ import Header from '../../components/header/header';
 import OffersList from '../offers-list/offers-list';
 import { Offers, OfferType } from '../../types/offers-types';
 import Map from '../map/map';
+import { MapMode } from '../../const';
 import { useState } from 'react';
 
 type MainPagePropsType = {
@@ -92,11 +93,13 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OffersList offers={offers} onListItemHover={onListItemHover} />
+                {offers.map((offer) => (
+                  <OffersList offer={offer} key={offer.id} onListItemHover={onListItemHover} />
+                ))}
               </div>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} city={city} selectedPoint={selectedPoint} />
+              <Map offers={offers} city={city} selectedPoint={selectedPoint} mapMode={MapMode.Main} />
             </div>
           </div>
         </div>
