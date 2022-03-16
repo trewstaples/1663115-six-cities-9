@@ -5,7 +5,7 @@ type ReviewsListPropsType = {
   reviews: Reviews;
 };
 
-export function ReviewsList({ reviews }: ReviewsListPropsType): JSX.Element {
+function ReviewsList({ reviews }: ReviewsListPropsType): JSX.Element {
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
