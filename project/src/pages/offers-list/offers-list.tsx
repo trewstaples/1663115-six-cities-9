@@ -1,6 +1,6 @@
 import { Offers } from '../../types/offers-types';
 import { OfferType } from '../../types/offers-types';
-import PlaceCard from '../place-card/place-card';
+import OfferCard from '../offer-card/offer-card';
 import { useState } from 'react';
 
 type OffersListPropsType = {
@@ -18,10 +18,10 @@ function OffersList({ offers, onListItemHover }: OffersListPropsType): JSX.Eleme
 
   return (
     <div className="cities__places-list places__list tabs__content">
-      <PlaceCard offer={offers[0]} onMouseOver={onMouseOver} />
-      <PlaceCard offer={offers[1]} onMouseOver={onMouseOver} />
-      <PlaceCard offer={offers[2]} onMouseOver={onMouseOver} />
-      <PlaceCard offer={offers[3]} onMouseOver={onMouseOver} />
+      <OfferCard offer={offers[0]} onMouseOver={onMouseOver} />
+      <OfferCard offer={offers[1]} onMouseOver={onMouseOver} />
+      <OfferCard offer={offers[2]} onMouseOver={onMouseOver} />
+      <OfferCard offer={offers[3]} onMouseOver={onMouseOver} />
     </div>
   );
 }

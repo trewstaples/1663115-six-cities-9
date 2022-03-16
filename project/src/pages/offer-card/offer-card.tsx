@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { OfferType } from '../../types/offers-types';
 
-type PlaceCardPropsType = {
+type OfferCardPropsType = {
   offer: OfferType;
   onMouseOver: (offer: OfferType) => void;
 };
 
-function PlaceCard({ offer, onMouseOver }: PlaceCardPropsType): JSX.Element {
+function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
   return (
     <article className="cities__place-card place-card" onMouseOver={() => onMouseOver(offer)}>
       <div className="place-card__mark">
@@ -45,4 +45,4 @@ function PlaceCard({ offer, onMouseOver }: PlaceCardPropsType): JSX.Element {
   );
 }
 
-export default PlaceCard;
+export default OfferCard;
