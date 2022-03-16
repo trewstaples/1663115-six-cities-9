@@ -3,6 +3,7 @@ import Header from '../../components/header/header';
 import OffersList from '../offers-list/offers-list';
 import { Offers, OfferType } from '../../types/offers-types';
 import Map from '../map/map';
+import { MapMode } from '../../const';
 import { useState } from 'react';
 
 type MainPagePropsType = {
@@ -96,7 +97,7 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
               </div>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} city={city} selectedPoint={selectedPoint} />
+              <Map offers={offers} city={city} selectedPoint={selectedPoint} mapMode={MapMode.Main} />
             </div>
           </div>
         </div>

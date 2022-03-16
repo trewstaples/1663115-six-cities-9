@@ -1,6 +1,7 @@
 import 'leaflet/dist/leaflet.css';
 import { City } from '../../types/offers-types';
 import { Icon, Marker } from 'leaflet';
+import { MapMode } from '../../const';
 import { Offers, OfferType } from '../../types/offers-types';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 import { useEffect, useRef } from 'react';
@@ -10,6 +11,7 @@ type MapPropsType = {
   city: City;
   offers: Offers;
   selectedPoint?: OfferType | undefined;
+  mapMode: MapMode;
 };
 
 const defaultCustomIcon = new Icon({
@@ -24,9 +26,14 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40],
 });
 
-function Map({ offers, city, selectedPoint }: MapPropsType): JSX.Element {
+function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
+
+  let mapContainer;
+  mapMode === MapMode.Main
+    ? (mapContainer = <section className="cities__map map" style={{ height: '980px' }} ref={mapRef} />)
+    : (mapContainer = <section className="property__map map" style={{ height: '579px' }} ref={mapRef} />);
 
   useEffect(() => {
     if (map) {
@@ -41,7 +48,7 @@ function Map({ offers, city, selectedPoint }: MapPropsType): JSX.Element {
     }
   }, [map, offers, selectedPoint]);
 
-  return <section className="cities__map map" style={{ height: '980px' }} ref={mapRef} />;
+  return mapContainer;
 }
 
 export default Map;

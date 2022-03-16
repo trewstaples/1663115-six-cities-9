@@ -1,13 +1,12 @@
 import { CITY } from '../../mocks/city';
 import Header from '../../components/header/header';
 import Map from '../map/map';
+import { MapMode } from '../../const';
 import { Reviews } from '../../types/offers-types';
 import ReviewsList from '../reviews-list/reviews-list';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Offers } from '../../types/offers-types';
-
-//Пофиксить длину карты. Дать условие - если один флаг(main) - значит одна длина('980px'), если другой(offer) - значит другая(579px)
 
 type OfferPropsType = {
   isNavigationState: boolean;
@@ -98,9 +97,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
               <ReviewsList reviews={reviews} />
             </div>
           </div>
-          <section className="property__map map">
-            <Map offers={mapOffers} city={CITY} />
-          </section>
+          <Map offers={mapOffers} city={CITY} mapMode={MapMode.Offer} />
         </section>
         <div className="container">
           <section className="near-places places">
