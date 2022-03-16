@@ -93,7 +93,9 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OffersList offers={offers} onListItemHover={onListItemHover} />
+                {offers.map((offer) => (
+                  <OffersList offer={offer} key={offer.id} onListItemHover={onListItemHover} />
+                ))}
               </div>
             </section>
             <div className="cities__right-section">

@@ -3,12 +3,11 @@ import { OfferType } from '../../types/offers-types';
 
 type OfferCardPropsType = {
   offer: OfferType;
-  onMouseOver: (offer: OfferType) => void;
 };
 
-function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
+function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
   return (
-    <article className="cities__place-card place-card" onMouseOver={() => onMouseOver(offer)}>
+    <>
       <div className="place-card__mark">
         <span>{offer.premium}</span>
       </div>
@@ -41,7 +40,7 @@ function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>
-    </article>
+    </>
   );
 }
 

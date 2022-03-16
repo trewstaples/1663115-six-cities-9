@@ -2,7 +2,7 @@ import { CITY } from '../../mocks/city';
 import Header from '../../components/header/header';
 import Map from '../map/map';
 import { MapMode } from '../../const';
-import NearPlacesList from '../near-places-list/near-places-list';
+import OffersList from '../offers-list/offers-list';
 import { Reviews } from '../../types/offers-types';
 import ReviewsList from '../reviews-list/reviews-list';
 import { useParams } from 'react-router-dom';
@@ -104,7 +104,9 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <NearPlacesList offers={nearOffers} />
+              {nearOffers.map((nearOffer) => (
+                <OffersList offer={nearOffer} key={nearOffer.id} />
+              ))}
             </div>
           </section>
         </div>
