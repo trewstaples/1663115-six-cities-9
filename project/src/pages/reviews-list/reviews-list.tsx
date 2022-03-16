@@ -1,6 +1,8 @@
 import { Reviews } from '../../types/offers-types';
 import ReviewsForm from '../reviews-form/reviews-form';
 
+const REVIEWS_RATING = 20;
+
 type ReviewsListPropsType = {
   reviews: Reviews;
 };
@@ -25,7 +27,7 @@ function ReviewsList({ reviews }: ReviewsListPropsType): JSX.Element {
               <div className="reviews__info">
                 <div className="reviews__rating rating">
                   <div className="reviews__stars rating__stars">
-                    <span style={{ width: `${Math.round(review.rating) * 20}%` }}></span>
+                    <span style={{ width: `${Math.round(review.rating) * REVIEWS_RATING}%` }}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
                 </div>
