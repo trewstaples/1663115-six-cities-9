@@ -41,7 +41,7 @@ function Map({ offers, city, selectedPoint }: MapPropsType): JSX.Element {
     }
   }, [map, offers, selectedPoint]);
 
-  return <section className="cities__map map" style={{ height: '980px' }} ref={mapRef}></section>;
+  return <section className="cities__map map" style={{ height: '980px' }} ref={mapRef} />;
 }
 
 export default Map;
