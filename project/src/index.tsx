@@ -1,7 +1,7 @@
 import App from './components/app/app';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { offers } from './mocks/offers-mocks';
+import { offersAmsterdam } from './mocks/offers-mocks';
 import { CITY } from './mocks/city';
 
 const Setting = {
@@ -10,7 +10,7 @@ const Setting = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App placesCount={Setting.PLACES_COUNT} offers={offers} city={CITY} />
+    <App placesCount={Setting.PLACES_COUNT} offers={offersAmsterdam} city={CITY} />
   </React.StrictMode>,
   document.getElementById('root'),
 );

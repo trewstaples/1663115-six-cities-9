@@ -1,6 +1,6 @@
 import { Offers } from '../types/offers-types';
 
-export const offers: Offers = [
+export const offersAmsterdam: Offers = [
   {
     id: 0,
     coordinates: {
@@ -91,6 +91,101 @@ export const offers: Offers = [
     owner: {
       avatar: 'img/avatar-angelina.jpg',
       name: 'Kevin',
+      pro: '',
+    },
+  },
+];
+
+export const offersParis: Offers = [
+  {
+    id: 0,
+    coordinates: {
+      lat: 52.3909553943508,
+      lng: 4.85309666406198,
+    },
+    photos: ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
+    title: 'A walk about Paris will provide lessons in history',
+    description: 'That Paris exists and anyone could choose to live anywhere else in the world will always be a mystery to me.',
+    premium: 'Premium',
+    type: 'Apartment',
+    rating: 5,
+    bedrooms: 3,
+    guests: 5,
+    price: 120,
+    favorites: true,
+    features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine', 'Heating', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'],
+    owner: {
+      avatar: 'img/avatar-angelina.jpg',
+      name: 'Jean',
+      pro: 'Pro',
+    },
+  },
+  {
+    id: 1,
+    coordinates: {
+      lat: 52.369553943508,
+      lng: 4.85309666406198,
+    },
+    photos: ['img/room.jpg', 'img/studio-01.jpg'],
+    title: 'To err is human. To loaf is Parisian.',
+    description: 'Sometimes I think of Paris not as a city but as a home.',
+    premium: '',
+    type: 'Room',
+    rating: 3.2,
+    bedrooms: 1,
+    guests: 2.3,
+    price: 80,
+    favorites: false,
+    features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine'],
+    owner: {
+      avatar: 'img/avatar-angelina.jpg',
+      name: 'Migel',
+      pro: '',
+    },
+  },
+  {
+    id: 2,
+    coordinates: {
+      lat: 52.3909553943508,
+      lng: 4.929309666406198,
+    },
+    photos: ['img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg'],
+    title: 'Paris loves lovers.',
+    description: 'To know Paris is to know a great deal.',
+    premium: 'Premium',
+    type: 'Room',
+    rating: 4.4,
+    bedrooms: 1,
+    guests: 4,
+    price: 100,
+    favorites: true,
+    features: ['Wi-Fi', 'Washing machine', 'Towel', 'Coffe Machine', 'Cabel TV', 'Fridge'],
+    owner: {
+      avatar: 'img/avatar-angelina.jpg',
+      name: 'Francois',
+      pro: 'Pro',
+    },
+  },
+  {
+    id: 3,
+    coordinates: {
+      lat: 52.3809553943508,
+      lng: 4.939309666406198,
+    },
+    photos: ['img/apartment-03.jpg', 'img/room.jpg'],
+    title: 'I can never decide whether Paris is more beautiful by day or by night.',
+    description: 'Paris, France. Paname. The City of Lights. The City of Love.',
+    premium: '',
+    type: 'Apartment',
+    rating: 2.1,
+    bedrooms: 2,
+    guests: 4,
+    price: 90,
+    favorites: false,
+    features: ['Wi-Fi', 'Cabel TV', 'Fridge'],
+    owner: {
+      avatar: 'img/avatar-angelina.jpg',
+      name: 'Louis',
       pro: '',
     },
   },
