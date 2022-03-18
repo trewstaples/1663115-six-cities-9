@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { fillList } from './action';
 import { offersAmsterdam, offersParis } from '../mocks/offers-mocks';
-
-const UPDATE_CITY = 'UPDATE_STATE';
+import { updateCity } from './action';
 
 const initialState = {
   city: 'Amsterdam',
@@ -9,10 +9,13 @@ const initialState = {
 };
 
 const reducer = createReducer(initialState, (builder) => {
-  builder.addCase(UPDATE_CITY, (state) => {
-    state.city = 'Paris';
-    state.offersList = offersParis;
-  });
+  builder
+    .addCase(updateCity, (state) => {
+      state.city = 'Paris';
+    })
+    .addCase(fillList, (state) => {
+      state.offersList = offersParis;
+    });
 });
 
 export { reducer };
