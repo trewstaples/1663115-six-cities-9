@@ -1,5 +1,16 @@
 import { City } from '../types/offers-types';
 
+enum Cities {
+  Paris = 'Paris',
+  Cologne = 'Cologne',
+  Brussels = 'Brussels',
+  Amsterdam = 'Amsterdam',
+  Hamburg = 'Hamburg',
+  Dusseldorf = 'Dusseldorf',
+}
+
+export const cityCodes = Object.keys(Cities);
+
 export const Paris: City = {
   title: 'Paris',
   lat: 48.8534,
