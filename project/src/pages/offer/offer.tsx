@@ -1,4 +1,4 @@
-import { CITY } from '../../mocks/city';
+import { Amsterdam } from '../../mocks/city';
 import Header from '../../components/header/header';
 import Map from '../map/map';
 import { MapMode } from '../../const';
@@ -98,7 +98,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
               <ReviewsList reviews={reviews} />
             </div>
           </div>
-          <Map offers={nearOffers} city={CITY} mapMode={MapMode.Offer} />
+          <Map offers={nearOffers} city={Amsterdam} mapMode={MapMode.Offer} />
         </section>
         <div className="container">
           <section className="near-places places">
