@@ -14,7 +14,6 @@ import { OffersType } from '../../types/offers';
 import { reviews } from '../../mocks/reviews-mocks';
 
 type AppPropsType = {
-  placesCount: number;
   offers: OffersType;
   city: CityType;
 };
@@ -24,11 +23,11 @@ const NavigationState = {
   LOGIN: false,
 };
 
-function App({ placesCount, offers, city }: AppPropsType): JSX.Element {
+function App({ offers, city }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} offers={offers} isNavigationState={NavigationState.DEFAULT} city={city} />} />
+        <Route path={AppRoute.Main} element={<MainPage isNavigationState={NavigationState.DEFAULT} />} />
         <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigationState.LOGIN} />} />
         <Route
           path={AppRoute.Favorites}

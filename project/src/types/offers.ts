@@ -4,7 +4,6 @@ import { CityType } from './city';
 type OwnerType = {
   avatar: string;
   name: string;
-  //id: number
   pro: string;
 };
 

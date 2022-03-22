@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CityTabType } from '../types/city-tab';
 import { createReducer } from '@reduxjs/toolkit';
 import { DEFAULT_CITY_TAB } from '../const';
-import { resetCityTab, setCityTab } from './action';
+import { setCityTab } from './action';
 import { OffersType } from '../types/offers';
 import { fullOffers } from '../mocks/offers-mocks';
 
