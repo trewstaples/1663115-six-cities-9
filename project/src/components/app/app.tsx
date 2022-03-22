@@ -28,7 +28,7 @@ function App({ placesCount, offers, city }: AppPropsType): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT} offers={offers} city={city} />} />
+        <Route path={AppRoute.Main} element={<MainPage placesCount={placesCount} isNavigationState={NavigationState.DEFAULT}  city={city} />} />
         <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigationState.LOGIN} />} />
         <Route
           path={AppRoute.Favorites}
