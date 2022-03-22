@@ -1,8 +1,9 @@
-import { Reviews } from '../types/offers-types';
+import { ReviewsType } from '../types/reviews';
 
-export const reviews: Reviews = [
+export const reviews: ReviewsType = [
   {
     avatar: 'img/avatar-max.jpg',
+    id: 0,
     name: 'Dilan',
     rating: 3.6,
     date: new Date('2019-04-24'),
@@ -10,6 +11,7 @@ export const reviews: Reviews = [
   },
   {
     avatar: 'img/avatar-max.jpg',
+    id: 1,
     name: 'Mac',
     rating: 2.8,
     date: new Date('2020-04-16'),
@@ -17,6 +19,7 @@ export const reviews: Reviews = [
   },
   {
     avatar: 'img/avatar-max.jpg',
+    id: 2,
     name: 'Cody',
     rating: 1.2,
     date: new Date('2021-03-05'),
@@ -24,6 +27,7 @@ export const reviews: Reviews = [
   },
   {
     avatar: 'img/avatar-max.jpg',
+    id: 3,
     name: 'Kate',
     rating: 4.5,
     date: new Date('2022-01-28'),

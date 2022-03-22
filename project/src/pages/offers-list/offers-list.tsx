@@ -1,4 +1,4 @@
-import { OfferType } from '../../types/offers-types';
+import { OfferType } from '../../types/offers';
 import OfferCard from '../offer-card/offer-card';
 import { useState } from 'react';
 

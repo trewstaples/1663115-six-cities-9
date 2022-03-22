@@ -1,18 +1,18 @@
-import { CITY } from '../../mocks/city';
+import { Amsterdam } from '../../mocks/city';
 import Header from '../../components/header/header';
 import Map from '../map/map';
 import { MapMode } from '../../const';
 import OffersList from '../offers-list/offers-list';
-import { Reviews } from '../../types/offers-types';
+import { ReviewsType } from '../../types/reviews';
 import ReviewsList from '../reviews-list/reviews-list';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { Offers } from '../../types/offers-types';
+import { OffersType } from '../../types/offers';
 
 type OfferPropsType = {
   isNavigationState: boolean;
-  offers: Offers;
-  reviews: Reviews;
+  offers: OffersType;
+  reviews: ReviewsType;
 };
 
 function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPropsType): JSX.Element {
@@ -98,7 +98,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
               <ReviewsList reviews={reviews} />
             </div>
           </div>
-          <Map offers={nearOffers} city={CITY} mapMode={MapMode.Offer} />
+          <Map offers={nearOffers} city={Amsterdam} mapMode={MapMode.Offer} />
         </section>
         <div className="container">
           <section className="near-places places">

@@ -1,16 +1,16 @@
 import App from './components/app/app';
+import { Amsterdam } from './mocks/city';
+import { fullOffers } from './mocks/offers-mocks';
+import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { offers } from './mocks/offers-mocks';
-import { CITY } from './mocks/city';
-
-const Setting = {
-  PLACES_COUNT: 1000,
-};
+import { store } from './store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App placesCount={Setting.PLACES_COUNT} offers={offers} city={CITY} />
+    <Provider store={store}>
+      <App offers={fullOffers} city={Amsterdam} />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

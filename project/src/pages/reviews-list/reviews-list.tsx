@@ -1,8 +1,10 @@
-import { Reviews } from '../../types/offers-types';
+import { ReviewsType } from '../../types/reviews';
 import ReviewsForm from '../reviews-form/reviews-form';
 
+const REVIEWS_RATING = 20;
+
 type ReviewsListPropsType = {
-  reviews: Reviews;
+  reviews: ReviewsType;
 };
 
 function ReviewsList({ reviews }: ReviewsListPropsType): JSX.Element {
@@ -12,8 +14,8 @@ function ReviewsList({ reviews }: ReviewsListPropsType): JSX.Element {
         Reviews &middot; <span className="reviews__amount">1</span>
       </h2>
       <ul className="reviews__list">
-        {reviews.map((review, id) => {
-          const keyValue = `${id}-${review.name}`;
+        {reviews.map((review) => {
+          const keyValue = `${review.id}`;
           return (
             <li key={keyValue} className="reviews__item">
               <div className="reviews__user user">
@@ -25,7 +27,7 @@ function ReviewsList({ reviews }: ReviewsListPropsType): JSX.Element {
               <div className="reviews__info">
                 <div className="reviews__rating rating">
                   <div className="reviews__stars rating__stars">
-                    <span style={{ width: `${Math.round(review.rating) * 20}%` }}></span>
+                    <span style={{ width: `${Math.round(review.rating) * REVIEWS_RATING}%` }}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
                 </div>
