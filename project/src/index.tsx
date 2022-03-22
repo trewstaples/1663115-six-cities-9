@@ -1,6 +1,6 @@
 import App from './components/app/app';
 import { Amsterdam } from './mocks/city';
-import { offersAmsterdam } from './mocks/offers-mocks';
+import { offers } from './mocks/offers-mocks';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -13,7 +13,7 @@ const Setting = {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App placesCount={Setting.PLACES_COUNT} offers={offersAmsterdam} city={Amsterdam} />
+      <App placesCount={Setting.PLACES_COUNT} offers={offers} city={Amsterdam} />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

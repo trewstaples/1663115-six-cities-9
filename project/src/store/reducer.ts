@@ -3,7 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { DEFAULT_CITY_TAB } from '../const';
 import { resetCityTab, setCityTab } from './action';
 import { OffersType } from '../types/offers';
-import { offersAmsterdam, offersParis } from '../mocks/offers-mocks';
+import { offers, offersParis } from '../mocks/offers-mocks';
 
 type InitialStateType = {
   cityTab: CityTabType;
@@ -24,7 +24,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCityTab, (state, action) => {
       const { cityTab } = action.payload;
       state.cityTab = cityTab;
-      state.offers = offersAmsterdam;
+      state.offers = offers;
     });
 });
 

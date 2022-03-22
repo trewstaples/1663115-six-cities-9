@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { CityType } from '../../types/city';
 import { CityTabType } from '../../types/city-tab';
+import { citiesLocations } from '../../mocks/city';
 import CityTabs from '../city-tabs/city-tabs';
 import CitiesContainer from '../cities-container/cities-container';
 import Header from '../../components/header/header';
@@ -23,6 +24,12 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
   const handleCityTabChange = (newCityTab: CityTabType) => () => {
     dispatch(setCityTab({ cityTab: newCityTab }));
   };
+  //Напишите код для получения списка предложений по аренде в соответствии с выбранным городом.
+  //В массив предложений каждому предложениб добавить координаты города предложения
+  //При смене cityTab, пройтись по массиву предложений, отфлитровав предложения в соответствии с выбранным городом
+  //Отфильтрованные предложения передать в дочерние компоненты для перерисовки и в глобальное состояние
+
+  const activeCity = citiesLocations.find((cityLocation) => cityLocation.title === cityTab);
 
   return (
     <div className={`page page--gray page--main ${offers ? '' : 'page__main--index-empty'}`}>
@@ -31,7 +38,9 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs activeCityTab={cityTab} handleCityTabChange={handleCityTabChange} />
-        <div className="cities">{cityOffers ? <CitiesContainer activeCityTab={cityTab} city={city} offers={cityOffers} placesCount={placesCount} /> : <MainEmpty activeCityTab={cityTab} />}</div>
+        <div className="cities">
+          {cityOffers && activeCity ? <CitiesContainer activeCityTab={cityTab} city={activeCity} offers={cityOffers} placesCount={placesCount} /> : <MainEmpty activeCityTab={cityTab} />}
+        </div>
       </main>
     </div>
   );

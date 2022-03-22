@@ -1,4 +1,5 @@
 import { LocationType } from './location';
+import { CityType } from './city';
 
 type OwnerType = {
   avatar: string;
@@ -22,7 +23,7 @@ export type OfferType = {
   favorites: boolean;
   features: string[];
   owner: OwnerType;
-  //city: City(name, location)
+  city: CityType;
 };
 
 export type OffersType = OfferType[];
