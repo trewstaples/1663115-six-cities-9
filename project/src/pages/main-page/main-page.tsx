@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import { CityType } from '../../types/city';
 import { CityTabType } from '../../types/city-tab';
@@ -6,6 +7,7 @@ import CityTabs from '../city-tabs/city-tabs';
 import CitiesContainer from '../cities-container/cities-container';
 import Header from '../../components/header/header';
 import MainEmpty from '../main-empty/main-empty';
+import { fullOffers } from '../../mocks/offers-mocks';
 import { OffersType } from '../../types/offers';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setCityTab } from '../../store/action';
