@@ -10,10 +10,9 @@ type CitiesContainerPropsType = {
   activeCityTab: CityTabType;
   city: CityType;
   offers: OffersType;
-  placesCount: number;
 };
 
-function CitiesContainer({ activeCityTab, city, offers, placesCount }: CitiesContainerPropsType): JSX.Element {
+function CitiesContainer({ activeCityTab, city, offers }: CitiesContainerPropsType): JSX.Element {
   const [selectedPoint, setSelectedPoint] = useState<OfferType | undefined>(undefined);
 
   const onListItemHover = (listItemName: string) => {

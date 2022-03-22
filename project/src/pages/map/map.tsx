@@ -1,6 +1,6 @@
 import 'leaflet/dist/leaflet.css';
 import { CityType } from '../../types/city';
-import { Icon, Marker } from 'leaflet';
+import { Icon, Marker, LayerGroup } from 'leaflet';
 import { MapMode } from '../../const';
 import { OffersType, OfferType } from '../../types/offers';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
@@ -37,14 +37,22 @@ function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Elemen
 
   useEffect(() => {
     if (map) {
+      const markers: Marker[] = [];
       offers.forEach((offer) => {
         const marker = new Marker({
           lat: offer.location.lat,
           lng: offer.location.lng,
         });
 
-        marker.setIcon(selectedPoint !== undefined && offer.title === selectedPoint.title ? currentCustomIcon : defaultCustomIcon).addTo(map);
+        marker.setIcon(selectedPoint !== undefined && offer.title === selectedPoint.title ? currentCustomIcon : defaultCustomIcon);
+        markers.push(marker);
       });
+      const layerGroup = new LayerGroup(markers);
+      layerGroup.addTo(map);
+
+      return () => {
+        map?.removeLayer(layerGroup);
+      };
     }
   }, [map, offers, selectedPoint]);
 

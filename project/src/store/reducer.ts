@@ -4,7 +4,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { DEFAULT_CITY_TAB } from '../const';
 import { resetCityTab, setCityTab } from './action';
 import { OffersType } from '../types/offers';
-import { fullOffers, offersParis } from '../mocks/offers-mocks';
+import { fullOffers } from '../mocks/offers-mocks';
 
 const defaultOffers = fullOffers.filter((fullOffer) => fullOffer.city.title === DEFAULT_CITY_TAB);
 
@@ -19,16 +19,11 @@ const initialState: InitialStateType = {
 };
 
 const reducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(resetCityTab, (state) => {
-      state.cityTab = DEFAULT_CITY_TAB;
-      state.offers = fullOffers;
-    })
-    .addCase(setCityTab, (state, action) => {
-      const { cityTab } = action.payload;
-      state.cityTab = cityTab;
-      state.offers = fullOffers.filter((fullOffer) => fullOffer.city.title === cityTab);
-    });
+  builder.addCase(setCityTab, (state, action) => {
+    const { cityTab } = action.payload;
+    state.cityTab = cityTab;
+    state.offers = fullOffers.filter((fullOffer) => fullOffer.city.title === cityTab);
+  });
 });
 
 export { reducer };

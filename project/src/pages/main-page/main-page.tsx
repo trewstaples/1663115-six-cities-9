@@ -34,15 +34,13 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
   const activeCity = citiesLocations.find((cityLocation) => cityLocation.title === cityTab);
 
   return (
-    <div className={`page page--gray page--main ${offers ? '' : 'page__main--index-empty'}`}>
+    <div className={`page page--gray page--main ${cityOffers ? '' : 'page__main--index-empty'}`}>
       <Header isNavigationState={navigationState} />
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs activeCityTab={cityTab} handleCityTabChange={handleCityTabChange} />
-        <div className="cities">
-          {cityOffers && activeCity ? <CitiesContainer activeCityTab={cityTab} city={activeCity} offers={cityOffers} placesCount={placesCount} /> : <MainEmpty activeCityTab={cityTab} />}
-        </div>
+        <div className="cities">{cityOffers && activeCity ? <CitiesContainer activeCityTab={cityTab} city={activeCity} offers={cityOffers} /> : <MainEmpty activeCityTab={cityTab} />}</div>
       </main>
     </div>
   );
