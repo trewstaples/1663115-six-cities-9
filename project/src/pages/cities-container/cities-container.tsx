@@ -1,4 +1,5 @@
 import { CityType } from '../../types/city';
+import { CityTabType } from '../../types/city-tab';
 import Map from '../map/map';
 import { MapMode } from '../../const';
 import { OffersType, OfferType } from '../../types/offers';
@@ -6,12 +7,13 @@ import OffersList from '../offers-list/offers-list';
 import { useState } from 'react';
 
 type CitiesContainerPropsType = {
+  activeCityTab: CityTabType;
   city: CityType;
   offers: OffersType;
   placesCount: number;
 };
 
-function CitiesContainer({ city, offers, placesCount }: CitiesContainerPropsType): JSX.Element {
+function CitiesContainer({ activeCityTab, city, offers, placesCount }: CitiesContainerPropsType): JSX.Element {
   const [selectedPoint, setSelectedPoint] = useState<OfferType | undefined>(undefined);
 
   const onListItemHover = (listItemName: string) => {
@@ -24,7 +26,9 @@ function CitiesContainer({ city, offers, placesCount }: CitiesContainerPropsType
     <div className="cities__places-container container">
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
-        <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+        <b className="places__found">
+          {placesCount} places to stay in {activeCityTab}
+        </b>
         <form className="places__sorting" action="#" method="get">
           <span className="places__sorting-caption">Sort by</span>
           <span className="places__sorting-type" tabIndex={0}>
