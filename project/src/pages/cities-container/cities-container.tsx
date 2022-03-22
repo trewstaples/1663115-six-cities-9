@@ -1,13 +1,13 @@
-import { City } from '../../types/offers-types';
+import { CityType } from '../../types/city';
 import Map from '../map/map';
 import { MapMode } from '../../const';
-import { Offers, OfferType } from '../../types/offers-types';
+import { OffersType, OfferType } from '../../types/offers';
 import OffersList from '../offers-list/offers-list';
 import { useState } from 'react';
 
 type CitiesContainerPropsType = {
-  city: City;
-  offers: Offers;
+  city: CityType;
+  offers: OffersType;
   placesCount: number;
 };
 

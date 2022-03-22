@@ -1,9 +1,9 @@
-import { Offers } from '../types/offers-types';
+import { OffersType } from '../types/offers';
 
-export const offersAmsterdam: Offers = [
+export const offersAmsterdam: OffersType = [
   {
     id: 0,
-    coordinates: {
+    location: {
       lat: 52.3909553943508,
       lng: 4.85309666406198,
     },
@@ -27,7 +27,7 @@ export const offersAmsterdam: Offers = [
   },
   {
     id: 1,
-    coordinates: {
+    location: {
       lat: 52.369553943508,
       lng: 4.85309666406198,
     },
@@ -50,7 +50,7 @@ export const offersAmsterdam: Offers = [
   },
   {
     id: 2,
-    coordinates: {
+    location: {
       lat: 52.3909553943508,
       lng: 4.929309666406198,
     },
@@ -73,7 +73,7 @@ export const offersAmsterdam: Offers = [
   },
   {
     id: 3,
-    coordinates: {
+    location: {
       lat: 52.3809553943508,
       lng: 4.939309666406198,
     },
@@ -96,10 +96,10 @@ export const offersAmsterdam: Offers = [
   },
 ];
 
-export const offersParis: Offers = [
+export const offersParis: OffersType = [
   {
     id: 0,
-    coordinates: {
+    location: {
       lat: 52.3909553943508,
       lng: 4.85309666406198,
     },
@@ -122,7 +122,7 @@ export const offersParis: Offers = [
   },
   {
     id: 1,
-    coordinates: {
+    location: {
       lat: 52.369553943508,
       lng: 4.85309666406198,
     },
@@ -145,7 +145,7 @@ export const offersParis: Offers = [
   },
   {
     id: 2,
-    coordinates: {
+    location: {
       lat: 52.3909553943508,
       lng: 4.929309666406198,
     },
@@ -168,7 +168,7 @@ export const offersParis: Offers = [
   },
   {
     id: 3,
-    coordinates: {
+    location: {
       lat: 52.3809553943508,
       lng: 4.939309666406198,
     },

@@ -1,9 +1,9 @@
 import Header from '../../components/header/header';
-import { Offers } from '../../types/offers-types';
+import { OffersType } from '../../types/offers';
 
 type FavoritesPropsType = {
   isNavigationState: boolean;
-  offers: Offers;
+  offers: OffersType;
 };
 
 function Favorites({ isNavigationState: navigationState, offers }: FavoritesPropsType): JSX.Element {

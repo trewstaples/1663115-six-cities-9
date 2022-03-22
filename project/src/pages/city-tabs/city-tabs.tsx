@@ -1,16 +1,17 @@
-/* eslint-disable no-console */
-import { cityCodes } from '../../mocks/city';
+import { CityCodeType } from '../../types/city-code';
+import { cityCodes } from '../../const';
 
-function CityTabs(): JSX.Element {
-  const onCityChangeClick = (cityCode: string) => {
-    console.log(cityCode);
-  };
+type CityTabsPropsType = {
+  handleCityChange: (cityCode: CityCodeType) => () => void;
+};
+
+function CityTabs({ handleCityChange }: CityTabsPropsType): JSX.Element {
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {cityCodes.map((cityCode) => (
-            <li className="locations__item" key={cityCode} onClick={(evt) => onCityChangeClick(cityCode)}>
+            <li className="locations__item" key={cityCode} onClick={handleCityChange(cityCode as CityCodeType)}>
               <a className="locations__item-link tabs__item" href="/">
                 <span>{cityCode}</span>
               </a>

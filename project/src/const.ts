@@ -19,3 +19,14 @@ export enum MapMode {
   Main = 'MAIN',
   Offer = 'OFFER',
 }
+
+export enum City {
+  Paris = 'Paris',
+  Cologne = 'Cologne',
+  Brussels = 'Brussels',
+  Amsterdam = 'Amsterdam',
+  Hamburg = 'Hamburg',
+  Dusseldorf = 'Dusseldorf',
+}
+
+export const cityCodes = Object.keys(City);
