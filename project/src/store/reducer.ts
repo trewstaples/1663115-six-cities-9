@@ -12,19 +12,19 @@ type InitialStateType = {
 
 const initialState: InitialStateType = {
   cityTab: DEFAULT_CITY_TAB,
-  offers: offersAmsterdam,
+  offers: offersParis,
 };
 
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(resetCityTab, (state) => {
       state.cityTab = DEFAULT_CITY_TAB;
-      state.offers = offersAmsterdam;
+      state.offers = offersParis;
     })
     .addCase(setCityTab, (state, action) => {
       const { cityTab } = action.payload;
       state.cityTab = cityTab;
-      state.offers = offersParis;
+      state.offers = offersAmsterdam;
     });
 });
 

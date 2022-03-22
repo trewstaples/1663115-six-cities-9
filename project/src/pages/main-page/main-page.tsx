@@ -31,7 +31,7 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs activeCityTab={cityTab} handleCityTabChange={handleCityTabChange} />
-        <div className="cities">{offers ? <CitiesContainer activeCityTab={cityTab} city={city} offers={cityOffers} placesCount={placesCount} /> : <MainEmpty activeCityTab={cityTab} />}</div>
+        <div className="cities">{cityOffers ? <CitiesContainer activeCityTab={cityTab} city={city} offers={cityOffers} placesCount={placesCount} /> : <MainEmpty activeCityTab={cityTab} />}</div>
       </main>
     </div>
   );
