@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { CityType } from '../../types/city';
-import { CityCodeType } from '../../types/city-code';
+import { CityTabType } from '../../types/city-tab';
 import CityTabs from '../city-tabs/city-tabs';
 import CitiesContainer from '../cities-container/cities-container';
 import Header from '../../components/header/header';
@@ -15,7 +15,7 @@ type MainPagePropsType = {
 };
 
 function MainPage({ placesCount, isNavigationState: navigationState, offers, city }: MainPagePropsType): JSX.Element {
-  const handleCityCodeChange = (newCityCode: CityCodeType) => () => {
+  const handleCityNameChange = (newCityName: CityTabType) => () => {
     // console.log(newCityCode)
   };
 
@@ -25,7 +25,7 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <CityTabs handleCityChange={handleCityCodeChange} />
+        <CityTabs handleCityChange={handleCityNameChange} />
         <div className="cities">{offers ? <CitiesContainer city={city} offers={offers} placesCount={placesCount} /> : <MainEmpty />}</div>
       </main>
     </div>

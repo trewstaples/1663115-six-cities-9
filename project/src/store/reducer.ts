@@ -1,20 +1,24 @@
+import { CityTabType } from '../types/city-tab';
 import { createReducer } from '@reduxjs/toolkit';
-import { fillList } from './action';
-import { offersAmsterdam, offersParis } from '../mocks/offers-mocks';
-import { updateCity } from './action';
+import { DEFAULT_CITY_TAB } from '../const';
+import { resetCityTab, setCityTab } from './action';
 
-const initialState = {
-  city: 'Amsterdam',
-  offersList: offersAmsterdam,
+type InitialStateType = {
+  cityTab: CityTabType;
+};
+
+const initialState: InitialStateType = {
+  cityTab: DEFAULT_CITY_TAB,
 };
 
 const reducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(updateCity, (state) => {
-      state.city = 'Paris';
+    .addCase(resetCityTab, (state) => {
+      state.cityTab = DEFAULT_CITY_TAB;
     })
-    .addCase(fillList, (state) => {
-      state.offersList = offersParis;
+    .addCase(setCityTab, (state, action) => {
+      const { cityTab } = action.payload;
+      state.cityTab = cityTab;
     });
 });
 

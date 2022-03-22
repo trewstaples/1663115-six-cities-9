@@ -29,4 +29,6 @@ export enum City {
   Dusseldorf = 'Dusseldorf',
 }
 
-export const cityCodes = Object.keys(City);
+export const cityTabs = Object.keys(City);
+
+export const DEFAULT_CITY_TAB = 'Paris';

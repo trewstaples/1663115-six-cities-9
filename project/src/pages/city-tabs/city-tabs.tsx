@@ -1,8 +1,8 @@
-import { CityCodeType } from '../../types/city-code';
-import { cityCodes } from '../../const';
+import { CityTabType } from '../../types/city-tab';
+import { cityTabs } from '../../const';
 
 type CityTabsPropsType = {
-  handleCityChange: (cityCode: CityCodeType) => () => void;
+  handleCityChange: (cityTab: CityTabType) => () => void;
 };
 
 function CityTabs({ handleCityChange }: CityTabsPropsType): JSX.Element {
@@ -10,10 +10,10 @@ function CityTabs({ handleCityChange }: CityTabsPropsType): JSX.Element {
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {cityCodes.map((cityCode) => (
-            <li className="locations__item" key={cityCode} onClick={handleCityChange(cityCode as CityCodeType)}>
+          {cityTabs.map((cityTab) => (
+            <li className="locations__item" key={cityTab} onClick={handleCityChange(cityTab as CityTabType)}>
               <a className="locations__item-link tabs__item" href="/">
-                <span>{cityCode}</span>
+                <span>{cityTab}</span>
               </a>
             </li>
           ))}

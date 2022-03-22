@@ -1,5 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
+import { CityTabType } from '../types/city-tab';
 
-export const updateCity = createAction('UPDATE_CITY');
+export const resetCityTab = createAction('city/resetCityTab');
 
-export const fillList = createAction('FILL_LIST');
+export const setCityTab = createAction<{ cityTab: CityTabType }>('city/setCityTab');
