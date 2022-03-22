@@ -18,6 +18,7 @@ type MainPagePropsType = {
 
 function MainPage({ placesCount, isNavigationState: navigationState, offers, city }: MainPagePropsType): JSX.Element {
   const cityTab = useAppSelector((state) => state.cityTab);
+  const cityOffers = useAppSelector((state) => state.offers);
   const dispatch = useAppDispatch();
   const handleCityTabChange = (newCityTab: CityTabType) => () => {
     dispatch(setCityTab({ cityTab: newCityTab }));
@@ -30,7 +31,7 @@ function MainPage({ placesCount, isNavigationState: navigationState, offers, cit
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs activeCityTab={cityTab} handleCityTabChange={handleCityTabChange} />
-        <div className="cities">{offers ? <CitiesContainer city={city} offers={offers} placesCount={placesCount} /> : <MainEmpty />}</div>
+        <div className="cities">{offers ? <CitiesContainer city={city} offers={cityOffers} placesCount={placesCount} /> : <MainEmpty />}</div>
       </main>
     </div>
   );
