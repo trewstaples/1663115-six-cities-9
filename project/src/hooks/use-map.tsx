@@ -1,6 +1,6 @@
 import { CityType } from '../types/city';
 import { MutableRefObject, useEffect, useState } from 'react';
-import { Map, TileLayer } from 'leaflet';
+import { LatLng, Map, TileLayer } from 'leaflet';
 
 function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityType): Map | null {
   const [map, setMap] = useState<Map | null>(null);
@@ -23,7 +23,13 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityType): M
 
       setMap(instance);
     }
-  }, [mapRef, map, city]);
+  }, [map, mapRef, city]);
+
+  useEffect(() => {
+    if (map instanceof Map) {
+      map.setView(new LatLng(city.lat, city.lng), city.zoom);
+    }
+  }, [city, map]);
 
   return map;
 }

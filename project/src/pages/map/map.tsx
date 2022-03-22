@@ -27,7 +27,7 @@ const currentCustomIcon = new Icon({
 });
 
 function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Element {
-  const mapRef = useRef(null);
+  const mapRef = useRef<HTMLDivElement | null>(null);
   const map = useMap(mapRef, city);
 
   let mapContainer;
