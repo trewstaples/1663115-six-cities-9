@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { OffersType, OfferType } from './types/offers';
 import { OffersSortType } from './const';
 import { OffersSortTypeKey } from './types/offers-sort';
@@ -38,7 +37,6 @@ export const sortOffersByType = (offersSortType: OffersSortTypeKey, offers: Offe
       sortedOffers.sort(sortOffersByRating);
       break;
     case OffersSortType.Popular:
-      console.log('dfkdsf');
       break;
   }
   return sortedOffers;

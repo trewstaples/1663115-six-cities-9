@@ -1,20 +1,12 @@
-/* eslint-disable no-console */
 import { CityTabType } from '../types/city-tab';
 import { createReducer } from '@reduxjs/toolkit';
 import { DEFAULT_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
 import { setCityTab, setOffers, setOffersSortType } from './action';
-import { OffersType, OfferType } from '../types/offers';
+import { OffersType } from '../types/offers';
 import { fullOffers } from '../mocks/offers-mocks';
 import { OffersSortTypeKey } from '../types/offers-sort';
 
 const defaultOffers = fullOffers.filter((fullOffer) => fullOffer.city.title === DEFAULT_CITY_TAB);
-
-export const sortOffersByRating = (offerA: OfferType, offerB: OfferType) => {
-  const ratingA = offerA.rating;
-  const ratingB = offerB.rating;
-
-  return ratingB - ratingA;
-};
 
 type InitialStateType = {
   cityTab: CityTabType;

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { offersSortTypes, OffersSortType } from '../../const';
 import { OffersSortTypeKey } from '../../types/offers-sort';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -12,12 +11,14 @@ type OffersTypePropsType = {
 };
 
 function OffersSort({ offers }: OffersTypePropsType): JSX.Element {
+  const [defaultOffers] = useState(offers);
   const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
   const activeSortType = useAppSelector((state) => state.offersSortType);
   const dispatch = useAppDispatch();
 
   const handleSortTypeChange = (offersSortType: OffersSortTypeKey) => {
-    const sortedOffers = sortOffersByType(offersSortType, offers);
+    const offersForSort = offersSortType === OffersSortType.Popular ? defaultOffers : offers;
+    const sortedOffers = sortOffersByType(offersSortType, offersForSort);
     dispatch(setOffersSortType({ offersSortType }));
     dispatch(setOffers({ sortedOffers }));
     setIsSortOpened(false);
