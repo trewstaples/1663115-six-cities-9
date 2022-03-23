@@ -1,21 +1,25 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { offersSortTypes, OffersSortType } from '../../const';
 import { OffersSortTypeKey } from '../../types/offers-sort';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setOffersSortType } from '../../store/action';
+import { setOffers, setOffersSortType } from '../../store/action';
+import { sortOffersByType } from '../../utils';
 import { useState } from 'react';
+import { OffersType } from '../../types/offers';
 
-//Поставить колбэк каждом уэлементу списка, который будет менять режим active у элементов
-//В колбэк добавить смену сортировки исходного массива
+type OffersTypePropsType = {
+  offers: OffersType;
+};
 
-function OffersSort(): JSX.Element {
+function OffersSort({ offers }: OffersTypePropsType): JSX.Element {
   const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
   const activeSortType = useAppSelector((state) => state.offersSortType);
   const dispatch = useAppDispatch();
 
   const handleSortTypeChange = (offersSortType: OffersSortTypeKey) => {
+    const sortedOffers = sortOffersByType(offersSortType, offers);
     dispatch(setOffersSortType({ offersSortType }));
+    dispatch(setOffers({ sortedOffers }));
     setIsSortOpened(false);
   };
 
