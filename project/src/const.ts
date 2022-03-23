@@ -32,3 +32,14 @@ export enum City {
 export const cityTabs = Object.keys(City);
 
 export const DEFAULT_CITY_TAB = 'Paris';
+
+export const OffersSortType = {
+  POPULAR: 'Popular',
+  PRICE_LOW_TO_HIGH: 'Price: low to high',
+  PRICE_HIGH_TO_LOW: 'Price: high to low',
+  TOP_RATED_FIRST: 'Top rated first',
+};
+
+export const sortTypes = Object.keys(OffersSortType);
+
+export const DEFAULT_OFFERS_TYPE = OffersSortType.POPULAR;
