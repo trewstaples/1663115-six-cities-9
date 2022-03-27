@@ -1,7 +1,9 @@
-import { createAction } from '@reduxjs/toolkit';
 import { CityTabType } from '../types/city-tab';
+import { createAction } from '@reduxjs/toolkit';
 import { OffersType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
+
+export const loadOffers = createAction<OffersType>('data/loadOffers');
 
 export const setCityTab = createAction<{ cityTab: CityTabType }>('city/setCityTab');
 

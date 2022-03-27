@@ -1,9 +1,9 @@
 import { CityTabType } from '../types/city-tab';
 import { createReducer } from '@reduxjs/toolkit';
 import { DEFAULT_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
-import { setCityTab, setOffers, setOffersSortType } from './action';
-import { OffersType } from '../types/offers';
 import { fullOffers } from '../mocks/offers-mocks';
+import { loadOffers, setCityTab, setOffers, setOffersSortType } from './action';
+import { OffersType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
 
 const defaultOffers = fullOffers.filter((fullOffer) => fullOffer.city.title === DEFAULT_CITY_TAB);
@@ -32,6 +32,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setOffers, (state, action) => {
       state.offers = action.payload.sortedOffers;
+    })
+    .addCase(loadOffers, (state, action) => {
+      state.offers = action.payload;
     });
 });
 
