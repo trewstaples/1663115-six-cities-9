@@ -10,18 +10,18 @@ type OwnerType = {
 export type OfferType = {
   id: number;
   location: LocationType;
-  photos: string[];
+  images: string[];
   title: string;
   description: string;
-  premium: string;
+  isPremium: string;
   type: string;
   rating: number;
   bedrooms: number;
-  guests: number;
+  maxAdults: number;
   price: number;
-  favorites: boolean;
-  features: string[];
-  owner: OwnerType;
+  isFavorite: boolean;
+  goods: string[];
+  host: OwnerType;
   city: CityType;
 };
 

@@ -9,8 +9,8 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityType): M
     if (mapRef.current !== null && map === null) {
       const instance = new Map(mapRef.current, {
         center: {
-          lat: city.lat,
-          lng: city.lng,
+          lat: city.latitude,
+          lng: city.longitude,
         },
         zoom: city.zoom,
       });
@@ -27,7 +27,7 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityType): M
 
   useEffect(() => {
     if (map instanceof Map) {
-      map.setView(new LatLng(city.lat, city.lng), city.zoom);
+      map.setView(new LatLng(city.latitude, city.longitude), city.zoom);
     }
   }, [city, map]);
 

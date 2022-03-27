@@ -1,82 +1,82 @@
 import { CityType, CitiesType } from '../types/city';
 
 export const Paris: CityType = {
-  title: 'Paris',
-  lat: 48.8534,
-  lng: 2.3488,
+  name: 'Paris',
+  latitude: 48.8534,
+  longitude: 2.3488,
   zoom: 10,
 };
 
 export const Cologne: CityType = {
-  title: 'Cologne',
-  lat: 50.9333,
-  lng: 6.95,
+  name: 'Cologne',
+  latitude: 50.9333,
+  longitude: 6.95,
   zoom: 10,
 };
 
 export const Brussels: CityType = {
-  title: 'Brussels',
-  lat: 50.8504,
-  lng: 4.34878,
+  name: 'Brussels',
+  latitude: 50.8504,
+  longitude: 4.34878,
   zoom: 10,
 };
 
 export const Amsterdam: CityType = {
-  title: 'Amsterdam',
-  lat: 52.374,
-  lng: 4.88969,
+  name: 'Amsterdam',
+  latitude: 52.374,
+  longitude: 4.88969,
   zoom: 10,
 };
 
 export const Hamburg: CityType = {
-  title: 'Hamburg',
-  lat: 53.5753,
-  lng: 10.0153,
+  name: 'Hamburg',
+  latitude: 53.5753,
+  longitude: 10.0153,
   zoom: 10,
 };
 
 export const Dusseldorf: CityType = {
-  title: 'Dusseldorf',
-  lat: 51.2217,
-  lng: 6.77616,
+  name: 'Dusseldorf',
+  latitude: 51.2217,
+  longitude: 6.77616,
   zoom: 10,
 };
 
 export const citiesLocations: CitiesType = [
   {
-    title: 'Paris',
-    lat: 48.8534,
-    lng: 2.3488,
+    name: 'Paris',
+    latitude: 48.8534,
+    longitude: 2.3488,
     zoom: 10,
   },
   {
-    title: 'Cologne',
-    lat: 50.9333,
-    lng: 6.95,
+    name: 'Cologne',
+    latitude: 50.9333,
+    longitude: 6.95,
     zoom: 10,
   },
   {
-    title: 'Brussels',
-    lat: 50.8504,
-    lng: 4.34878,
+    name: 'Brussels',
+    latitude: 50.8504,
+    longitude: 4.34878,
     zoom: 10,
   },
   {
-    title: 'Amsterdam',
-    lat: 52.374,
-    lng: 4.88969,
+    name: 'Amsterdam',
+    latitude: 52.374,
+    longitude: 4.88969,
     zoom: 10,
   },
   {
-    title: 'Hamburg',
-    lat: 53.5753,
-    lng: 10.0153,
+    name: 'Hamburg',
+    latitude: 53.5753,
+    longitude: 10.0153,
     zoom: 10,
   },
   {
-    title: 'Dusseldorf',
-    lat: 51.2217,
-    lng: 6.77616,
+    name: 'Dusseldorf',
+    latitude: 51.2217,
+    longitude: 6.77616,
     zoom: 10,
   },
 ];

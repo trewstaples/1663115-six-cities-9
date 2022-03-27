@@ -14,6 +14,7 @@ type InitialStateType = {
   offers: OffersType;
   offersSortType: OffersSortTypeKey;
   authorizationStatus: AuthorizationStatusType;
+  isDataLoaded: boolean;
   error: string;
 };
 
@@ -22,6 +23,7 @@ const initialState: InitialStateType = {
   offers: [],
   offersSortType: DEFAULT_OFFERS_SORT_TYPE,
   authorizationStatus: AuthorizationStatus.Unknown,
+  isDataLoaded: false,
   error: '',
 };
 
@@ -30,7 +32,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCityTab, (state, action) => {
       const { cityTab } = action.payload;
       state.cityTab = cityTab;
-      state.offers = fullOffers.filter((fullOffer) => fullOffer.city.title === cityTab);
+      state.offers = fullOffers.filter((fullOffer) => fullOffer.city.name === cityTab);
     })
     .addCase(setOffersSortType, (state, action) => {
       state.offersSortType = action.payload.offersSortType;
@@ -40,6 +42,7 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOffers, (state, action) => {
       state.offers = action.payload;
+      state.isDataLoaded = true;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

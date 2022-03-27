@@ -40,8 +40,8 @@ function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Elemen
       const markers: Marker[] = [];
       offers.forEach((offer) => {
         const marker = new Marker({
-          lat: offer.location.lat,
-          lng: offer.location.lng,
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
         });
 
         marker.setIcon(selectedPoint !== undefined && offer.title === selectedPoint.title ? currentCustomIcon : defaultCustomIcon);

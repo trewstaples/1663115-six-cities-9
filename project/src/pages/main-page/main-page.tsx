@@ -19,7 +19,7 @@ function MainPage({ isNavigationState: navigationState }: MainPagePropsType): JS
     dispatch(setCityTab({ cityTab: newCityTab }));
   };
 
-  const activeCity = citiesLocations.find((cityLocation) => cityLocation.title === cityTab);
+  const activeCity = citiesLocations.find((cityLocation) => cityLocation.name === cityTab);
 
   return (
     <div className={`page page--gray page--main ${cityOffers ? '' : 'page__main--index-empty'}`}>

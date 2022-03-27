@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { api, store } from '.';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { AuthData } from '../types/auth';
@@ -15,6 +16,7 @@ export const clearErrorAction = createAsyncThunk('game/clearError', () => {
 export const fetchOfferAction = createAsyncThunk('data/fetchOffers', async () => {
   try {
     const { data } = await api.get<OffersType>(APIRoute.Offers);
+    console.log(data);
     store.dispatch(loadOffers(data));
   } catch (error) {
     errorHandle(error);

@@ -29,7 +29,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {offer.photos.map((photo, id) => {
+              {offer.images.map((photo, id) => {
                 const keyValue = `${id}-${photo}`;
                 return (
                   <div key={keyValue} className="property__image-wrapper">
@@ -42,7 +42,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
           <div className="property__container container">
             <div className="property__wrapper">
               <div className="property__mark">
-                <span>{offer.premium}</span>
+                <span>{offer.isPremium}</span>
               </div>
               <div className="property__name-wrapper">
                 <h1 className="property__name">{offer.title}</h1>
@@ -63,7 +63,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">{offer.type}</li>
                 <li className="property__feature property__feature--bedrooms">{offer.bedrooms} Bedrooms</li>
-                <li className="property__feature property__feature--adults">Max {offer.guests} adults</li>
+                <li className="property__feature property__feature--adults">Max {offer.maxAdults} adults</li>
               </ul>
               <div className="property__price">
                 <b className="property__price-value">&euro;{offer.price}</b>
@@ -72,7 +72,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {offer.features.map((feature, id) => {
+                  {offer.goods.map((feature, id) => {
                     const keyValue = `${id}-${feature}`;
                     return (
                       <li key={keyValue} className="property__inside-item">
@@ -86,10 +86,10 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={offer.owner.avatar} width="74" height="74" alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={offer.host.avatar} width="74" height="74" alt="Host avatar" />
                   </div>
-                  <span className="property__user-name">{offer.owner.name}</span>
-                  <span className="property__user-status">{offer.owner.pro}</span>
+                  <span className="property__user-name">{offer.host.name}</span>
+                  <span className="property__user-status">{offer.host.pro}</span>
                 </div>
                 <div className="property__description">
                   <p className="property__text">{offer.description}</p>
