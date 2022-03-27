@@ -1,23 +1,26 @@
+import { AuthorizationStatusType } from '../types/auth';
 import { CityTabType } from '../types/city-tab';
 import { createReducer } from '@reduxjs/toolkit';
-import { DEFAULT_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
+import { AuthorizationStatus, DEFAULT_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
 import { fullOffers } from '../mocks/offers-mocks';
-import { loadOffers, setCityTab, setOffers, setOffersSortType } from './action';
+import { loadOffers, requireAuthorization, setCityTab, setOffers, setOffersSortType } from './action';
 import { OffersType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
 
-const defaultOffers = fullOffers.filter((fullOffer) => fullOffer.city.title === DEFAULT_CITY_TAB);
+// const defaultOffers = fullOffers.filter((fullOffer) => fullOffer.city.title === DEFAULT_CITY_TAB);
 
 type InitialStateType = {
   cityTab: CityTabType;
   offers: OffersType;
   offersSortType: OffersSortTypeKey;
+  authorizationStatus: AuthorizationStatusType;
 };
 
 const initialState: InitialStateType = {
   cityTab: DEFAULT_CITY_TAB,
-  offers: defaultOffers,
+  offers: [],
   offersSortType: DEFAULT_OFFERS_SORT_TYPE,
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -35,6 +38,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOffers, (state, action) => {
       state.offers = action.payload;
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
     });
 });
 

@@ -14,3 +14,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+//Настроиить навигацию в зависимости от статуса авторизации
