@@ -49,3 +49,11 @@ export enum OffersSortType {
 export const offersSortTypes = Object.keys(OffersSortType);
 
 export const DEFAULT_OFFERS_SORT_TYPE = OffersSortType.Popular;
+
+export const TIMEOUT_SHOW_ERROR = 2000;
+
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
+}

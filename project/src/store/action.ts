@@ -13,3 +13,5 @@ export const setCityTab = createAction<{ cityTab: CityTabType }>('city/setCityTa
 export const setOffersSortType = createAction<{ offersSortType: OffersSortTypeKey }>('offers/setOffersSortType');
 
 export const setOffers = createAction<{ sortedOffers: OffersType }>('offers/ setOffers ');
+
+export const setError = createAction<string>('game/setError');

@@ -3,7 +3,7 @@ import { CityTabType } from '../types/city-tab';
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, DEFAULT_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
 import { fullOffers } from '../mocks/offers-mocks';
-import { loadOffers, requireAuthorization, setCityTab, setOffers, setOffersSortType } from './action';
+import { loadOffers, requireAuthorization, setCityTab, setError, setOffers, setOffersSortType } from './action';
 import { OffersType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
 
@@ -14,6 +14,7 @@ type InitialStateType = {
   offers: OffersType;
   offersSortType: OffersSortTypeKey;
   authorizationStatus: AuthorizationStatusType;
+  error: string;
 };
 
 const initialState: InitialStateType = {
@@ -21,6 +22,7 @@ const initialState: InitialStateType = {
   offers: [],
   offersSortType: DEFAULT_OFFERS_SORT_TYPE,
   authorizationStatus: AuthorizationStatus.Unknown,
+  error: '',
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -41,6 +43,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
+    })
+    .addCase(setError, (state, action) => {
+      state.error = action.payload;
     });
 });
 
