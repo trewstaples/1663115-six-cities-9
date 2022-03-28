@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { AppRoute } from '../../const';
 import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,13 +11,9 @@ import Offer from '../../pages/offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import { OffersType } from '../../types/offers';
+
 import { reviews } from '../../mocks/reviews-mocks';
 import { useAppSelector } from '../../hooks';
-
-type AppPropsType = {
-  offers: OffersType;
-};
 
 const NavigationState = {
   DEFAULT: true,
@@ -25,8 +22,8 @@ const NavigationState = {
 
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
 
-function App({ offers }: AppPropsType): JSX.Element {
-  const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
+function App(): JSX.Element {
+  const { authorizationStatus, isDataLoaded, offers } = useAppSelector((state) => state);
 
   if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
     return <LoadingScreen />;

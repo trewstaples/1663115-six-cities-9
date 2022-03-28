@@ -1,8 +1,8 @@
+import { LocationType } from './location';
+
 export type CityType = {
-  latitude: number;
-  longitude: number;
+  location: LocationType;
   name: string;
-  zoom: number;
 };
 
 export type CitiesType = CityType[];

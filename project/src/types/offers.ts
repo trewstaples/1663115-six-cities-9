@@ -1,28 +1,30 @@
 import { LocationType } from './location';
 import { CityType } from './city';
 
-type OwnerType = {
-  avatar: string;
+type HostType = {
+  avatarUrl: string;
+  id: number;
+  isPro: boolean;
   name: string;
-  pro: string;
 };
 
 export type OfferType = {
-  id: number;
-  location: LocationType;
-  images: string[];
-  title: string;
-  description: string;
-  isPremium: string;
-  type: string;
-  rating: number;
   bedrooms: number;
-  maxAdults: number;
-  price: number;
-  isFavorite: boolean;
-  goods: string[];
-  host: OwnerType;
   city: CityType;
+  description: string;
+  goods: string[];
+  host: HostType;
+  id: number;
+  images: string[];
+  isFavorite: boolean;
+  isPremium: boolean;
+  location: LocationType;
+  maxAdults: number;
+  previewImage: string;
+  price: number;
+  rating: number;
+  title: string;
+  type: string;
 };
 
 export type OffersType = OfferType[];

@@ -1,4 +1,3 @@
-import { Amsterdam } from '../../mocks/city';
 import Header from '../../components/header/header';
 import Map from '../map/map';
 import { MapMode } from '../../const';
@@ -8,11 +7,21 @@ import ReviewsList from '../reviews-list/reviews-list';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { OffersType } from '../../types/offers';
+import { CityType } from '../../types/city';
 
 type OfferPropsType = {
   isNavigationState: boolean;
   offers: OffersType;
   reviews: ReviewsType;
+};
+
+export const Amsterdam: CityType = {
+  name: 'Amsterdam',
+  location: {
+    latitude: 52.374,
+    longitude: 4.88969,
+    zoom: 10,
+  },
 };
 
 function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPropsType): JSX.Element {
@@ -86,10 +95,10 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={offer.host.avatar} width="74" height="74" alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">{offer.host.name}</span>
-                  <span className="property__user-status">{offer.host.pro}</span>
+                  <span className="property__user-status">{offer.host.isPro}</span>
                 </div>
                 <div className="property__description">
                   <p className="property__text">{offer.description}</p>
