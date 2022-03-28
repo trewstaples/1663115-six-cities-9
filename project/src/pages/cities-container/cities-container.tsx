@@ -16,8 +16,8 @@ type CitiesContainerPropsType = {
 function CitiesContainer({ activeCityTab, city, offers }: CitiesContainerPropsType): JSX.Element {
   const [selectedPoint, setSelectedPoint] = useState<OfferType | undefined>(undefined);
 
-  const onListItemHover = (listItemName: string) => {
-    const currentPoint = offers.find((offer) => offer.title === listItemName);
+  const onListItemHover = (listItemName: number) => {
+    const currentPoint = offers.find((offer) => offer.id === listItemName);
 
     setSelectedPoint(currentPoint);
   };

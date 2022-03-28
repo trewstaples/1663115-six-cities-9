@@ -44,7 +44,7 @@ function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Elemen
           lng: offer.location.longitude,
         });
 
-        marker.setIcon(selectedPoint !== undefined && offer.title === selectedPoint.title ? currentCustomIcon : defaultCustomIcon);
+        marker.setIcon(selectedPoint !== undefined && offer.id === selectedPoint.id ? currentCustomIcon : defaultCustomIcon);
         markers.push(marker);
       });
       const layerGroup = new LayerGroup(markers);
