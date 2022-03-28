@@ -7,22 +7,14 @@ import ReviewsList from '../reviews-list/reviews-list';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { OffersType } from '../../types/offers';
-import { CityType } from '../../types/city';
 import { useAppSelector } from '../../hooks';
+
+const NEAR_OFFERS_MAX = 4;
 
 type OfferPropsType = {
   isNavigationState: boolean;
   offers: OffersType;
   reviews: ReviewsType;
-};
-
-export const Amsterdam: CityType = {
-  name: 'Amsterdam',
-  location: {
-    latitude: 52.374,
-    longitude: 4.88969,
-    zoom: 10,
-  },
 };
 
 function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPropsType): JSX.Element {
@@ -36,7 +28,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
 
   const activeCity = useAppSelector((state) => state.activeCity);
 
-  const nearOffers = offers.slice(1);
+  const nearOffers = useAppSelector((state) => state.filteredOffers.slice(0, NEAR_OFFERS_MAX));
 
   return (
     <div className="page">
@@ -118,7 +110,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
               <ReviewsList reviews={reviews} />
             </div>
           </div>
-          <Map offers={nearOffers} city={activeCity} mapMode={MapMode.Offer} />
+          <Map offers={nearOffers} city={activeCity} selectedPoint={offer} mapMode={MapMode.Offer} />
         </section>
         <div className="container">
           <section className="near-places places">
