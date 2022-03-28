@@ -26,11 +26,11 @@ function Favorites({ isNavigationState: navigationState, offers }: FavoritesProp
                 </div>
                 <div className="favorites__places">
                   {offers.map((offer, id) => {
-                    const keyValue = `${id}-${offer.owner.name}`;
+                    const keyValue = `${id}-${offer.host.name}`;
                     return (
                       <article key={keyValue} className="favorites__card place-card">
                         <div className="place-card__mark">
-                          <span>{offer.premium}</span>
+                          <span>{offer.isPremium}</span>
                         </div>
                         <div className="favorites__image-wrapper place-card__image-wrapper">
                           <a href="/">
@@ -77,11 +77,11 @@ function Favorites({ isNavigationState: navigationState, offers }: FavoritesProp
                 </div>
                 <div className="favorites__places">
                   {offers.map((offer, id) => {
-                    const keyValue = `${id}-${offer.owner.name}`;
+                    const keyValue = `${id}-${offer.host.name}`;
                     return (
                       <article key={keyValue} className="favorites__card place-card">
                         <div className="place-card__mark">
-                          <span>{offer.premium}</span>
+                          <span>{offer.isPremium}</span>
                         </div>
                         <div className="favorites__image-wrapper place-card__image-wrapper">
                           <a href="/">

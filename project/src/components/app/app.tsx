@@ -1,29 +1,33 @@
 import { AppRoute } from '../../const';
 import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';
-import { CityType } from '../../types/city';
 import Favorites from '../../pages/favorites/favorites';
 import LoginPage from '../../pages/login-page/login-page';
+import LoadingScreen from '../loading/loading';
 import MainPage from '../../pages/main-page/main-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import Offer from '../../pages/offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import { OffersType } from '../../types/offers';
-import { reviews } from '../../mocks/reviews-mocks';
 
-type AppPropsType = {
-  offers: OffersType;
-  city: CityType;
-};
+import { reviews } from '../../mocks/reviews-mocks';
+import { useAppSelector } from '../../hooks';
 
 const NavigationState = {
   DEFAULT: true,
   LOGIN: false,
 };
 
-function App({ offers, city }: AppPropsType): JSX.Element {
+export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
+
+function App(): JSX.Element {
+  const { authorizationStatus, isDataLoaded, offers } = useAppSelector((state) => state);
+
+  if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
+    return <LoadingScreen />;
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -32,7 +36,7 @@ function App({ offers, city }: AppPropsType): JSX.Element {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <Favorites isNavigationState={NavigationState.DEFAULT} offers={offers} />
             </PrivateRoute>
           }

@@ -9,10 +9,10 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityType): M
     if (mapRef.current !== null && map === null) {
       const instance = new Map(mapRef.current, {
         center: {
-          lat: city.lat,
-          lng: city.lng,
+          lat: city.location.latitude,
+          lng: city.location.longitude,
         },
-        zoom: city.zoom,
+        zoom: city.location.zoom,
       });
 
       const layer = new TileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -27,7 +27,7 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityType): M
 
   useEffect(() => {
     if (map instanceof Map) {
-      map.setView(new LatLng(city.lat, city.lng), city.zoom);
+      map.setView(new LatLng(city.location.latitude, city.location.longitude), city.location.zoom);
     }
   }, [city, map]);
 

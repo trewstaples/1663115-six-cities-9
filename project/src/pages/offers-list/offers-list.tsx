@@ -1,19 +1,15 @@
 import { OfferType } from '../../types/offers';
 import OfferCard from '../offer-card/offer-card';
-import { useState } from 'react';
 
 type OffersListPropsType = {
   offer: OfferType;
-  onListItemHover?: (listItemName: string) => void;
+  onListItemHover?: (listItemName: number) => void;
 };
 
 function OffersList({ offer, onListItemHover }: OffersListPropsType): JSX.Element {
-  const [, setUserOffer] = useState(offer);
-
   if (typeof onListItemHover !== 'undefined') {
     const onMouseOver = (offerCard: OfferType) => {
-      setUserOffer(offerCard);
-      onListItemHover(offerCard.title);
+      onListItemHover(offerCard.id);
     };
 
     return (

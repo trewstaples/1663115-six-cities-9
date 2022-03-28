@@ -1,5 +1,4 @@
 import { CityTabType } from '../../types/city-tab';
-import { citiesLocations } from '../../mocks/city';
 import CityTabs from '../city-tabs/city-tabs';
 import CitiesContainer from '../cities-container/cities-container';
 import Header from '../../components/header/header';
@@ -12,23 +11,22 @@ type MainPagePropsType = {
 };
 
 function MainPage({ isNavigationState: navigationState }: MainPagePropsType): JSX.Element {
-  const cityTab = useAppSelector((state) => state.cityTab);
-  const cityOffers = useAppSelector((state) => state.offers);
+  const activeCityTab = useAppSelector((state) => state.activeCityTab);
+  const cityOffers = useAppSelector((state) => state.filteredOffers);
+  const activeCity = useAppSelector((state) => state.activeCity);
+
   const dispatch = useAppDispatch();
   const handleCityTabChange = (newCityTab: CityTabType) => () => {
     dispatch(setCityTab({ cityTab: newCityTab }));
   };
 
-  const activeCity = citiesLocations.find((cityLocation) => cityLocation.title === cityTab);
-
   return (
     <div className={`page page--gray page--main ${cityOffers ? '' : 'page__main--index-empty'}`}>
       <Header isNavigationState={navigationState} />
-
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <CityTabs activeCityTab={cityTab} handleCityTabChange={handleCityTabChange} />
-        <div className="cities">{cityOffers && activeCity ? <CitiesContainer activeCityTab={cityTab} city={activeCity} offers={cityOffers} /> : <MainEmpty activeCityTab={cityTab} />}</div>
+        <CityTabs activeCityTab={activeCityTab} handleCityTabChange={handleCityTabChange} />
+        <div className="cities">{cityOffers && activeCity ? <CitiesContainer activeCityTab={activeCityTab} city={activeCity} offers={cityOffers} /> : <MainEmpty activeCityTab={activeCityTab} />}</div>
       </main>
     </div>
   );

@@ -6,9 +6,15 @@ export enum AppRoute {
 }
 
 export enum AuthorizationStatus {
-  Auth = 'AUTH',
-  NoAuth = 'NO_AUTH',
+  Auth = 'Auth',
+  NoAuth = 'NoAuth',
   Unknown = 'UNKNOWN',
+}
+
+export enum APIRoute {
+  Offers = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
 }
 
 export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
@@ -31,7 +37,16 @@ export enum City {
 
 export const cityTabs = Object.keys(City);
 
-export const DEFAULT_CITY_TAB = City.Paris;
+export const DEFAULT_ACTIVE_CITY_TAB = City.Paris;
+
+export const DEFAULT_ACTIVE_CITY = {
+  location: {
+    latitude: 48.85661,
+    longitude: 2.351499,
+    zoom: 13,
+  },
+  name: 'Paris',
+};
 
 export enum OffersSortType {
   Popular = 'Popular',
@@ -43,3 +58,11 @@ export enum OffersSortType {
 export const offersSortTypes = Object.keys(OffersSortType);
 
 export const DEFAULT_OFFERS_SORT_TYPE = OffersSortType.Popular;
+
+export const TIMEOUT_SHOW_ERROR = 2000;
+
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
+}
