@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import Header from '../../components/header/header';
 import Map from '../map/map';
 import { MapMode } from '../../const';

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { AppRoute } from '../../const';
 import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';

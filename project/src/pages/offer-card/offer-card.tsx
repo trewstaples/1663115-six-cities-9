@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Link } from 'react-router-dom';
 import { OfferType } from '../../types/offers';
 
@@ -7,9 +6,6 @@ type OfferCardPropsType = {
 };
 
 function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
-  const handleTitleClick = () => {
-    console.log(0);
-  };
   return (
     <>
       {offer.isPremium ? (
@@ -44,9 +40,7 @@ function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`} onClick={handleTitleClick}>
-            {offer.title}
-          </Link>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type[0].toUpperCase() + offer.type.substring(1)}</p>
       </div>
