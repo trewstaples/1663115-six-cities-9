@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { logoutAction } from '../../store/api-actions';
 
 type HeaderPropsType = {
   isNavigationState: boolean;
@@ -8,6 +9,12 @@ type HeaderPropsType = {
 
 function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  const dispatch = useAppDispatch();
+
+  const onClick = () => {
+    dispatch(logoutAction());
+  };
 
   return (
     <header className="header">
@@ -31,9 +38,9 @@ function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.El
                     </li>
 
                     <li className="header__nav-item">
-                      <a className="header__nav-link" href="/">
+                      <Link to={AppRoute.Login} onClick={onClick} className="header__nav-link">
                         <span className="header__signout">Sign out</span>
-                      </a>
+                      </Link>
                     </li>
                   </>
                 ) : (
