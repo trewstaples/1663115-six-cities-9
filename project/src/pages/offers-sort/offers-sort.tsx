@@ -19,6 +19,7 @@ function OffersSort({ offers }: OffersTypePropsType): JSX.Element {
   const handleSortTypeChange = (offersSortType: OffersSortTypeKey) => {
     const offersForSort = offersSortType === OffersSortType.Popular ? defaultOffers : offers;
     const sortedOffers = sortOffersByType(offersSortType, offersForSort);
+
     dispatch(setOffersSortType({ offersSortType }));
     dispatch(setOffers({ sortedOffers }));
     setIsSortOpened(false);

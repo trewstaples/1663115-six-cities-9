@@ -52,7 +52,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.offersSortType = action.payload.offersSortType;
     })
     .addCase(setOffers, (state, action) => {
-      state.offers = action.payload.sortedOffers;
+      state.filteredOffers = action.payload.sortedOffers;
     })
 
     .addCase(setError, (state, action) => {
