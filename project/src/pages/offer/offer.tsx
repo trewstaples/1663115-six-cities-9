@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Header from '../../components/header/header';
 import Map from '../map/map';
 import { MapMode } from '../../const';
@@ -8,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { OffersType } from '../../types/offers';
 import { CityType } from '../../types/city';
+import { useAppSelector } from '../../hooks';
 
 type OfferPropsType = {
   isNavigationState: boolean;
@@ -26,8 +28,14 @@ export const Amsterdam: CityType = {
 
 function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPropsType): JSX.Element {
   const [param] = useState(Number(useParams().id));
+
   let offer;
-  param === undefined ? (offer = offers[0]) : (offer = offers[param]);
+  param === undefined ? (offer = offers[0]) : (offer = offers.find((offerItem) => offerItem.id === param));
+  if (offer === undefined) {
+    offer = offers[0];
+  }
+
+  const activeCity = useAppSelector((state) => state.activeCity);
 
   const nearOffers = offers.slice(1);
 
@@ -38,11 +46,11 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {offer.images.map((photo, id) => {
-                const keyValue = `${id}-${photo}`;
+              {offer.images.map((image, id) => {
+                const keyValue = `${id}-${image}`;
                 return (
                   <div key={keyValue} className="property__image-wrapper">
-                    <img className="property__image" src={photo} alt="Studio" />
+                    <img className="property__image" src={image} alt="Studio" />
                   </div>
                 );
               })}
@@ -50,9 +58,13 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                <span>{offer.isPremium}</span>
-              </div>
+              {offer.isPremium ? (
+                <div className="property__mark">
+                  <span>Premium</span>
+                </div>
+              ) : (
+                ''
+              )}
               <div className="property__name-wrapper">
                 <h1 className="property__name">{offer.title}</h1>
                 <button className="property__bookmark-button button" type="button">
@@ -70,7 +82,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
                 <span className="property__rating-value rating__value">{offer.rating}</span>
               </div>
               <ul className="property__features">
-                <li className="property__feature property__feature--entire">{offer.type}</li>
+                <li className="property__feature property__feature--entire">{offer.type[0].toUpperCase() + offer.type.substring(1)}</li>
                 <li className="property__feature property__feature--bedrooms">{offer.bedrooms} Bedrooms</li>
                 <li className="property__feature property__feature--adults">Max {offer.maxAdults} adults</li>
               </ul>
@@ -98,7 +110,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
                     <img className="property__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">{offer.host.name}</span>
-                  <span className="property__user-status">{offer.host.isPro}</span>
+                  {offer.host.isPro ? <span className="property__user-status">Pro</span> : ''}
                 </div>
                 <div className="property__description">
                   <p className="property__text">{offer.description}</p>
@@ -107,7 +119,7 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
               <ReviewsList reviews={reviews} />
             </div>
           </div>
-          <Map offers={nearOffers} city={Amsterdam} mapMode={MapMode.Offer} />
+          <Map offers={nearOffers} city={activeCity} mapMode={MapMode.Offer} />
         </section>
         <div className="container">
           <section className="near-places places">

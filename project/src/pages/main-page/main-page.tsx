@@ -11,9 +11,9 @@ type MainPagePropsType = {
 };
 
 function MainPage({ isNavigationState: navigationState }: MainPagePropsType): JSX.Element {
-  const activeCityTab = useAppSelector((state) => state.cityTab);
-  const cityOffers = useAppSelector((state) => state.offers).filter((offer) => offer.city.name === activeCityTab);
-  const activeCity = cityOffers[0].city;
+  const activeCityTab = useAppSelector((state) => state.activeCityTab);
+  const cityOffers = useAppSelector((state) => state.filteredOffers);
+  const activeCity = useAppSelector((state) => state.activeCity);
 
   const dispatch = useAppDispatch();
   const handleCityTabChange = (newCityTab: CityTabType) => () => {

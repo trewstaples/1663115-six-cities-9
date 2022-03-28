@@ -37,7 +37,16 @@ export enum City {
 
 export const cityTabs = Object.keys(City);
 
-export const DEFAULT_CITY_TAB = City.Paris;
+export const DEFAULT_ACTIVE_CITY_TAB = City.Paris;
+
+export const DEFAULT_ACTIVE_CITY = {
+  location: {
+    latitude: 48.85661,
+    longitude: 2.351499,
+    zoom: 13,
+  },
+  name: 'Paris',
+};
 
 export enum OffersSortType {
   Popular = 'Popular',
