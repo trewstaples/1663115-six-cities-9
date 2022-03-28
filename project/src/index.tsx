@@ -18,3 +18,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+//Исправить ошибку некорректной сориторвки по Popular
