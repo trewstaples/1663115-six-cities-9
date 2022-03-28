@@ -3,7 +3,7 @@ import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';
 import Favorites from '../../pages/favorites/favorites';
 import LoginPage from '../../pages/login-page/login-page';
-import LoadingScreen from '../loading/loading';
+import Loading from '../loading/loading';
 import MainPage from '../../pages/main-page/main-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import Offer from '../../pages/offer/offer';
@@ -25,7 +25,7 @@ function App(): JSX.Element {
   const { authorizationStatus, isDataLoaded, offers } = useAppSelector((state) => state);
 
   if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
-    return <LoadingScreen />;
+    return <Loading />;
   }
 
   return (
