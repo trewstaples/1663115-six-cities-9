@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchCommentsAction, fetchOfferItemAction, fetchOffersNearbyAction } from '../../store/api-actions';
+import { fetchOfferItemAction, fetchOffersNearbyAction, fetchCommentsAction } from '../../store/offer-item/api-actions';
 import { OfferType } from '../../types/offers';
 
 type OfferCardPropsType = {

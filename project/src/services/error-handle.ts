@@ -1,7 +1,7 @@
 import request from 'axios';
 import { store } from '../store';
-import { setError } from '../store/action';
-import { clearErrorAction } from '../store/api-actions';
+import { clearErrorAction } from '../store/user/api-actions';
+import { setError } from '../store/user/action';
 import { ErrorType } from '../types/error';
 import { HTTP_CODE } from '../const';
 
@@ -26,8 +26,6 @@ export const errorHandle = (error: ErrorType): void => {
         handleError(response.data.error);
         break;
       case HTTP_CODE.NOT_FOUND:
-        // eslint-disable-next-line no-console
-        console.log('нема');
         handleError(response.data.error);
         break;
     }

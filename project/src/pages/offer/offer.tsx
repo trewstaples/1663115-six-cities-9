@@ -107,8 +107,8 @@ function Offer({ isNavigationState: navigationState }: OfferPropsType): JSX.Elem
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {offersNearby.map((nearOffer) => (
-                <OffersList offer={nearOffer} key={nearOffer.id} />
+              {offersNearby.map((offerNearby) => (
+                <OffersList offer={offerNearby} key={offerNearby.id} />
               ))}
             </div>
           </section>

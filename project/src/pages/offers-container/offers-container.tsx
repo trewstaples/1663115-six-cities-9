@@ -7,13 +7,13 @@ import OffersSort from '../offers-sort/offers-sort';
 import OffersList from '../offers-list/offers-list';
 import { useState } from 'react';
 
-type CitiesContainerPropsType = {
+type OffersContainerPropsType = {
   activeCityTab: CityTabType;
   city: CityType;
   offers: OffersType;
 };
 
-function CitiesContainer({ activeCityTab, city, offers }: CitiesContainerPropsType): JSX.Element {
+function OffersContainer({ activeCityTab, city, offers }: OffersContainerPropsType): JSX.Element {
   const [selectedPoint, setSelectedPoint] = useState<OfferType | undefined>(undefined);
 
   const onListItemHover = (listItemName: number) => {
@@ -43,4 +43,4 @@ function CitiesContainer({ activeCityTab, city, offers }: CitiesContainerPropsTy
   );
 }
 
-export default CitiesContainer;
+export default OffersContainer;
