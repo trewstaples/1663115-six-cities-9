@@ -23,6 +23,16 @@ export const fetchOfferAction = createAsyncThunk('data/fetchOffers', async () =>
   }
 });
 
+export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async () => {
+  try {
+    const { data } = await api.get<OffersType>(APIRoute.OfferItem);
+    console.log(data);
+    store.dispatch(loadOffers(data));
+  } catch (error) {
+    errorHandle(error);
+  }
+});
+
 export const checkAuthAction = createAsyncThunk('user/checkAuth', async () => {
   try {
     await api.get(APIRoute.Login);

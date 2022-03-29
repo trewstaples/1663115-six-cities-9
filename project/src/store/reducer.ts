@@ -3,14 +3,14 @@ import { CityType } from '../types/city';
 import { CityTabType } from '../types/city-tab';
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
-import { loadOffers, requireAuthorization, setCityTab, setError, setOffers, setOffersSortType } from './action';
+import { loadOfferItem, loadOffers, requireAuthorization, setCityTab, setError, setOffers, setOffersSortType } from './action';
 import { OffersType, OfferType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
 
 type InitialStateType = {
   authorizationStatus: AuthorizationStatusType;
   activeCity: CityType;
-  activeOffer: OfferType | undefined;
+  offerItem: OfferType | undefined;
   activeCityTab: CityTabType;
   error: string;
   isDataLoaded: boolean;
@@ -22,7 +22,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
   authorizationStatus: AuthorizationStatus.Unknown,
   activeCity: DEFAULT_ACTIVE_CITY,
-  activeOffer: undefined,
+  offerItem: undefined,
   activeCityTab: DEFAULT_ACTIVE_CITY_TAB,
   error: '',
   isDataLoaded: false,
@@ -38,6 +38,9 @@ const reducer = createReducer(initialState, (builder) => {
       state.filteredOffers = state.offers.filter((offer) => offer.city.name === state.activeCityTab);
       state.activeCity = state.filteredOffers[0].city;
       state.isDataLoaded = true;
+    })
+    .addCase(loadOfferItem, (state, action) => {
+      state.offerItem = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
