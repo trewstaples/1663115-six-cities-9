@@ -98,7 +98,7 @@ function Offer({ isNavigationState: navigationState }: OfferPropsType): JSX.Elem
                   <p className="property__text">{offer.description}</p>
                 </div>
               </div>
-              <CommentsList comments={comments} />
+              <CommentsList comments={comments} offerId={offer.id} />
             </div>
           </div>
           <Map offers={[offer, ...offersNearby]} city={activeCity} selectedPoint={offer} mapMode={MapMode.Offer} />

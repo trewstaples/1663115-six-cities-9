@@ -4,9 +4,10 @@ import ReviewsForm from '../reviews-form/reviews-form';
 
 type CommentsListPropsType = {
   comments: CommentsType;
+  offerId: number;
 };
 
-function CommentsList({ comments }: CommentsListPropsType): JSX.Element {
+function CommentsList({ comments, offerId }: CommentsListPropsType): JSX.Element {
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
@@ -22,7 +23,7 @@ function CommentsList({ comments }: CommentsListPropsType): JSX.Element {
           );
         })}
       </ul>
-      <ReviewsForm />
+      <ReviewsForm offerId={offerId} />
     </section>
   );
 }

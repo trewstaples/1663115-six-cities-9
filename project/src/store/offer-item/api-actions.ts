@@ -6,6 +6,7 @@ import { errorHandle } from '../../services/error-handle';
 import { OfferType, OffersType } from '../../types/offers';
 import { redirectToRoute } from '../user/action';
 import { loadOfferItem, loadOffersNearby, loadComments } from './action';
+import { NewCommentType } from '../../types/new-comment';
 
 export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async (offerId: number) => {
   try {
@@ -32,6 +33,17 @@ export const fetchCommentsAction = createAsyncThunk('data/fetchCommentsAction', 
     // eslint-disable-next-line no-console
     console.log(data);
     store.dispatch(loadComments(data));
+  } catch (error) {
+    errorHandle(error);
+  }
+});
+
+export const fetchNewCommentAction = createAsyncThunk('data/newCommentAction', async (newComment: NewCommentType) => {
+  try {
+    const { offerId, comment, rating } = newComment;
+    const { data } = await api.post(`/comments/${offerId}`, { comment, rating });
+    // eslint-disable-next-line no-console
+    console.log(data);
   } catch (error) {
     errorHandle(error);
   }

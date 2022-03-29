@@ -4,10 +4,9 @@ import { CityTabType } from '../types/city-tab';
 import { CommentsType } from '../types/comments';
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
-
 import { OffersType, OfferType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
-import { loadOfferItem, loadOffersNearby, loadComments } from './offer-item/action';
+import { loadComments, loadOfferItem, loadOffersNearby } from './offer-item/action';
 import { loadOffers, setCityTab, setOffersSortType, setOffers } from './offers/action';
 import { requireAuthorization, setError } from './user/action';
 
