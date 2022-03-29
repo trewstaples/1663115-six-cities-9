@@ -1,15 +1,17 @@
 import { AuthorizationStatusType } from '../types/auth';
 import { CityType } from '../types/city';
 import { CityTabType } from '../types/city-tab';
+import { CommentsType } from '../types/comments';
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE } from '../const';
-import { loadOfferItem, loadOffers, loadOffersNearby, requireAuthorization, setCityTab, setError, setOffers, setOffersSortType } from './action';
+import { loadComments, loadOfferItem, loadOffers, loadOffersNearby, requireAuthorization, setCityTab, setError, setOffers, setOffersSortType } from './action';
 import { OffersType, OfferType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
 
 type InitialStateType = {
   authorizationStatus: AuthorizationStatusType;
   activeCity: CityType;
+  comments: CommentsType;
   offerItem: OfferType | null;
   offersNearby: OffersType;
   activeCityTab: CityTabType;
@@ -23,6 +25,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
   authorizationStatus: AuthorizationStatus.Auth,
   activeCity: DEFAULT_ACTIVE_CITY,
+  comments: [],
   offerItem: null,
   offersNearby: [],
   activeCityTab: DEFAULT_ACTIVE_CITY_TAB,
@@ -46,6 +49,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOffersNearby, (state, action) => {
       state.offersNearby = action.payload;
+    })
+    .addCase(loadComments, (state, action) => {
+      state.comments = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

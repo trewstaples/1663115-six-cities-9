@@ -5,9 +5,10 @@ import { AuthData } from '../types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../services/error-handle';
 import { dropToken, saveToken } from '../services/token';
-import { loadOfferItem, loadOffers, loadOffersNearby, requireAuthorization, setError } from './action';
+import { loadComments, loadOfferItem, loadOffers, loadOffersNearby, requireAuthorization, setError } from './action';
 import { OffersType, OfferType } from '../types/offers';
 import { UserData } from '../types/user-data';
+import { CommentsType } from '../types/comments';
 
 export const clearErrorAction = createAsyncThunk('game/clearError', () => {
   setTimeout(() => store.dispatch(setError('')), TIMEOUT_SHOW_ERROR);
@@ -36,6 +37,16 @@ export const fetchOffersNearbyAction = createAsyncThunk('data/fetchOffersNearby'
   try {
     const { data } = await api.get<OffersType>(`/hotels/${offerId}/nearby`);
     store.dispatch(loadOffersNearby(data));
+  } catch (error) {
+    errorHandle(error);
+  }
+});
+
+export const fetchCommentsAction = createAsyncThunk('data/fetchCommentsAction', async (offerId: number) => {
+  try {
+    const { data } = await api.get<CommentsType>(`/comments/${offerId}`);
+    console.log(data);
+    store.dispatch(loadComments(data));
   } catch (error) {
     errorHandle(error);
   }

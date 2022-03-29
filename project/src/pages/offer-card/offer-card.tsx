@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchOfferItemAction, fetchOffersNearbyAction } from '../../store/api-actions';
+import { fetchCommentsAction, fetchOfferItemAction, fetchOffersNearbyAction } from '../../store/api-actions';
 import { OfferType } from '../../types/offers';
 
 type OfferCardPropsType = {
@@ -13,6 +13,7 @@ function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
   const handleTitleClick = () => {
     dispatch(fetchOfferItemAction(offer.id));
     dispatch(fetchOffersNearbyAction(offer.id));
+    dispatch(fetchCommentsAction(offer.id));
   };
 
   return (

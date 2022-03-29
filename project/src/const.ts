@@ -67,3 +67,8 @@ export enum HTTP_CODE {
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
 }
+
+export enum DateFormat {
+  Display = 'MMMM YYYY',
+  Markup = 'YYYY-MM-DD',
+}

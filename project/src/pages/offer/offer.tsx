@@ -2,19 +2,18 @@ import Header from '../../components/header/header';
 import Map from '../map/map';
 import { MapMode } from '../../const';
 import OffersList from '../offers-list/offers-list';
-import { ReviewsType } from '../../types/reviews';
-import ReviewsList from '../reviews-list/reviews-list';
+import CommentsList from '../comments-list/comments-list';
 import { useAppSelector } from '../../hooks';
 import Loading from '../../components/loading/loading';
 
 type OfferPropsType = {
   isNavigationState: boolean;
-  reviews: ReviewsType;
 };
 
-function Offer({ isNavigationState: navigationState, reviews }: OfferPropsType): JSX.Element {
+function Offer({ isNavigationState: navigationState }: OfferPropsType): JSX.Element {
   const offer = useAppSelector((state) => state.offerItem);
   const offersNearby = useAppSelector((state) => state.offersNearby);
+  const comments = useAppSelector((state) => state.comments);
 
   if (!offer) {
     return <Loading></Loading>;
@@ -99,7 +98,7 @@ function Offer({ isNavigationState: navigationState, reviews }: OfferPropsType):
                   <p className="property__text">{offer.description}</p>
                 </div>
               </div>
-              <ReviewsList reviews={reviews} />
+              <CommentsList comments={comments} />
             </div>
           </div>
           <Map offers={[offer, ...offersNearby]} city={activeCity} selectedPoint={offer} mapMode={MapMode.Offer} />
