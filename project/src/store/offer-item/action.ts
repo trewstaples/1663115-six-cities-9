@@ -12,4 +12,4 @@ export const loadComments = createAction<CommentsType>('data/loadComments');
 
 export const postNewComment = createAction<NewCommentType>('data/postNewComment');
 
-export const setNewReviewSendStatus = createAction<NewReviewSendStatus>('offer/setNewReviewSendStatus');
+export const setNewReviewSendStatus = createAction<NewReviewSendStatus>('data/setNewReviewSendStatus');

@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
 import { store } from './store';
 
 store.dispatch(fetchOfferAction());
-// store.dispatch(checkAuthAction());
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,9 +17,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-//Сделать задание по отправке комментария
-//Пройтись по тз, настроить до конца авторизацию
-
-//Разобраться с поведением isNavigationState в Header
-//Исправить ошибку некорректной сорторвки по Popular

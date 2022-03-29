@@ -30,8 +30,6 @@ export const fetchOffersNearbyAction = createAsyncThunk('data/fetchOffersNearby'
 export const fetchCommentsAction = createAsyncThunk('data/fetchCommentsAction', async (offerId: number) => {
   try {
     const { data } = await api.get<CommentsType>(`/comments/${offerId}`);
-    // eslint-disable-next-line no-console
-    console.log(data);
     store.dispatch(loadComments(data));
   } catch (error) {
     errorHandle(error);
@@ -41,10 +39,8 @@ export const fetchCommentsAction = createAsyncThunk('data/fetchCommentsAction', 
 export const fetchNewCommentAction = createAsyncThunk('data/newCommentAction', async (newComment: NewCommentType) => {
   try {
     const { offerId, comment, rating } = newComment;
-    const { data } = await api.post(`/comments/${offerId}`, { comment, rating });
+    await api.post(`/comments/${offerId}`, { comment, rating });
     store.dispatch(setNewReviewSendStatus(NewReviewSendStatus.Success));
-    // eslint-disable-next-line no-console
-    console.log(data);
   } catch (error) {
     errorHandle(error);
     store.dispatch(setNewReviewSendStatus(NewReviewSendStatus.Error));
