@@ -73,3 +73,10 @@ export enum DateFormat {
   Display = 'MMMM YYYY',
   Markup = 'YYYY-MM-DD',
 }
+
+export enum NewReviewSendStatus {
+  NotSend = 'NotSend',
+  InProcess = 'InProcess',
+  Error = 'Error',
+  Success = 'Success',
+}

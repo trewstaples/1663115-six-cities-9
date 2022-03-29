@@ -1,16 +1,52 @@
-import { fetchNewCommentAction } from '../../store/offer-item/api-actions';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { fetchCommentsAction, fetchNewCommentAction } from '../../store/offer-item/api-actions';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NewReviewSendStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
+import { setNewReviewSendStatus } from '../../store/offer-item/action';
 
 type ReviewsFormPropsType = {
   offerId: number;
 };
 
 function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
+  const newReviewSendStatus = useAppSelector((state) => state.newReviewSendStatus);
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (newReviewSendStatus === NewReviewSendStatus.InProcess) {
+      setFormActiveStatus(false);
+      return;
+    }
+
+    if (newReviewSendStatus === NewReviewSendStatus.Success) {
+      resetForm();
+      dispatch(fetchCommentsAction(offerId));
+    }
+
+    setFormActiveStatus(true);
+    dispatch(setNewReviewSendStatus(NewReviewSendStatus.NotSend));
+  }, [newReviewSendStatus, dispatch, offerId]);
+
+  const resetForm = () => {
+    if (formRef.current) {
+      formRef.current.reset();
+      setRating(0);
+      setComment('');
+    }
+  };
+
+  const setFormActiveStatus = (isActive: boolean) => {
+    if (formRef.current) {
+      formRef.current.querySelectorAll('input, textarea, button').forEach((element) => {
+        isActive ? element.removeAttribute('disabled') : element.setAttribute('disabled', 'disabled');
+      });
+    }
+  };
 
   const handleReviewFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -55,7 +91,7 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
   ];
 
   return (
-    <form onSubmit={handleReviewFormSubmit} className="reviews__form form" action="#" method="post">
+    <form ref={formRef} onSubmit={handleReviewFormSubmit} className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
@@ -76,7 +112,7 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled>
+        <button className="reviews__submit form__submit button" type="submit">
           Submit
         </button>
       </div>

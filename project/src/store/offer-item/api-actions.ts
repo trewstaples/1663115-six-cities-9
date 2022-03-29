@@ -1,11 +1,11 @@
-import { AppRoute } from '../../const';
+import { AppRoute, NewReviewSendStatus } from '../../const';
 import { api, store } from '..';
 import { CommentsType } from '../../types/comments';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
 import { OfferType, OffersType } from '../../types/offers';
 import { redirectToRoute } from '../user/action';
-import { loadOfferItem, loadOffersNearby, loadComments } from './action';
+import { loadOfferItem, loadOffersNearby, loadComments, setNewReviewSendStatus } from './action';
 import { NewCommentType } from '../../types/new-comment';
 
 export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async (offerId: number) => {
@@ -42,9 +42,11 @@ export const fetchNewCommentAction = createAsyncThunk('data/newCommentAction', a
   try {
     const { offerId, comment, rating } = newComment;
     const { data } = await api.post(`/comments/${offerId}`, { comment, rating });
+    store.dispatch(setNewReviewSendStatus(NewReviewSendStatus.Success));
     // eslint-disable-next-line no-console
     console.log(data);
   } catch (error) {
     errorHandle(error);
+    store.dispatch(setNewReviewSendStatus(NewReviewSendStatus.Error));
   }
 });
