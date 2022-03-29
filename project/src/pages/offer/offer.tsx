@@ -1,10 +1,10 @@
+import CommentsList from '../comments-list/comments-list';
 import Header from '../../components/header/header';
+import Loading from '../../components/loading/loading';
 import Map from '../map/map';
 import { MapMode } from '../../const';
 import OffersList from '../offers-list/offers-list';
-import CommentsList from '../comments-list/comments-list';
 import { useAppSelector } from '../../hooks';
-import Loading from '../../components/loading/loading';
 
 type OfferPropsType = {
   isNavigationState: boolean;

@@ -1,6 +1,6 @@
 import { HostType } from './offers';
 
-type CommentType = {
+export type CommentType = {
   comment: string;
   date: string;
   id: number;

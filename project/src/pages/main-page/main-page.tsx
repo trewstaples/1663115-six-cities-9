@@ -3,8 +3,8 @@ import CityTabs from '../city-tabs/city-tabs';
 import CitiesContainer from '../cities-container/cities-container';
 import Header from '../../components/header/header';
 import MainEmpty from '../main-empty/main-empty';
-import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setCityTab } from '../../store/action';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 type MainPagePropsType = {
   isNavigationState: boolean;

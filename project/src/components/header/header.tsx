@@ -1,9 +1,9 @@
 import { AuthorizationStatus } from '../../const';
-import { useAppSelector } from '../../hooks';
 import HeaderEmail from '../../pages/header-email/header-email';
 import HeaderLogin from '../../pages/header-login/header-login';
 import HeaderLogout from '../../pages/header-logout/header-logout';
 // import { logoutAction } from '../../store/api-actions';
+import { useAppSelector } from '../../hooks';
 
 type HeaderPropsType = {
   isNavigationState: boolean;

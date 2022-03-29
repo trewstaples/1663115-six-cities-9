@@ -10,7 +10,6 @@ import Offer from '../../pages/offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-
 import { useAppSelector } from '../../hooks';
 
 const NavigationState = {
