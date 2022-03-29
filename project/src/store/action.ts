@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from '../const';
+import { AppRoute, AuthorizationStatus } from '../const';
 import { CityTabType } from '../types/city-tab';
 import { createAction } from '@reduxjs/toolkit';
 import { OffersType, OfferType } from '../types/offers';
@@ -14,6 +14,8 @@ export const loadOffersNearby = createAction<OffersType>('data/loadOffersNearby'
 export const loadComments = createAction<CommentsType>('data/loadComments');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+
+export const redirectToRoute = createAction<AppRoute>('user/redirectToRoute');
 
 export const setCityTab = createAction<{ cityTab: CityTabType }>('city/setCityTab');
 

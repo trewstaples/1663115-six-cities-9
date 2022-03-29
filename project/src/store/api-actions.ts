@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import { api, store } from '.';
-import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
+import { APIRoute, AppRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { AuthData } from '../types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../services/error-handle';
 import { dropToken, saveToken } from '../services/token';
-import { loadComments, loadOfferItem, loadOffers, loadOffersNearby, requireAuthorization, setError } from './action';
+import { loadComments, loadOfferItem, loadOffers, loadOffersNearby, redirectToRoute, requireAuthorization, setError } from './action';
 import { OffersType, OfferType } from '../types/offers';
 import { UserData } from '../types/user-data';
 import { CommentsType } from '../types/comments';
@@ -29,6 +29,7 @@ export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', asyn
     const { data } = await api.get<OfferType>(`/hotels/${offerId}`);
     store.dispatch(loadOfferItem(data));
   } catch (error) {
+    store.dispatch(redirectToRoute(AppRoute.NotFound));
     errorHandle(error);
   }
 });

@@ -26,6 +26,8 @@ export const errorHandle = (error: ErrorType): void => {
         handleError(response.data.error);
         break;
       case HTTP_CODE.NOT_FOUND:
+        // eslint-disable-next-line no-console
+        console.log('нема');
         handleError(response.data.error);
         break;
     }
