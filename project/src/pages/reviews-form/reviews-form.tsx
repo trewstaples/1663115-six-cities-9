@@ -1,7 +1,7 @@
 import { fetchCommentsAction, fetchNewCommentAction } from '../../store/offer-item/api-actions';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NewReviewSendStatus } from '../../const';
+import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { setNewReviewSendStatus } from '../../store/offer-item/action';
 
@@ -66,29 +66,6 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
   const handleRatingChange = (evt: ChangeEvent<HTMLInputElement>) => {
     setRating(Number(evt.target.value));
   };
-
-  const ratingValues = [
-    {
-      value: '5',
-      title: 'perfect',
-    },
-    {
-      value: '4',
-      title: 'good',
-    },
-    {
-      value: '3',
-      title: 'not bad',
-    },
-    {
-      value: '2',
-      title: 'badly',
-    },
-    {
-      value: '1',
-      title: 'terribly',
-    },
-  ];
 
   return (
     <form ref={formRef} onSubmit={handleReviewFormSubmit} className="reviews__form form" action="#" method="post">
