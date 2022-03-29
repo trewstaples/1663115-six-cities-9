@@ -10,7 +10,7 @@ import { OffersSortTypeKey } from '../types/offers-sort';
 type InitialStateType = {
   authorizationStatus: AuthorizationStatusType;
   activeCity: CityType;
-  offerItem: OfferType | undefined;
+  offerItem: OfferType | null;
   activeCityTab: CityTabType;
   error: string;
   isDataLoaded: boolean;
@@ -22,7 +22,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
   authorizationStatus: AuthorizationStatus.Unknown,
   activeCity: DEFAULT_ACTIVE_CITY,
-  offerItem: undefined,
+  offerItem: null,
   activeCityTab: DEFAULT_ACTIVE_CITY_TAB,
   error: '',
   isDataLoaded: false,

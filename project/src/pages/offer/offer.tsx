@@ -4,10 +4,11 @@ import { MapMode } from '../../const';
 import OffersList from '../offers-list/offers-list';
 import { ReviewsType } from '../../types/reviews';
 import ReviewsList from '../reviews-list/reviews-list';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import { useState } from 'react';
 import { OffersType } from '../../types/offers';
 import { useAppSelector } from '../../hooks';
+import Loading from '../../components/loading/loading';
 
 const NEAR_OFFERS_MAX = 4;
 
@@ -18,17 +19,13 @@ type OfferPropsType = {
 };
 
 function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPropsType): JSX.Element {
-  const [param] = useState(Number(useParams().id));
-
-  let offer;
-  param === undefined ? (offer = offers[0]) : (offer = offers.find((offerItem) => offerItem.id === param));
-  if (offer === undefined) {
-    offer = offers[0];
-  }
-
+  const offer = useAppSelector((state) => state.offerItem);
   const activeCity = useAppSelector((state) => state.activeCity);
-
   const nearOffers = useAppSelector((state) => state.filteredOffers.slice(0, NEAR_OFFERS_MAX));
+
+  if (!offer) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="page">

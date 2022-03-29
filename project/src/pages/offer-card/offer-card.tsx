@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchOfferItemAction } from '../../store/api-actions';
 import { OfferType } from '../../types/offers';
 
 type OfferCardPropsType = {
@@ -6,6 +8,12 @@ type OfferCardPropsType = {
 };
 
 function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
+  const dispatch = useDispatch();
+
+  const handleTitleClick = () => {
+    dispatch(fetchOfferItemAction(offer.id));
+  };
+
   return (
     <>
       {offer.isPremium ? (
@@ -40,7 +48,9 @@ function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
+          <Link to={`/offer/${offer.id}`} onClick={handleTitleClick}>
+            {offer.title}
+          </Link>
         </h2>
         <p className="place-card__type">{offer.type[0].toUpperCase() + offer.type.substring(1)}</p>
       </div>

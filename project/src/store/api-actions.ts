@@ -5,8 +5,8 @@ import { AuthData } from '../types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../services/error-handle';
 import { dropToken, saveToken } from '../services/token';
-import { loadOffers, requireAuthorization, setError } from './action';
-import { OffersType } from '../types/offers';
+import { loadOfferItem, loadOffers, requireAuthorization, setError } from './action';
+import { OffersType, OfferType } from '../types/offers';
 import { UserData } from '../types/user-data';
 
 export const clearErrorAction = createAsyncThunk('game/clearError', () => {
@@ -23,11 +23,11 @@ export const fetchOfferAction = createAsyncThunk('data/fetchOffers', async () =>
   }
 });
 
-export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async () => {
+export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async (offerId: number) => {
   try {
-    const { data } = await api.get<OffersType>(APIRoute.OfferItem);
+    const { data } = await api.get<OfferType>(`/hotels/${offerId}`);
     console.log(data);
-    store.dispatch(loadOffers(data));
+    store.dispatch(loadOfferItem(data));
   } catch (error) {
     errorHandle(error);
   }
