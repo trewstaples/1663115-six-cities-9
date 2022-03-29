@@ -1,26 +1,14 @@
-/* eslint-disable no-console */
-import { api, store } from '.';
-import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
-import { AuthData } from '../types/auth';
+import { AuthData } from '../../types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { errorHandle } from '../services/error-handle';
-import { dropToken, saveToken } from '../services/token';
-import { loadOffers, requireAuthorization, setError } from './action';
-import { OffersType } from '../types/offers';
-import { UserData } from '../types/user-data';
+import { errorHandle } from '../../services/error-handle';
+import { store, api } from '..';
+import { saveToken, dropToken } from '../../services/token';
+import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus } from '../../const';
+import { UserData } from '../../types/user-data';
+import { setError, requireAuthorization } from './action';
 
 export const clearErrorAction = createAsyncThunk('game/clearError', () => {
   setTimeout(() => store.dispatch(setError('')), TIMEOUT_SHOW_ERROR);
-});
-
-export const fetchOfferAction = createAsyncThunk('data/fetchOffers', async () => {
-  try {
-    const { data } = await api.get<OffersType>(APIRoute.Offers);
-    console.log(data);
-    store.dispatch(loadOffers(data));
-  } catch (error) {
-    errorHandle(error);
-  }
 });
 
 export const checkAuthAction = createAsyncThunk('user/checkAuth', async () => {

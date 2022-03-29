@@ -1,34 +1,25 @@
+import CommentsList from '../comments-list/comments-list';
 import Header from '../../components/header/header';
+import Loading from '../../components/loading/loading';
 import Map from '../map/map';
 import { MapMode } from '../../const';
 import OffersList from '../offers-list/offers-list';
-import { ReviewsType } from '../../types/reviews';
-import ReviewsList from '../reviews-list/reviews-list';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { OffersType } from '../../types/offers';
 import { useAppSelector } from '../../hooks';
-
-const NEAR_OFFERS_MAX = 4;
 
 type OfferPropsType = {
   isNavigationState: boolean;
-  offers: OffersType;
-  reviews: ReviewsType;
 };
 
-function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPropsType): JSX.Element {
-  const [param] = useState(Number(useParams().id));
+function Offer({ isNavigationState: navigationState }: OfferPropsType): JSX.Element {
+  const offer = useAppSelector((state) => state.offerItem);
+  const offersNearby = useAppSelector((state) => state.offersNearby);
+  const comments = useAppSelector((state) => state.comments);
 
-  let offer;
-  param === undefined ? (offer = offers[0]) : (offer = offers.find((offerItem) => offerItem.id === param));
-  if (offer === undefined) {
-    offer = offers[0];
+  if (!offer) {
+    return <Loading></Loading>;
   }
 
-  const activeCity = useAppSelector((state) => state.activeCity);
-
-  const nearOffers = useAppSelector((state) => state.filteredOffers.slice(0, NEAR_OFFERS_MAX));
+  const activeCity = offer.city;
 
   return (
     <div className="page">
@@ -107,17 +98,17 @@ function Offer({ isNavigationState: navigationState, offers, reviews }: OfferPro
                   <p className="property__text">{offer.description}</p>
                 </div>
               </div>
-              <ReviewsList reviews={reviews} />
+              <CommentsList comments={comments} offerId={offer.id} />
             </div>
           </div>
-          <Map offers={nearOffers} city={activeCity} selectedPoint={offer} mapMode={MapMode.Offer} />
+          <Map offers={[offer, ...offersNearby]} city={activeCity} selectedPoint={offer} mapMode={MapMode.Offer} />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {nearOffers.map((nearOffer) => (
-                <OffersList offer={nearOffer} key={nearOffer.id} />
+              {offersNearby.map((offerNearby) => (
+                <OffersList offer={offerNearby} key={offerNearby.id} />
               ))}
             </div>
           </section>

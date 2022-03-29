@@ -1,10 +1,10 @@
+import { OffersType } from '../../types/offers';
 import { offersSortTypes, OffersSortType } from '../../const';
 import { OffersSortTypeKey } from '../../types/offers-sort';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setOffers, setOffersSortType } from '../../store/action';
-import { sortOffersByType } from '../../utils';
+import { setOffers, setOffersSortType } from '../../store/offers/action';
+import { sortOffersByType } from '../../utils/offers-sort';
 import { useState } from 'react';
-import { OffersType } from '../../types/offers';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 type OffersTypePropsType = {
   offers: OffersType;

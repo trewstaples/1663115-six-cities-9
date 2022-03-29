@@ -10,8 +10,6 @@ import Offer from '../../pages/offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-
-import { reviews } from '../../mocks/reviews-mocks';
 import { useAppSelector } from '../../hooks';
 
 const NavigationState = {
@@ -41,7 +39,7 @@ function App(): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} offers={offers} reviews={reviews} />} />
+        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

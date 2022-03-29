@@ -1,10 +1,10 @@
 import { CityTabType } from '../../types/city-tab';
 import CityTabs from '../city-tabs/city-tabs';
-import CitiesContainer from '../cities-container/cities-container';
+import OffersContainer from '../offers-container/offers-container';
 import Header from '../../components/header/header';
 import MainEmpty from '../main-empty/main-empty';
+import { setCityTab } from '../../store/offers/action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setCityTab } from '../../store/action';
 
 type MainPagePropsType = {
   isNavigationState: boolean;
@@ -26,7 +26,7 @@ function MainPage({ isNavigationState: navigationState }: MainPagePropsType): JS
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs activeCityTab={activeCityTab} handleCityTabChange={handleCityTabChange} />
-        <div className="cities">{cityOffers && activeCity ? <CitiesContainer activeCityTab={activeCityTab} city={activeCity} offers={cityOffers} /> : <MainEmpty activeCityTab={activeCityTab} />}</div>
+        <div className="cities">{cityOffers && activeCity ? <OffersContainer activeCityTab={activeCityTab} city={activeCity} offers={cityOffers} /> : <MainEmpty activeCityTab={activeCityTab} />}</div>
       </main>
     </div>
   );

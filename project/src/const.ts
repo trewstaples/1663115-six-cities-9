@@ -3,6 +3,7 @@ export enum AppRoute {
   Main = '/',
   Favorites = '/favorites',
   Offer = '/offer/:id',
+  NotFound = '/404',
 }
 
 export enum AuthorizationStatus {
@@ -13,6 +14,7 @@ export enum AuthorizationStatus {
 
 export enum APIRoute {
   Offers = '/hotels',
+  OfferItem = '/hotels/:id',
   Login = '/login',
   Logout = '/logout',
 }
@@ -65,4 +67,16 @@ export enum HTTP_CODE {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
+}
+
+export enum DateFormat {
+  Display = 'MMMM YYYY',
+  Markup = 'YYYY-MM-DD',
+}
+
+export enum NewReviewSendStatus {
+  NotSend = 'NotSend',
+  InProcess = 'InProcess',
+  Error = 'Error',
+  Success = 'Success',
 }

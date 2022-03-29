@@ -1,6 +1,6 @@
-import { OffersType, OfferType } from './types/offers';
-import { OffersSortType } from './const';
-import { OffersSortTypeKey } from './types/offers-sort';
+import { OffersType, OfferType } from '../types/offers';
+import { OffersSortType } from '../const';
+import { OffersSortTypeKey } from '../types/offers-sort';
 
 export const sortOffersByPriceUp = (offerA: OfferType, offerB: OfferType): number => {
   const priceA = offerA.price;

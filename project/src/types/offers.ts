@@ -1,7 +1,7 @@
 import { LocationType } from './location';
 import { CityType } from './city';
 
-type HostType = {
+export type HostType = {
   avatarUrl: string;
   id: number;
   isPro: boolean;
