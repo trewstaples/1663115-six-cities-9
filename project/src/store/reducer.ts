@@ -26,7 +26,7 @@ type InitialStateType = {
 };
 
 const initialState: InitialStateType = {
-  authorizationStatus: AuthorizationStatus.Auth,
+  authorizationStatus: AuthorizationStatus.NoAuth,
   activeCity: DEFAULT_ACTIVE_CITY,
   comments: [],
   offerItem: null,

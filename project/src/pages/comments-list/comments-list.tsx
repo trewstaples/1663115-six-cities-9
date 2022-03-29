@@ -1,3 +1,5 @@
+import { AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
 import { CommentsType } from '../../types/comments';
 import CommentItem from '../comment-item/comment-item';
 import ReviewsForm from '../reviews-form/reviews-form';
@@ -8,6 +10,7 @@ type CommentsListPropsType = {
 };
 
 function CommentsList({ comments, offerId }: CommentsListPropsType): JSX.Element {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
@@ -23,7 +26,7 @@ function CommentsList({ comments, offerId }: CommentsListPropsType): JSX.Element
           );
         })}
       </ul>
-      <ReviewsForm offerId={offerId} />
+      {authorizationStatus === AuthorizationStatus.Auth ? <ReviewsForm offerId={offerId} /> : ''}
     </section>
   );
 }
