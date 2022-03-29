@@ -8,6 +8,8 @@ export const loadOffers = createAction<OffersType>('data/loadOffers');
 
 export const loadOfferItem = createAction<OfferType>('data/loadOfferItem');
 
+export const loadOffersNearby = createAction<OffersType>('data/loadOffersNearby');
+
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 
 export const setCityTab = createAction<{ cityTab: CityTabType }>('city/setCityTab');
