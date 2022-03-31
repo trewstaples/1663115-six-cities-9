@@ -5,8 +5,10 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from './store';
+import { checkAuthAction } from './store/user/api-actions';
 
 store.dispatch(fetchOfferAction());
+store.dispatch(checkAuthAction());
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,3 +19,17 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+//Пройтись по тз, настроить до конца авторизацию
+//Разбить редьюсер
+//Настроить оптимизацию
+
+//Разобраться с поведением isNavigationState в Header
+//Исправить ошибку некорректной сорторвки по Popular
+
+//Оптимизация /
+//Оптимизировать перерисовку Sign In / mail-sigh in
+//Оптимизировать пеперисовку сортировки - ????
+
+//Оптимизация offer/id
+//Оптимизировать рендеринг Rating при заполнениии text
+//Оптимизировать рендеринг текста при заполнении рейтинга

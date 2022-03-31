@@ -59,6 +59,8 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
+      // eslint-disable-next-line no-console
+      console.log(state.authorizationStatus);
     })
     .addCase(setCityTab, (state, action) => {
       const { cityTab } = action.payload;

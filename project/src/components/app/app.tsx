@@ -30,7 +30,10 @@ function App(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path={AppRoute.Main} element={<MainPage isNavigationState={NavigationState.DEFAULT} />} />
-        <Route path={AppRoute.Login} element={<LoginPage isNavigationState={NavigationState.LOGIN} />} />
+        <Route
+          path={AppRoute.Login}
+          element={authorizationStatus === AuthorizationStatus.Auth ? <MainPage isNavigationState={NavigationState.DEFAULT} /> : <LoginPage isNavigationState={NavigationState.LOGIN} />}
+        />
         <Route
           path={AppRoute.Favorites}
           element={

@@ -6,10 +6,10 @@ type FavoritesPropsType = {
   offers: OffersType;
 };
 
-function Favorites({ isNavigationState: navigationState, offers }: FavoritesPropsType): JSX.Element {
+function Favorites({ isNavigationState, offers }: FavoritesPropsType): JSX.Element {
   return (
     <div className="page">
-      <Header isNavigationState={navigationState} />
+      <Header isNavigationState={isNavigationState} />
 
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">

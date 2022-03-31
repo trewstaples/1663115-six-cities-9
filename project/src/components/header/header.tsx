@@ -1,7 +1,7 @@
 import { AuthorizationStatus } from '../../const';
 import HeaderEmail from '../../pages/header-email/header-email';
-import HeaderLogin from '../../pages/header-login/header-login';
 import HeaderLogout from '../../pages/header-logout/header-logout';
+import HeaderLogin from '../../pages/header-login/header-login';
 // import { logoutAction } from '../../store/api-actions';
 import { useAppSelector } from '../../hooks';
 
@@ -34,10 +34,10 @@ function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.El
                   <>
                     <HeaderEmail />
 
-                    <HeaderLogin />
+                    <HeaderLogout />
                   </>
                 ) : (
-                  <HeaderLogout />
+                  <HeaderLogin />
                 )}
               </ul>
             </nav>
