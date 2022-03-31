@@ -29,7 +29,7 @@ function OffersContainer({ activeCityTab, city, offers }: OffersContainerPropsTy
         <b className="places__found">
           {offers.length} places to stay in {activeCityTab}
         </b>
-        <OffersSort offers={offers} />
+        <OffersSort />
         <div className="cities__places-list places__list tabs__content">
           {offers.map((offer) => (
             <OffersList offer={offer} key={offer.id} onListItemHover={onListItemHover} />

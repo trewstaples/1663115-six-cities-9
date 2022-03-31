@@ -1,20 +1,24 @@
-import { OffersType } from '../../types/offers';
-import { offersSortTypes, OffersSortType } from '../../const';
+/* eslint-disable no-console */
+import { offersSortTypes, OffersSortType, DEFAULT_OFFERS_SORT_TYPE } from '../../const';
 import { OffersSortTypeKey } from '../../types/offers-sort';
 import { setOffers, setOffersSortType } from '../../store/offers/action';
 import { sortOffersByType } from '../../utils/offers-sort';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-type OffersTypePropsType = {
-  offers: OffersType;
-};
-
-function OffersSort({ offers }: OffersTypePropsType): JSX.Element {
-  const [defaultOffers] = useState(offers);
-  const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
+function OffersSort(): JSX.Element {
+  const offers = useAppSelector((state) => state.filteredOffers);
   const activeSortType = useAppSelector((state) => state.offersSortType);
+  const [defaultOffers, setDefaultOffers] = useState(offers);
+
+  const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (activeSortType === DEFAULT_OFFERS_SORT_TYPE) {
+      setDefaultOffers(offers);
+    }
+  }, [activeSortType, offers]);
 
   const handleSortTypeChange = (offersSortType: OffersSortTypeKey) => {
     const offersForSort = offersSortType === OffersSortType.Popular ? defaultOffers : offers;

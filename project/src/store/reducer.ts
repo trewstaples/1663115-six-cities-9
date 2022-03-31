@@ -59,14 +59,13 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
-      // eslint-disable-next-line no-console
-      console.log(state.authorizationStatus);
     })
     .addCase(setCityTab, (state, action) => {
       const { cityTab } = action.payload;
       state.activeCityTab = cityTab;
       state.filteredOffers = state.offers.filter((offer) => offer.city.name === state.activeCityTab);
       state.activeCity = state.filteredOffers[0].city;
+      state.offersSortType = DEFAULT_OFFERS_SORT_TYPE;
     })
     .addCase(setOffersSortType, (state, action) => {
       state.offersSortType = action.payload.offersSortType;
