@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 
 function MainPage(): JSX.Element {
   const activeCityTab = useAppSelector((state) => state.activeCityTab);
-  const cityOffers = useAppSelector((state) => state.filteredOffers);
+  const offers = useAppSelector((state) => state.filteredOffers);
   const activeCity = useAppSelector((state) => state.activeCity);
 
   const dispatch = useAppDispatch();
@@ -17,12 +17,12 @@ function MainPage(): JSX.Element {
   };
 
   return (
-    <div className={`page page--gray page--main ${cityOffers ? '' : 'page__main--index-empty'}`}>
+    <div className={`page page--gray page--main ${offers ? '' : 'page__main--index-empty'}`}>
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs activeCityTab={activeCityTab} handleCityTabChange={handleCityTabChange} />
-        <div className="cities">{cityOffers && activeCity ? <OffersContainer activeCityTab={activeCityTab} city={activeCity} offers={cityOffers} /> : <MainEmpty activeCityTab={activeCityTab} />}</div>
+        <div className="cities">{offers && activeCity ? <OffersContainer activeCityTab={activeCityTab} city={activeCity} offers={offers} /> : <MainEmpty activeCityTab={activeCityTab} />}</div>
       </main>
     </div>
   );

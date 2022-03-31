@@ -2,12 +2,14 @@ import CommentsList from '../comments-list/comments-list';
 import Header from '../../components/header/header';
 import Loading from '../../components/loading/loading';
 import Map from '../map/map';
-import { MapMode } from '../../const';
+import { AuthorizationStatus, MapMode } from '../../const';
 import OffersList from '../offers-list/offers-list';
 import { useAppSelector } from '../../hooks';
+import ReviewsForm from '../reviews-form/reviews-form';
 
 function Offer(): JSX.Element {
   const offer = useAppSelector((state) => state.offerItem);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const offersNearby = useAppSelector((state) => state.offersNearby);
   const comments = useAppSelector((state) => state.comments);
 
@@ -94,7 +96,10 @@ function Offer(): JSX.Element {
                   <p className="property__text">{offer.description}</p>
                 </div>
               </div>
-              <CommentsList comments={comments} offerId={offer.id} />
+              <section className="property__reviews reviews">
+                {comments ? <CommentsList comments={comments} /> : ''}
+                {authorizationStatus === AuthorizationStatus.Auth ? <ReviewsForm offerId={offer.id} /> : ''}
+              </section>
             </div>
           </div>
           <Map offers={[offer, ...offersNearby]} city={activeCity} selectedPoint={offer} mapMode={MapMode.Offer} />
