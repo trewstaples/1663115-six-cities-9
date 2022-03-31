@@ -1,23 +1,10 @@
-import { AuthorizationStatus } from '../../const';
-import HeaderEmail from '../../pages/header-email/header-email';
-import HeaderLogout from '../../pages/header-logout/header-logout';
-import HeaderLogin from '../../pages/header-login/header-login';
-// import { logoutAction } from '../../store/api-actions';
-import { useAppSelector } from '../../hooks';
+import HeaderNav from '../header-nav/header-nav';
 
 type HeaderPropsType = {
-  isNavigationState: boolean;
+  loginNavState?: boolean;
 };
 
-function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-
-  // const dispatch = useAppDispatch();
-
-  // const onClick = () => {
-  //   dispatch(logoutAction());
-  // };
-
+function Header({ loginNavState }: HeaderPropsType): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -27,23 +14,7 @@ function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.El
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"></img>
             </a>
           </div>
-          {navigationState ? (
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                {authorizationStatus === AuthorizationStatus.Auth ? (
-                  <>
-                    <HeaderEmail />
-
-                    <HeaderLogout />
-                  </>
-                ) : (
-                  <HeaderLogin />
-                )}
-              </ul>
-            </nav>
-          ) : (
-            ''
-          )}
+          {loginNavState ? '' : <HeaderNav />}
         </div>
       </div>
     </header>

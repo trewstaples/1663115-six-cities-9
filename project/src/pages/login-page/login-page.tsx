@@ -6,11 +6,9 @@ import { useAppDispatch } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
-type LoginPagePropsType = {
-  isNavigationState: boolean;
-};
+export const LOGIN_NAV_STATE = true;
 
-function LoginPage({ isNavigationState: navigationState }: LoginPagePropsType): JSX.Element {
+function LoginPage(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
@@ -35,7 +33,7 @@ function LoginPage({ isNavigationState: navigationState }: LoginPagePropsType): 
 
   return (
     <div className="page page--gray page--login">
-      <Header isNavigationState={navigationState} />
+      <Header loginNavState={LOGIN_NAV_STATE} />
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">

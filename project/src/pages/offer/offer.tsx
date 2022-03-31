@@ -6,11 +6,7 @@ import { MapMode } from '../../const';
 import OffersList from '../offers-list/offers-list';
 import { useAppSelector } from '../../hooks';
 
-type OfferPropsType = {
-  isNavigationState: boolean;
-};
-
-function Offer({ isNavigationState: navigationState }: OfferPropsType): JSX.Element {
+function Offer(): JSX.Element {
   const offer = useAppSelector((state) => state.offerItem);
   const offersNearby = useAppSelector((state) => state.offersNearby);
   const comments = useAppSelector((state) => state.comments);
@@ -23,7 +19,7 @@ function Offer({ isNavigationState: navigationState }: OfferPropsType): JSX.Elem
 
   return (
     <div className="page">
-      <Header isNavigationState={navigationState} />
+      <Header />
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">

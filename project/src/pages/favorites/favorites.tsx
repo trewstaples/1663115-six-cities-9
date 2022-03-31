@@ -2,14 +2,13 @@ import Header from '../../components/header/header';
 import { OffersType } from '../../types/offers';
 
 type FavoritesPropsType = {
-  isNavigationState: boolean;
   offers: OffersType;
 };
 
-function Favorites({ isNavigationState, offers }: FavoritesPropsType): JSX.Element {
+function Favorites({ offers }: FavoritesPropsType): JSX.Element {
   return (
     <div className="page">
-      <Header isNavigationState={isNavigationState} />
+      <Header />
 
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">

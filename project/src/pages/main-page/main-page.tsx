@@ -6,11 +6,7 @@ import MainEmpty from '../main-empty/main-empty';
 import { setCityTab } from '../../store/offers/action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-type MainPagePropsType = {
-  isNavigationState: boolean;
-};
-
-function MainPage({ isNavigationState: navigationState }: MainPagePropsType): JSX.Element {
+function MainPage(): JSX.Element {
   const activeCityTab = useAppSelector((state) => state.activeCityTab);
   const cityOffers = useAppSelector((state) => state.filteredOffers);
   const activeCity = useAppSelector((state) => state.activeCity);
@@ -22,7 +18,7 @@ function MainPage({ isNavigationState: navigationState }: MainPagePropsType): JS
 
   return (
     <div className={`page page--gray page--main ${cityOffers ? '' : 'page__main--index-empty'}`}>
-      <Header isNavigationState={navigationState} />
+      <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs activeCityTab={activeCityTab} handleCityTabChange={handleCityTabChange} />

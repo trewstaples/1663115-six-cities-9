@@ -12,11 +12,6 @@ import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 
-const NavigationState = {
-  DEFAULT: true,
-  LOGIN: false,
-};
-
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
 
 function App(): JSX.Element {
@@ -29,20 +24,17 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage isNavigationState={NavigationState.DEFAULT} />} />
-        <Route
-          path={AppRoute.Login}
-          element={authorizationStatus === AuthorizationStatus.Auth ? <MainPage isNavigationState={NavigationState.DEFAULT} /> : <LoginPage isNavigationState={NavigationState.LOGIN} />}
-        />
+        <Route path={AppRoute.Main} element={<MainPage />} />
+        <Route path={AppRoute.Login} element={authorizationStatus === AuthorizationStatus.Auth ? <MainPage /> : <LoginPage />} />
         <Route
           path={AppRoute.Favorites}
           element={
             <PrivateRoute>
-              <Favorites isNavigationState={NavigationState.DEFAULT} offers={offers} />
+              <Favorites offers={offers} />
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer isNavigationState={NavigationState.DEFAULT} />} />
+        <Route path={AppRoute.Offer} element={<Offer />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
