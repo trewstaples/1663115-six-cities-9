@@ -5,6 +5,12 @@ import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { setNewReviewSendStatus } from '../../store/offer-item/action';
 
+// enum ReviewLimit {
+//   RatingMinValue = 1,
+//   CommentMinLength = 50,
+//   CommentMaxLength = 300,
+// }
+
 type ReviewsFormPropsType = {
   offerId: number;
 };
@@ -28,7 +34,8 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
       dispatch(fetchCommentsAction(offerId));
     }
 
-    setFormActiveStatus(true);
+    setFormActiveStatus(false);
+    setButtonActiveStatus(false);
     dispatch(setNewReviewSendStatus(NewReviewSendStatus.NotSend));
   }, [newReviewSendStatus, dispatch, offerId]);
 
@@ -47,6 +54,17 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
       });
     }
   };
+
+  const setButtonActiveStatus = (isActive: boolean) => {
+    if (formRef.current) {
+      formRef.current.querySelectorAll('button').forEach((element) => {
+        isActive ? element.removeAttribute('disabled') : element.setAttribute('disabled', 'disabled');
+      });
+    }
+  };
+
+  // const isFormValid = rating >= ReviewLimit.RatingMinValue && comment.length >= ReviewLimit.CommentMinLength && comment.length <= ReviewLimit.CommentMaxLength;
+  const isFormValid = true;
 
   const handleReviewFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -89,7 +107,7 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit">
+        <button className="reviews__submit form__submit button" type="submit" disabled={!isFormValid}>
           Submit
         </button>
       </div>
