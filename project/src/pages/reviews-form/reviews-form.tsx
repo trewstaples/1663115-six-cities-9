@@ -5,11 +5,11 @@ import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { setNewReviewSendStatus } from '../../store/offer-item/action';
 
-// enum ReviewLimit {
-//   RatingMinValue = 1,
-//   CommentMinLength = 50,
-//   CommentMaxLength = 300,
-// }
+enum ReviewLimit {
+  RatingMinValue = 1,
+  CommentMinLength = 50,
+  CommentMaxLength = 300,
+}
 
 type ReviewsFormPropsType = {
   offerId: number;
@@ -19,6 +19,7 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
   const newReviewSendStatus = useAppSelector((state) => state.newReviewSendStatus);
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const dispatch = useDispatch();
@@ -34,10 +35,10 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
       dispatch(fetchCommentsAction(offerId));
     }
 
-    setFormActiveStatus(false);
-    setButtonActiveStatus(false);
+    setFormActiveStatus(true);
+    setButtonActiveStatus(isFormValid);
     dispatch(setNewReviewSendStatus(NewReviewSendStatus.NotSend));
-  }, [newReviewSendStatus, dispatch, offerId]);
+  }, [newReviewSendStatus, dispatch, offerId, isFormValid]);
 
   const resetForm = () => {
     if (formRef.current) {
@@ -63,9 +64,6 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
     }
   };
 
-  // const isFormValid = rating >= ReviewLimit.RatingMinValue && comment.length >= ReviewLimit.CommentMinLength && comment.length <= ReviewLimit.CommentMaxLength;
-  const isFormValid = true;
-
   const handleReviewFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(
@@ -79,6 +77,7 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
 
   const handleCommentChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     setComment(evt.target.value);
+    setIsFormValid(rating >= ReviewLimit.RatingMinValue && comment.length >= ReviewLimit.CommentMinLength && comment.length <= ReviewLimit.CommentMaxLength);
   };
 
   const handleRatingChange = (evt: ChangeEvent<HTMLInputElement>) => {
