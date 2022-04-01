@@ -25,7 +25,7 @@ function App(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path={AppRoute.Main} element={<MainPage />} />
-        <Route path={AppRoute.Login} element={authorizationStatus === AuthorizationStatus.Auth ? <MainPage /> : <LoginPage />} />
+        <Route path={AppRoute.Login} element={<LoginPage />} />
         <Route
           path={AppRoute.Favorites}
           element={
