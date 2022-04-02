@@ -1,5 +1,8 @@
 import { MouseEvent } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
 import { fetchUpdateFavoriteAction } from '../../store/favorites/api-action';
 import { OfferType } from '../../types/offers';
 
@@ -8,10 +11,16 @@ type FavoriteButtonPropsType = {
 };
 
 function FavoriteButton({ offer }: FavoriteButtonPropsType): JSX.Element {
+  const isUserAuthorized = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleFavoriteButtonClick = (evt: MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
+
+    if (!isUserAuthorized) {
+      navigate(AppRoute.Login);
+    }
 
     dispatch(
       fetchUpdateFavoriteAction({

@@ -2,10 +2,16 @@ import Header from '../../components/header/header';
 import { cityTabs } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { CityTabType } from '../../types/city-tab';
+import FavoriteEmpty from '../favorite-empty/favorite-empty';
 import FavoriteItem from '../favorite-item/favorites-item';
 
 function Favorite(): JSX.Element {
   const offers = useAppSelector((state) => state.favoriteOffers);
+
+  if (!offers.length) {
+    return <FavoriteEmpty />;
+  }
+
   return (
     <div className="page">
       <Header />
