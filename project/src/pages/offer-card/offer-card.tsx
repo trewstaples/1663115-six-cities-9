@@ -4,11 +4,14 @@ import { fetchOfferItemAction, fetchOffersNearbyAction, fetchCommentsAction } fr
 import { OfferType } from '../../types/offers';
 import FavoriteButton from '../favorite-button/favorite-button';
 
+type MouseOverType = (offerId: number) => void;
+
 type OfferCardPropsType = {
   offer: OfferType;
+  onMouseOver?: MouseOverType;
 };
 
-function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
+function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
   const dispatch = useDispatch();
 
   const handleTitleClick = () => {
@@ -18,7 +21,7 @@ function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
   };
 
   return (
-    <>
+    <article className="cities__place-card place-card" onMouseOver={() => (onMouseOver instanceof Function ? onMouseOver(offer.id) : null)}>
       {offer.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -52,7 +55,7 @@ function OfferCard({ offer }: OfferCardPropsType): JSX.Element {
         </h2>
         <p className="place-card__type">{offer.type[0].toUpperCase() + offer.type.substring(1)}</p>
       </div>
-    </>
+    </article>
   );
 }
 

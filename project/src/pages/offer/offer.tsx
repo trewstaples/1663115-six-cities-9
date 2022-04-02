@@ -3,9 +3,9 @@ import Header from '../../components/header/header';
 import Loading from '../../components/loading/loading';
 import Map from '../map/map';
 import { AuthorizationStatus, MapMode } from '../../const';
-import OffersList from '../offers-list/offers-list';
 import { useAppSelector } from '../../hooks';
 import ReviewsForm from '../reviews-form/reviews-form';
+import OfferCard from '../offer-card/offer-card';
 
 function Offer(): JSX.Element {
   const offer = useAppSelector((state) => state.offerItem);
@@ -102,14 +102,14 @@ function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map offers={[offer, ...offersNearby]} city={activeCity} selectedPoint={offer} mapMode={MapMode.Offer} />
+          <Map offers={[offer, ...offersNearby]} city={activeCity} selectedCardId={offer.id} mapMode={MapMode.Offer} />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
               {offersNearby.map((offerNearby) => (
-                <OffersList offer={offerNearby} key={offerNearby.id} />
+                <OfferCard offer={offerNearby} key={offerNearby.id} />
               ))}
             </div>
           </section>

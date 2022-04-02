@@ -5,13 +5,14 @@ import { sortOffersByType } from '../../utils/offers-sort';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import React from 'react';
+import clsx from 'clsx';
 
 function OffersSort(): JSX.Element {
-  const offers = useAppSelector((state) => state.filteredOffers);
-  const activeSortType = useAppSelector((state) => state.offersSortType);
-  const [defaultOffers, setDefaultOffers] = useState(offers);
-
   const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
+  const offers = useAppSelector((state) => state.filteredOffers);
+  const [defaultOffers, setDefaultOffers] = useState(offers);
+  const activeSortType = useAppSelector((state) => state.offersSortType);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function OffersSort(): JSX.Element {
     }
   }, [activeSortType, offers]);
 
-  const handleSortTypeChange = (offersSortType: OffersSortTypeKey) => {
+  const onSortTypeChange = (offersSortType: OffersSortTypeKey) => {
     const offersForSort = offersSortType === OffersSortType.Popular ? defaultOffers : offers;
     const sortedOffers = sortOffersByType(offersSortType, offersForSort);
 
@@ -38,12 +39,12 @@ function OffersSort(): JSX.Element {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${isSortOpened ? 'places__options--opened' : ''}`}>
+      <ul className={clsx('places__options', 'places__options--custom', { 'places__options--opened': isSortOpened })}>
         {offersSortTypes.map((offersSortType) => (
           <li
-            className={`places__option ${activeSortType === offersSortType ? 'places__option--active' : ''}`}
+            className={clsx('places__option', { 'places__option--active': offersSortType === activeSortType })}
             tabIndex={0}
-            onClick={() => handleSortTypeChange(offersSortType as OffersSortTypeKey)}
+            onClick={() => onSortTypeChange(offersSortType as OffersSortTypeKey)}
             key={offersSortType}
           >
             {OffersSortType[offersSortType as OffersSortTypeKey]}

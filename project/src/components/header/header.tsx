@@ -14,7 +14,7 @@ function Header({ loginNavState }: HeaderPropsType): JSX.Element {
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"></img>
             </a>
           </div>
-          {loginNavState ? '' : <HeaderNav />}
+          {loginNavState && <HeaderNav />}
         </div>
       </div>
     </header>

@@ -2,8 +2,9 @@ import { AppRoute } from '../../const';
 import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';
 import Favorite from '../../pages/favorite/favorite';
-import LoginPage from '../../pages/login-page/login-page';
+import Layout from '../layout/layout';
 import Loading from '../loading/loading';
+import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import Offer from '../../pages/offer/offer';
@@ -24,18 +25,20 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage />} />
-        <Route path={AppRoute.Login} element={<LoginPage />} />
-        <Route
-          path={AppRoute.Favorites}
-          element={
-            <PrivateRoute>
-              <Favorite />
-            </PrivateRoute>
-          }
-        />
-        <Route path={AppRoute.Offer} element={<Offer />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path={AppRoute.Main} element={<Layout />}>
+          <Route path={AppRoute.Main} element={<MainPage />} />
+          <Route path={AppRoute.Login} element={<LoginPage />} />
+          <Route
+            path={AppRoute.Favorites}
+            element={
+              <PrivateRoute>
+                <Favorite />
+              </PrivateRoute>
+            }
+          />
+          <Route path={AppRoute.Offer} element={<Offer />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

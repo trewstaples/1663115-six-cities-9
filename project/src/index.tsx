@@ -1,11 +1,11 @@
 import App from './components/app/app';
+import { checkAuthAction } from './store/user/api-actions';
 import ErrorMessage from './components/error-message/error-message';
 import { fetchOfferAction } from './store/offers/api-actions';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from './store';
-import { checkAuthAction } from './store/user/api-actions';
 
 store.dispatch(fetchOfferAction());
 store.dispatch(checkAuthAction());
@@ -20,7 +20,9 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-//Доделать favorites
+//Упростить обработчик сортировки в onOffersSortTypeChange
+
+//Вынести Header их отрисовки
 //Разбить редьюсер
 //Настроить оптимизацию
 //Пройтись по критериям, отрефакторить код

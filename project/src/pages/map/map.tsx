@@ -2,7 +2,7 @@ import 'leaflet/dist/leaflet.css';
 import { CityType } from '../../types/city';
 import { Icon, Marker, LayerGroup } from 'leaflet';
 import { MapMode } from '../../const';
-import { OffersType, OfferType } from '../../types/offers';
+import { OffersType } from '../../types/offers';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
@@ -10,7 +10,7 @@ import useMap from '../../hooks/use-map';
 type MapPropsType = {
   city: CityType;
   offers: OffersType;
-  selectedPoint?: OfferType | undefined;
+  selectedCardId?: number;
   mapMode: MapMode;
 };
 
@@ -26,7 +26,7 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40],
 });
 
-function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Element {
+function Map({ offers, city, selectedCardId, mapMode }: MapPropsType): JSX.Element {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const map = useMap(mapRef, city);
 
@@ -44,7 +44,7 @@ function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Elemen
           lng: offer.location.longitude,
         });
 
-        marker.setIcon(selectedPoint !== undefined && offer.id === selectedPoint.id ? currentCustomIcon : defaultCustomIcon);
+        marker.setIcon(selectedCardId !== undefined && offer.id === selectedCardId ? currentCustomIcon : defaultCustomIcon);
         markers.push(marker);
       });
       const layerGroup = new LayerGroup(markers);
@@ -54,7 +54,7 @@ function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Elemen
         map?.removeLayer(layerGroup);
       };
     }
-  }, [map, offers, selectedPoint]);
+  }, [map, offers, selectedCardId]);
 
   return mapContainer;
 }
