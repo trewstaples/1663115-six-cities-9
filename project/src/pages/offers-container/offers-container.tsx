@@ -1,10 +1,7 @@
 import { CityTabType } from '../../types/city-tab';
 import Map from '../map/map';
-import { MapMode } from '../../const';
-// import OffersList from '../offers-list/offers-list';
 import OffersSort from '../offers-sort/offers-sort';
 import { OffersType } from '../../types/offers';
-import { useAppSelector } from '../../hooks';
 import { useState } from 'react';
 import OfferCard from '../offer-card/offer-card';
 
@@ -15,7 +12,6 @@ type OffersContainerPropsType = {
 
 function OffersContainer({ activeCityTab, offers }: OffersContainerPropsType): JSX.Element {
   const [selectedCardId, setSelectedCardId] = useState<number>(0);
-  const activeCity = useAppSelector((state) => state.activeCity);
 
   return (
     <div className="cities">
@@ -33,7 +29,9 @@ function OffersContainer({ activeCityTab, offers }: OffersContainerPropsType): J
           </div>
         </section>
         <div className="cities__right-section">
-          <Map offers={offers} city={activeCity} selectedCardId={selectedCardId} mapMode={MapMode.Main} />
+          <section className="cities__map map">
+            <Map offers={offers} selectedCardId={selectedCardId} />
+          </section>
         </div>
       </div>
     </div>

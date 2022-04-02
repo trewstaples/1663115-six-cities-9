@@ -2,7 +2,7 @@ import CommentsList from '../comments-list/comments-list';
 import Header from '../../components/header/header';
 import Loading from '../../components/loading/loading';
 import Map from '../map/map';
-import { AuthorizationStatus, MapMode } from '../../const';
+import { AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import ReviewsForm from '../reviews-form/reviews-form';
 import OfferCard from '../offer-card/offer-card';
@@ -16,8 +16,6 @@ function Offer(): JSX.Element {
   if (!offer) {
     return <Loading></Loading>;
   }
-
-  const activeCity = offer.city;
 
   return (
     <div className="page">
@@ -102,7 +100,9 @@ function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map offers={[offer, ...offersNearby]} city={activeCity} selectedCardId={offer.id} mapMode={MapMode.Offer} />
+          <section className="property__map map">
+            <Map offers={[offer, ...offersNearby]} selectedCardId={offer.id} />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">

@@ -26,11 +26,6 @@ export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensi
 
 export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 
-export enum MapMode {
-  Main = 'MAIN',
-  Offer = 'OFFER',
-}
-
 export enum City {
   Paris = 'Paris',
   Cologne = 'Cologne',
