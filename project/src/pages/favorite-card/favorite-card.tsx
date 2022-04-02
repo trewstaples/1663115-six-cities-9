@@ -1,11 +1,11 @@
-import { OfferType } from '../../types/offers';
 import FavoriteButton from '../favorite-button/favorite-button';
+import { OfferType } from '../../types/offers';
 
-type FavoritesCardPropsType = {
+type FavoriteCardPropsType = {
   offer: OfferType;
 };
 
-function FavoriteCard({ offer }: FavoritesCardPropsType): JSX.Element {
+function FavoriteCard({ offer }: FavoriteCardPropsType): JSX.Element {
   return (
     <article className="favorites__card place-card">
       <div className="place-card__mark">

@@ -1,8 +1,8 @@
 import { cityTabs } from '../../const';
-import { useAppSelector } from '../../hooks';
 import { CityTabType } from '../../types/city-tab';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
-import FavoriteItem from '../favorite-item/favorites-item';
+import FavoriteItem from '../favorite-item/favorite-item';
+import { useAppSelector } from '../../hooks';
 
 function Favorites(): JSX.Element {
   const offers = useAppSelector((state) => state.favoriteOffers);

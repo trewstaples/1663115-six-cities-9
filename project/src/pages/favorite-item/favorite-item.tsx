@@ -1,13 +1,13 @@
 import { CityTabType } from '../../types/city-tab';
-import { OffersType } from '../../types/offers';
 import FavoriteCard from '../favorite-card/favorite-card';
+import { OffersType } from '../../types/offers';
 
-type FavoritesItemPropsType = {
+type FavoriteItemPropsType = {
   cityTab: CityTabType;
   offers: OffersType;
 };
 
-function FavoriteItem({ cityTab, offers }: FavoritesItemPropsType): JSX.Element {
+function FavoriteItem({ cityTab, offers }: FavoriteItemPropsType): JSX.Element {
   const offersByCity = offers.filter((offer) => offer.city.name === cityTab);
   return (
     <>
