@@ -5,12 +5,12 @@ import { OffersType } from '../../types/offers';
 import { useState } from 'react';
 import OfferCard from '../offer-card/offer-card';
 
-type OffersContainerPropsType = {
+type OffersListPropsType = {
   activeCityTab: CityTabType;
   offers: OffersType;
 };
 
-function OffersContainer({ activeCityTab, offers }: OffersContainerPropsType): JSX.Element {
+function OffersList({ activeCityTab, offers }: OffersListPropsType): JSX.Element {
   const [selectedCardId, setSelectedCardId] = useState<number>(0);
 
   return (
@@ -38,4 +38,4 @@ function OffersContainer({ activeCityTab, offers }: OffersContainerPropsType): J
   );
 }
 
-export default OffersContainer;
+export default OffersList;

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import CityTabs from '../city-tabs/city-tabs';
 import { CityTabType } from '../../types/city-tab';
 import MainEmpty from '../main-empty/main-empty';
-import OffersContainer from '../offers-container/offers-container';
+import OffersList from '../offers-list/offers-list';
 import { setCityTab } from '../../store/offers/action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
@@ -18,7 +18,7 @@ function MainPage(): JSX.Element {
   return (
     <main className={clsx('page__main', 'page__main--index', { 'page__main--index-empty': offers.length === 0 })}>
       <CityTabs activeCityTab={activeCityTab} onCityTabChange={onCityTabChange} />
-      {offers.length === 0 ? <MainEmpty /> : <OffersContainer activeCityTab={activeCityTab} offers={offers} />}
+      {offers.length === 0 ? <MainEmpty /> : <OffersList activeCityTab={activeCityTab} offers={offers} />}
     </main>
   );
 }
