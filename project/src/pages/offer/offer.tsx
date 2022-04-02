@@ -7,12 +7,23 @@ import ReviewsForm from '../reviews-form/reviews-form';
 import { OfferHost } from '../offer-host/offer-host';
 import OffersNearby from '../offers-nearby/offers-nearby';
 import FavoriteButton from '../favorite-button/favorite-button';
+import { useEffect } from 'react';
+import { fetchOfferData } from '../../store/offer-item/api-actions';
+import { useParams } from 'react-router-dom';
 
 function Offer(): JSX.Element {
   const offer = useAppSelector((state) => state.offerItem);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const offersNearby = useAppSelector((state) => state.offersNearby);
   const reviews = useAppSelector((state) => state.reviews);
+  const params = useParams();
+  const id = +(params?.id || 0);
+
+  useEffect(() => {
+    if (!offer || offer.id !== id) {
+      fetchOfferData(id);
+    }
+  }, [id, offer, offersNearby, reviews]);
 
   const isUserAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 
@@ -27,8 +38,8 @@ function Offer(): JSX.Element {
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">
-            {offer.images.map((image, id) => {
-              const keyValue = `${id}-${image}`;
+            {offer.images.map((image, imageId) => {
+              const keyValue = `${imageId}-${image}`;
               return (
                 <div key={keyValue} className="property__image-wrapper">
                   <img className="property__image" src={image} alt="Studio" />
@@ -69,8 +80,8 @@ function Offer(): JSX.Element {
             <div className="property__inside">
               <h2 className="property__inside-title">What&apos;s inside</h2>
               <ul className="property__inside-list">
-                {offer.goods.map((feature, id) => {
-                  const keyValue = `${id}-${feature}`;
+                {offer.goods.map((feature, goodId) => {
+                  const keyValue = `${goodId}-${feature}`;
                   return (
                     <li key={keyValue} className="property__inside-item">
                       {feature}

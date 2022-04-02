@@ -62,8 +62,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadFavoriteOffers, (state, action) => {
       state.favoriteOffers = action.payload;
-      // eslint-disable-next-line no-console
-      console.log(loadFavoriteOffers);
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

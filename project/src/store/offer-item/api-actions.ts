@@ -27,7 +27,7 @@ export const fetchOffersNearbyAction = createAsyncThunk('data/fetchOffersNearby'
   }
 });
 
-export const fetchCommentsAction = createAsyncThunk('data/fetchCommentsAction', async (offerId: number) => {
+export const fetchReviewsAction = createAsyncThunk('data/fetchReviewsAction', async (offerId: number) => {
   try {
     const { data } = await api.get<ReviewsType>(`/comments/${offerId}`);
     store.dispatch(loadReviews(data));
@@ -46,3 +46,17 @@ export const fetchNewCommentAction = createAsyncThunk('data/newCommentAction', a
     store.dispatch(setNewReviewSendStatus(NewReviewSendStatus.Error));
   }
 });
+
+export const fetchOfferData = (id?: number) => {
+  if (!id) {
+    id = store.getState().offerItem?.id;
+
+    if (typeof id === 'undefined') {
+      return;
+    }
+  }
+
+  store.dispatch(fetchOfferItemAction(id));
+  store.dispatch(fetchReviewsAction(id));
+  store.dispatch(fetchOffersNearbyAction(id));
+};

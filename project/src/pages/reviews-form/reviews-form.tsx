@@ -1,4 +1,4 @@
-import { fetchCommentsAction, fetchNewCommentAction } from '../../store/offer-item/api-actions';
+import { fetchReviewsAction, fetchNewCommentAction } from '../../store/offer-item/api-actions';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NewReviewSendStatus, ratingValues } from '../../const';
@@ -33,7 +33,7 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
 
     if (newReviewSendStatus === NewReviewSendStatus.Success) {
       resetForm();
-      dispatch(fetchCommentsAction(offerId));
+      dispatch(fetchReviewsAction(offerId));
     }
 
     setFormActiveStatus(true);

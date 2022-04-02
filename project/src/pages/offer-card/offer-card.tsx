@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchOfferItemAction, fetchOffersNearbyAction, fetchCommentsAction } from '../../store/offer-item/api-actions';
+import { fetchOfferItemAction, fetchOffersNearbyAction, fetchReviewsAction } from '../../store/offer-item/api-actions';
 import { OfferType } from '../../types/offers';
 import FavoriteButton from '../favorite-button/favorite-button';
 
@@ -17,7 +17,7 @@ function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
   const handleTitleClick = () => {
     dispatch(fetchOfferItemAction(offer.id));
     dispatch(fetchOffersNearbyAction(offer.id));
-    dispatch(fetchCommentsAction(offer.id));
+    dispatch(fetchReviewsAction(offer.id));
   };
 
   return (

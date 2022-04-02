@@ -4,6 +4,7 @@ import { APIRoute } from '../../const';
 import { errorHandle } from '../../services/error-handle';
 import { FavoriteOfferStatusData } from '../../types/favorite';
 import { OffersType } from '../../types/offers';
+import { fetchOfferData } from '../offer-item/api-actions';
 import { fetchOfferAction } from '../offers/api-actions';
 import { loadFavoriteOffers } from './action';
 
@@ -21,6 +22,7 @@ export const fetchUpdateFavoriteAction = createAsyncThunk('favorite/fetchUpdateF
     await api.post(`/favorite/${offerId}/${status}`);
     store.dispatch(fetchOfferAction());
     store.dispatch(fetchFavoriteOffersAction());
+    fetchOfferData();
   } catch (error) {
     errorHandle(error);
   }
