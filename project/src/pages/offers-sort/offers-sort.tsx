@@ -1,10 +1,10 @@
-/* eslint-disable no-console */
 import { offersSortTypes, OffersSortType, DEFAULT_OFFERS_SORT_TYPE } from '../../const';
 import { OffersSortTypeKey } from '../../types/offers-sort';
 import { setOffers, setOffersSortType } from '../../store/offers/action';
 import { sortOffersByType } from '../../utils/offers-sort';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import React from 'react';
 
 function OffersSort(): JSX.Element {
   const offers = useAppSelector((state) => state.filteredOffers);
@@ -54,4 +54,4 @@ function OffersSort(): JSX.Element {
   );
 }
 
-export default OffersSort;
+export default React.memo(OffersSort);
