@@ -1,7 +1,7 @@
 import { AppRoute } from '../../const';
 import { AuthorizationStatus } from '../../const';
 import { BrowserRouter } from 'react-router-dom';
-import Favorites from '../../pages/favorites/favorites';
+import Favorite from '../../pages/favorite/favorite';
 import LoginPage from '../../pages/login-page/login-page';
 import Loading from '../loading/loading';
 import MainPage from '../../pages/main-page/main-page';
@@ -30,7 +30,7 @@ function App(): JSX.Element {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute>
-              <Favorites />
+              <Favorite />
             </PrivateRoute>
           }
         />

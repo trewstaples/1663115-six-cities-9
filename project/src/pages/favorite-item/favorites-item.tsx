@@ -1,13 +1,13 @@
 import { CityTabType } from '../../types/city-tab';
 import { OffersType } from '../../types/offers';
-import FavoritesCard from '../favorites-card/favorites-card';
+import FavoriteCard from '../favorite-card/favorite-card';
 
 type FavoritesItemPropsType = {
   cityTab: CityTabType;
   offers: OffersType;
 };
 
-function FavoritesItem({ cityTab, offers }: FavoritesItemPropsType): JSX.Element {
+function FavoriteItem({ cityTab, offers }: FavoritesItemPropsType): JSX.Element {
   const offersByCity = offers.filter((offer) => offer.city.name === cityTab);
   return (
     <>
@@ -20,11 +20,11 @@ function FavoritesItem({ cityTab, offers }: FavoritesItemPropsType): JSX.Element
       </div>
       <div className="favorites__places">
         {offersByCity.map((offerByCity) => (
-          <FavoritesCard offer={offerByCity} key={offerByCity.id} />
+          <FavoriteCard offer={offerByCity} key={offerByCity.id} />
         ))}
       </div>
     </>
   );
 }
 
-export default FavoritesItem;
+export default FavoriteItem;

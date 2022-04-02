@@ -2,9 +2,9 @@ import Header from '../../components/header/header';
 import { cityTabs } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { CityTabType } from '../../types/city-tab';
-import FavoritesItem from '../favorites-item/favorites-item';
+import FavoriteItem from '../favorite-item/favorites-item';
 
-function Favorites(): JSX.Element {
+function Favorite(): JSX.Element {
   const offers = useAppSelector((state) => state.favoriteOffers);
   return (
     <div className="page">
@@ -17,7 +17,7 @@ function Favorites(): JSX.Element {
             <ul className="favorites__list">
               {cityTabs.map((cityTab) => (
                 <li className="favorites__locations-items" key={cityTab}>
-                  <FavoritesItem cityTab={cityTab as CityTabType} offers={offers} />
+                  <FavoriteItem cityTab={cityTab as CityTabType} offers={offers} />
                 </li>
               ))}
             </ul>
@@ -33,4 +33,4 @@ function Favorites(): JSX.Element {
   );
 }
 
-export default Favorites;
+export default Favorite;

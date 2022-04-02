@@ -7,8 +7,9 @@ import { AuthorizationStatus, DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFA
 import { OffersType, OfferType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
 import { loadComments, loadOfferItem, loadOffersNearby, setNewReviewSendStatus } from './offer-item/action';
-import { loadOffers, setCityTab, setOffersSortType, setOffers, loadFavoriteOffers } from './offers/action';
+import { loadOffers, setCityTab, setOffersSortType, setOffers } from './offers/action';
 import { requireAuthorization, setError } from './user/action';
+import { loadFavoriteOffers } from './favorites/action';
 
 type InitialStateType = {
   authorizationStatus: AuthorizationStatusType;
@@ -61,6 +62,8 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadFavoriteOffers, (state, action) => {
       state.favoriteOffers = action.payload;
+      // eslint-disable-next-line no-console
+      console.log(loadFavoriteOffers);
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
