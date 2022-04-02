@@ -1,11 +1,11 @@
 import { AppRoute, NewReviewSendStatus } from '../../const';
 import { api, store } from '..';
-import { CommentsType } from '../../types/comments';
+import { ReviewsType } from '../../types/reviews';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
 import { OfferType, OffersType } from '../../types/offers';
 import { redirectToRoute } from '../user/action';
-import { loadOfferItem, loadOffersNearby, loadComments, setNewReviewSendStatus } from './action';
+import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './action';
 import { NewCommentType } from '../../types/new-comment';
 
 export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async (offerId: number) => {
@@ -29,8 +29,8 @@ export const fetchOffersNearbyAction = createAsyncThunk('data/fetchOffersNearby'
 
 export const fetchCommentsAction = createAsyncThunk('data/fetchCommentsAction', async (offerId: number) => {
   try {
-    const { data } = await api.get<CommentsType>(`/comments/${offerId}`);
-    store.dispatch(loadComments(data));
+    const { data } = await api.get<ReviewsType>(`/comments/${offerId}`);
+    store.dispatch(loadReviews(data));
   } catch (error) {
     errorHandle(error);
   }

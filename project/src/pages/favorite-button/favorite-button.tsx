@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { MouseEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,9 +9,12 @@ import { OfferType } from '../../types/offers';
 
 type FavoriteButtonPropsType = {
   offer: OfferType;
+  cssTag?: string;
+  iconWidth?: number;
+  iconHeight?: number;
 };
 
-function FavoriteButton({ offer }: FavoriteButtonPropsType): JSX.Element {
+function FavoriteButton({ offer, cssTag = 'place-card', iconWidth = 18, iconHeight = 19 }: FavoriteButtonPropsType): JSX.Element {
   const isUserAuthorized = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,15 +35,11 @@ function FavoriteButton({ offer }: FavoriteButtonPropsType): JSX.Element {
   };
 
   return (
-    <button
-      onClick={handleFavoriteButtonClick}
-      className={offer.isFavorite ? 'place-card__bookmark-button button place-card__bookmark-button--active button' : 'place-card__bookmark-button button'}
-      type="button"
-    >
-      <svg className="place-card__bookmark-icon" width="18" height="19">
+    <button onClick={handleFavoriteButtonClick} className={clsx(`${cssTag}__bookmark-button`, offer.isFavorite && `${cssTag}__bookmark-button--active`, 'button')} type="button">
+      <svg className={`${cssTag}__bookmark-icon`} width={iconWidth} height={iconHeight}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
-      <span className="visually-hidden">To bookmarks</span>
+      <span className="visually-hidden">{offer.isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
     </button>
   );
 }

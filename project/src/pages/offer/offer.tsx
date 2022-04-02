@@ -1,20 +1,26 @@
 import { AuthorizationStatus } from '../../const';
-import CommentsList from '../comments-list/comments-list';
+import OfferReviews from '../offer-reviews/offer-reviews';
 import Loading from '../../components/loading/loading';
 import Map from '../map/map';
 import { useAppSelector } from '../../hooks';
 import ReviewsForm from '../reviews-form/reviews-form';
-import OfferCard from '../offer-card/offer-card';
+import { OfferHost } from '../offer-host/offer-host';
+import OffersNearby from '../offers-nearby/offers-nearby';
+import FavoriteButton from '../favorite-button/favorite-button';
 
 function Offer(): JSX.Element {
   const offer = useAppSelector((state) => state.offerItem);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const offersNearby = useAppSelector((state) => state.offersNearby);
-  const comments = useAppSelector((state) => state.comments);
+  const reviews = useAppSelector((state) => state.reviews);
+
+  const isUserAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 
   if (!offer) {
     return <Loading></Loading>;
   }
+
+  const reviewsForm = isUserAuthorized ? <ReviewsForm offerId={offer.id} /> : undefined;
 
   return (
     <main className="page__main page__main--property">
@@ -42,12 +48,7 @@ function Offer(): JSX.Element {
             )}
             <div className="property__name-wrapper">
               <h1 className="property__name">{offer.title}</h1>
-              <button className="property__bookmark-button button" type="button">
-                <svg className="property__bookmark-icon" width="31" height="33">
-                  <use xlinkHref="#icon-bookmark"></use>
-                </svg>
-                <span className="visually-hidden">To bookmarks</span>
-              </button>
+              <FavoriteButton offer={offer} cssTag={'property'} iconWidth={31} iconHeight={33} />
             </div>
             <div className="property__rating rating">
               <div className="property__stars rating__stars">
@@ -78,23 +79,8 @@ function Offer(): JSX.Element {
                 })}
               </ul>
             </div>
-            <div className="property__host">
-              <h2 className="property__host-title">Meet the host</h2>
-              <div className="property__host-user user">
-                <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                  <img className="property__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
-                </div>
-                <span className="property__user-name">{offer.host.name}</span>
-                {offer.host.isPro ? <span className="property__user-status">Pro</span> : ''}
-              </div>
-              <div className="property__description">
-                <p className="property__text">{offer.description}</p>
-              </div>
-            </div>
-            <section className="property__reviews reviews">
-              {comments ? <CommentsList comments={comments} /> : ''}
-              {authorizationStatus === AuthorizationStatus.Auth ? <ReviewsForm offerId={offer.id} /> : ''}
-            </section>
+            <OfferHost offer={offer} />
+            <OfferReviews reviews={reviews} reviewsForm={reviewsForm} />
           </div>
         </div>
         <section className="property__map map">
@@ -102,14 +88,7 @@ function Offer(): JSX.Element {
         </section>
       </section>
       <div className="container">
-        <section className="near-places places">
-          <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <div className="near-places__list places__list">
-            {offersNearby.map((offerNearby) => (
-              <OfferCard offer={offerNearby} key={offerNearby.id} />
-            ))}
-          </div>
-        </section>
+        <OffersNearby offersNearby={offersNearby} />
       </div>
     </main>
   );

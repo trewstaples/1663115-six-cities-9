@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { setNewReviewSendStatus } from '../../store/offer-item/action';
+import React from 'react';
 
 enum ReviewLimit {
   RatingMinValue = 1,
@@ -84,23 +85,23 @@ function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
     setRating(Number(evt.target.value));
   };
 
+  const ratingTemplate = ratingValues.map((ratingValue) => (
+    <React.Fragment key={`${ratingValue.value}-rating`}>
+      <input onChange={handleRatingChange} className="form__rating-input visually-hidden" name="rating" value={ratingValue.value} id={`${ratingValue.value} stars`} type="radio" />
+      <label htmlFor={`${ratingValue.value} stars`} className="reviews__rating-label form__rating-label" title={ratingValue.title}>
+        <svg className="form__star-image" width="37" height="33">
+          <use xlinkHref="#icon-star"></use>
+        </svg>
+      </label>
+    </React.Fragment>
+  ));
+
   return (
     <form ref={formRef} onSubmit={handleReviewFormSubmit} className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
-      <div className="reviews__rating-form form__rating">
-        {ratingValues.map((ratingValue) => (
-          <>
-            <input onChange={handleRatingChange} className="form__rating-input visually-hidden" name="rating" value={ratingValue.value} id={`${ratingValue.value} stars`} type="radio" />
-            <label htmlFor={`${ratingValue.value} stars`} className="reviews__rating-label form__rating-label" title={ratingValue.title}>
-              <svg className="form__star-image" width="37" height="33">
-                <use xlinkHref="#icon-star"></use>
-              </svg>
-            </label>
-          </>
-        ))}
-      </div>
+      <div className="reviews__rating-form form__rating">{ratingTemplate}</div>
       <textarea onChange={handleCommentChange} className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">

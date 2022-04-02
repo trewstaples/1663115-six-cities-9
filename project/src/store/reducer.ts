@@ -1,12 +1,12 @@
 import { AuthorizationStatusType } from '../types/auth';
 import { CityType } from '../types/city';
 import { CityTabType } from '../types/city-tab';
-import { CommentsType } from '../types/comments';
+import { ReviewsType } from '../types/reviews';
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE, NewReviewSendStatus } from '../const';
 import { OffersType, OfferType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
-import { loadComments, loadOfferItem, loadOffersNearby, setNewReviewSendStatus } from './offer-item/action';
+import { loadReviews, loadOfferItem, loadOffersNearby, setNewReviewSendStatus } from './offer-item/action';
 import { loadOffers, setCityTab, setOffersSortType, setOffers } from './offers/action';
 import { requireAuthorization, setError } from './user/action';
 import { loadFavoriteOffers } from './favorites/action';
@@ -14,7 +14,7 @@ import { loadFavoriteOffers } from './favorites/action';
 type InitialStateType = {
   authorizationStatus: AuthorizationStatusType;
   activeCity: CityType;
-  comments: CommentsType;
+  reviews: ReviewsType;
   favoriteOffers: OffersType;
   offerItem: OfferType | null;
   offersNearby: OffersType;
@@ -30,7 +30,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
   authorizationStatus: AuthorizationStatus.NoAuth,
   activeCity: DEFAULT_ACTIVE_CITY,
-  comments: [],
+  reviews: [],
   favoriteOffers: [],
   offerItem: null,
   offersNearby: [],
@@ -57,8 +57,8 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(loadOffersNearby, (state, action) => {
       state.offersNearby = action.payload;
     })
-    .addCase(loadComments, (state, action) => {
-      state.comments = action.payload;
+    .addCase(loadReviews, (state, action) => {
+      state.reviews = action.payload;
     })
     .addCase(loadFavoriteOffers, (state, action) => {
       state.favoriteOffers = action.payload;
