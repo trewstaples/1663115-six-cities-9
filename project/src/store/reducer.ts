@@ -7,13 +7,14 @@ import { AuthorizationStatus, DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFA
 import { OffersType, OfferType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
 import { loadComments, loadOfferItem, loadOffersNearby, setNewReviewSendStatus } from './offer-item/action';
-import { loadOffers, setCityTab, setOffersSortType, setOffers } from './offers/action';
+import { loadOffers, setCityTab, setOffersSortType, setOffers, loadFavoriteOffers } from './offers/action';
 import { requireAuthorization, setError } from './user/action';
 
 type InitialStateType = {
   authorizationStatus: AuthorizationStatusType;
   activeCity: CityType;
   comments: CommentsType;
+  favoriteOffers: OffersType;
   offerItem: OfferType | null;
   offersNearby: OffersType;
   activeCityTab: CityTabType;
@@ -29,6 +30,7 @@ const initialState: InitialStateType = {
   authorizationStatus: AuthorizationStatus.NoAuth,
   activeCity: DEFAULT_ACTIVE_CITY,
   comments: [],
+  favoriteOffers: [],
   offerItem: null,
   offersNearby: [],
   activeCityTab: DEFAULT_ACTIVE_CITY_TAB,
@@ -56,6 +58,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadComments, (state, action) => {
       state.comments = action.payload;
+    })
+    .addCase(loadFavoriteOffers, (state, action) => {
+      state.favoriteOffers = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

@@ -10,3 +10,5 @@ export const setOffersSortType = createAction<{ offersSortType: OffersSortTypeKe
 export const setOffers = createAction<{ sortedOffers: OffersType }>('offers/ setOffers ');
 
 export const setCityTab = createAction<{ cityTab: CityTabType }>('city/setCityTab');
+
+export const loadFavoriteOffers = createAction<OffersType>('data/loadFavoritesOffers');

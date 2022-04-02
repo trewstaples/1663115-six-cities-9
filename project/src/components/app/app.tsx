@@ -15,7 +15,7 @@ import { useAppSelector } from '../../hooks';
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
 
 function App(): JSX.Element {
-  const { authorizationStatus, isDataLoaded, offers } = useAppSelector((state) => state);
+  const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
 
   if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
     return <Loading />;
@@ -30,7 +30,7 @@ function App(): JSX.Element {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute>
-              <Favorites offers={offers} />
+              <Favorites />
             </PrivateRoute>
           }
         />
