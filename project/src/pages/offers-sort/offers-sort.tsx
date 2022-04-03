@@ -23,7 +23,7 @@ function OffersSort(): JSX.Element {
     }
   }, [activeSortType, offers]);
 
-  const onSortTypeChange = (offersSortType: OffersSortTypeKey) => {
+  const handleSortTypeChange = (offersSortType: OffersSortTypeKey) => {
     const offersForSort = offersSortType === OffersSortType.Popular ? defaultOffers : offers;
     const sortedOffers = sortOffersByType(offersSortType, offersForSort);
 
@@ -46,7 +46,7 @@ function OffersSort(): JSX.Element {
           <li
             className={clsx('places__option', { 'places__option--active': offersSortType === activeSortType })}
             tabIndex={0}
-            onClick={() => onSortTypeChange(offersSortType as OffersSortTypeKey)}
+            onClick={() => handleSortTypeChange(offersSortType as OffersSortTypeKey)}
             key={offersSortType}
           >
             {OffersSortType[offersSortType as OffersSortTypeKey]}
