@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 import { getIsUserAuthorized } from '../../store/user-data/selector';
 import { getOffer, getOffersNearby, getReviews } from '../../store/offer-item-data/selector';
 
-function Offer(): JSX.Element {
+function OfferPage(): JSX.Element {
   const isUserAuthorized = useAppSelector(getIsUserAuthorized);
   const reviews = useAppSelector(getReviews);
   const offer = useAppSelector(getOffer);
@@ -107,4 +107,4 @@ function Offer(): JSX.Element {
   );
 }
 
-export default Offer;
+export default OfferPage;

@@ -1,12 +1,12 @@
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Favorites from '../../pages/favorites/favorites';
+import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import Layout from '../layout/layout';
 import Loading from '../loading/loading';
 import LoginPage from '../../pages/login-page/login-page';
 import MainPage from '../../pages/main-page/main-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import Offer from '../../pages/offer/offer';
+import OfferPage from '../../pages/offer-page/offer-page';
 import PrivateRoute from '../private-route/private-route';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
@@ -46,11 +46,11 @@ function App(): JSX.Element {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute>
-              <Favorites />
+              <FavoritesPage />
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<Offer />} />
+        <Route path={AppRoute.Offer} element={<OfferPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

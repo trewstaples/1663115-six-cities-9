@@ -5,7 +5,7 @@ import FavoriteItem from '../favorite-item/favorite-item';
 import { useAppSelector } from '../../hooks';
 import { getFavoriteOffers } from '../../store/favorites-data/selector';
 
-function Favorites(): JSX.Element {
+function FavoritesPage(): JSX.Element {
   const offers = useAppSelector(getFavoriteOffers);
 
   if (!offers.length) {
@@ -30,4 +30,4 @@ function Favorites(): JSX.Element {
   );
 }
 
-export default Favorites;
+export default FavoritesPage;
