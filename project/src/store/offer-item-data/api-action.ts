@@ -6,15 +6,15 @@ import { errorHandle } from '../../services/error-handle';
 import { OfferType, OffersType } from '../../types/offers';
 import { NewCommentType } from '../../types/new-comment';
 import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './offer-item-data';
-import { redirectToRoute } from '../user-data/user-process';
+import { redirectToRoute } from '../user-data/action';
 
 export const fetchOfferItemAction = createAsyncThunk('offerItem/fetchOfferItem', async (offerId: number) => {
   try {
     const { data } = await api.get<OfferType>(`/hotels/${offerId}`);
     store.dispatch(loadOfferItem(data));
   } catch (error) {
-    store.dispatch(redirectToRoute(AppRoute.NotFound));
     errorHandle(error);
+    store.dispatch(redirectToRoute(AppRoute.NotFound));
   }
 });
 

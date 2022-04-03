@@ -15,8 +15,6 @@ import { useEffect } from 'react';
 import { logoutAction } from '../../store/user-data/api-action';
 import { getAuthorizationStatus } from '../../store/user-data/selector';
 import { getIsDataLoaded } from '../../store/offers-data/selector';
-import browserHistory from '../../services/browser-history';
-import HistoryRouter from '../history-router';
 
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
 
@@ -40,24 +38,22 @@ function App(): JSX.Element {
   }
 
   return (
-    <HistoryRouter history={browserHistory}>
-      <Routes>
-        <Route path={AppRoute.Main} element={<Layout />}>
-          <Route path={AppRoute.Main} element={<MainPage />} />
-          <Route path={AppRoute.Login} element={<LoginPage />} />
-          <Route
-            path={AppRoute.Favorites}
-            element={
-              <PrivateRoute>
-                <Favorites />
-              </PrivateRoute>
-            }
-          />
-          <Route path={AppRoute.Offer} element={<Offer />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </HistoryRouter>
+    <Routes>
+      <Route path={AppRoute.Main} element={<Layout />}>
+        <Route path={AppRoute.Main} element={<MainPage />} />
+        <Route path={AppRoute.Login} element={<LoginPage />} />
+        <Route
+          path={AppRoute.Favorites}
+          element={
+            <PrivateRoute>
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
+        <Route path={AppRoute.Offer} element={<Offer />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
 
