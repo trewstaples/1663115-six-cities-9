@@ -13,7 +13,7 @@ import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useEffect } from 'react';
-import { logoutAction } from '../../store/user-data/api-actions';
+import { logoutAction } from '../../store/user-data/api-action';
 
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
 

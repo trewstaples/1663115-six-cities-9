@@ -1,4 +1,4 @@
-import { fetchReviewsAction, fetchNewCommentAction } from '../../store/offer-item-data/api-actions';
+import { fetchReviewsAction, fetchNewCommentAction } from '../../store/offer-item-data/api-action';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NewReviewSendStatus, ratingValues } from '../../const';

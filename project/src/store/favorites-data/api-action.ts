@@ -4,8 +4,8 @@ import { APIRoute } from '../../const';
 import { errorHandle } from '../../services/error-handle';
 import { FavoriteOfferStatusData } from '../../types/favorite';
 import { OffersType } from '../../types/offers';
-import { fetchOfferData } from '../offer-item-data/api-actions';
-import { fetchOfferAction } from '../offers-data/api-actions';
+import { fetchOfferData } from '../offer-item-data/api-action';
+import { fetchOfferAction } from '../offers-data/api-action';
 import { loadFavoriteOffers } from './favorites-data';
 
 export const fetchFavoriteOffersAction = createAsyncThunk('favorite/fetchFavoriteOffers', async () => {

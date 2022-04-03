@@ -1,6 +1,6 @@
 import { AuthData } from '../../types/auth';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { loginAction } from '../../store/user-data/api-actions';
+import { loginAction } from '../../store/user-data/api-action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';

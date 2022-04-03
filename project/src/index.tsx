@@ -1,7 +1,7 @@
 import App from './components/app/app';
-import { checkAuthAction } from './store/user-data/api-actions';
+import { checkAuthAction } from './store/user-data/api-action';
 import ErrorMessage from './components/error-message/error-message';
-import { fetchOfferAction } from './store/offers-data/api-actions';
+import { fetchOfferAction } from './store/offers-data/api-action';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';

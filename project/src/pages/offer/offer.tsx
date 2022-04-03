@@ -8,7 +8,7 @@ import { OfferHost } from '../offer-host/offer-host';
 import OffersNearby from '../offers-nearby/offers-nearby';
 import FavoriteButton from '../favorite-button/favorite-button';
 import { useEffect, useMemo } from 'react';
-import { fetchOfferData } from '../../store/offer-item-data/api-actions';
+import { fetchOfferData } from '../../store/offer-item-data/api-action';
 import { useParams } from 'react-router-dom';
 
 function Offer(): JSX.Element {
