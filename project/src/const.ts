@@ -1,3 +1,7 @@
+export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+
+export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+
 export enum AppRoute {
   Favorites = '/favorites',
   FavoritesEmpty = '/favorites-empty',
@@ -22,10 +26,6 @@ export enum APIRoute {
   Logout = '/logout',
 }
 
-export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
-
-export const URL_MARKER_CURRENT = 'img/pin-active.svg';
-
 export enum City {
   Paris = 'Paris',
   Cologne = 'Cologne',
@@ -35,19 +35,6 @@ export enum City {
   Dusseldorf = 'Dusseldorf',
 }
 
-export const cityTabs = Object.keys(City);
-
-export const DEFAULT_ACTIVE_CITY_TAB = City.Paris;
-
-export const DEFAULT_ACTIVE_CITY = {
-  location: {
-    latitude: 48.85661,
-    longitude: 2.351499,
-    zoom: 13,
-  },
-  name: 'Paris',
-};
-
 export enum OffersSortType {
   Popular = 'Popular',
   PriceLowToHigh = 'Price: low to high',
@@ -55,16 +42,10 @@ export enum OffersSortType {
   TopRatedFirst = 'Top rated first',
 }
 
-export const offersSortTypes = Object.keys(OffersSortType);
-
-export const DEFAULT_OFFERS_SORT_TYPE = OffersSortType.Popular;
-
-export const TIMEOUT_SHOW_ERROR = 2000;
-
-export enum HTTP_CODE {
-  BAD_REQUEST = 400,
-  UNAUTHORIZED = 401,
-  NOT_FOUND = 404,
+export enum HttpCode {
+  BadRequest = 400,
+  Unathorized = 401,
+  NotFound = 404,
 }
 
 export enum DateFormat {
@@ -78,6 +59,32 @@ export enum NewReviewSendStatus {
   Error = 'Error',
   Success = 'Success',
 }
+
+export enum NameSpace {
+  favorites = 'FAVORITES',
+  offerItem = 'OFFER_ITEM',
+  offers = 'OFFERS',
+  user = 'USER',
+}
+
+export const DEFAULT_ACTIVE_CITY_TAB = City.Paris;
+
+export const cityTabs = Object.keys(City);
+
+export const offersSortTypes = Object.keys(OffersSortType);
+
+export const DEFAULT_OFFERS_SORT_TYPE = OffersSortType.Popular;
+
+export const TIMEOUT_SHOW_ERROR = 2000;
+
+export const DEFAULT_ACTIVE_CITY = {
+  location: {
+    latitude: 48.85661,
+    longitude: 2.351499,
+    zoom: 13,
+  },
+  name: 'Paris',
+};
 
 export const ratingValues = [
   {
@@ -101,10 +108,3 @@ export const ratingValues = [
     title: 'terribly',
   },
 ];
-
-export enum NameSpace {
-  favorites = 'FAVORITES',
-  offerItem = 'OFFER_ITEM',
-  offers = 'OFFERS',
-  user = 'USER',
-}

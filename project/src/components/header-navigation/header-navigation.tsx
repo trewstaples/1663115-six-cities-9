@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { UserType } from '../../types/state';
 
-type HeaderNavPropsType = {
+type HeaderNavigationPropsType = {
   isUserAuthorized: boolean;
   user: UserType;
 };
 
-function HeaderNav({ isUserAuthorized, user }: HeaderNavPropsType): JSX.Element {
+function HeaderNavigation({ isUserAuthorized, user }: HeaderNavigationPropsType): JSX.Element {
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -29,4 +29,4 @@ function HeaderNav({ isUserAuthorized, user }: HeaderNavPropsType): JSX.Element 
   );
 }
 
-export default HeaderNav;
+export default HeaderNavigation;

@@ -2,7 +2,7 @@ import request from 'axios';
 import { store } from '../store';
 import { clearErrorAction } from '../store/user-data/api-action';
 import { ErrorType } from '../types/error';
-import { HTTP_CODE } from '../const';
+import { HttpCode } from '../const';
 import { setError } from '../store/user-data/user-process';
 
 export const errorHandle = (error: ErrorType): void => {
@@ -19,13 +19,13 @@ export const errorHandle = (error: ErrorType): void => {
 
   if (response) {
     switch (response.status) {
-      case HTTP_CODE.BAD_REQUEST:
+      case HttpCode.BadRequest:
         handleError(response.data.error);
         break;
-      case HTTP_CODE.UNAUTHORIZED:
+      case HttpCode.Unathorized:
         handleError(response.data.error);
         break;
-      case HTTP_CODE.NOT_FOUND:
+      case HttpCode.NotFound:
         handleError(response.data.error);
         break;
     }

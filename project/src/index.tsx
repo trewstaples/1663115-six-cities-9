@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from './store';
-import HistoryRouter from './components/history-router';
+import HistoryRouter from './components/history-router/history-router';
 import browserHistory from './services/browser-history';
 
 store.dispatch(fetchOfferAction());
@@ -24,6 +24,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-//чекнуть HistoryRouter
-
-//Пройтись по критериям, отрефакторить код, вынести повторяющияйся код в функции
+//export type ReviewsType = ReviewType[]; - Массивы названы существительными во множественном числе или с использованием венгерской нотации (указанием типа в названии)

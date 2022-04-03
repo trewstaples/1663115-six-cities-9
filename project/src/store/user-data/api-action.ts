@@ -4,7 +4,6 @@ import { errorHandle } from '../../services/error-handle';
 import { store, api } from '..';
 import { saveToken, dropToken } from '../../services/token';
 import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus } from '../../const';
-// import { UserDataType } from '../../types/user-data';
 import { setError, requireAuthorization, setUser, resetUser } from './user-process';
 
 export const clearErrorAction = createAsyncThunk('user/clearError', () => {

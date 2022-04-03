@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../../hooks';
 import { getIsUserAuthorized, getUser } from '../../store/user-data/selector';
-import HeaderNav from '../header-nav/header-nav';
+import HeaderNavigation from '../header-navigation/header-navigation';
 
 type HeaderPropsType = {
   isLoginNavState?: boolean;
@@ -20,7 +20,7 @@ function Header({ isLoginNavState }: HeaderPropsType): JSX.Element {
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"></img>
             </a>
           </div>
-          {isLoginNavState && <HeaderNav isUserAuthorized={isUserAuthorized} user={user} />}
+          {isLoginNavState && <HeaderNavigation isUserAuthorized={isUserAuthorized} user={user} />}
         </div>
       </div>
     </header>
