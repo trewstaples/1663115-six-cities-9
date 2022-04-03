@@ -3,9 +3,10 @@ import { CityTabType } from '../../types/city-tab';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoriteItem from '../favorite-item/favorite-item';
 import { useAppSelector } from '../../hooks';
+import { getFavoriteOffers } from '../../store/favorites-data/selector';
 
 function Favorites(): JSX.Element {
-  const offers = useAppSelector(({ FAVORITES }) => FAVORITES.favoriteOffers);
+  const offers = useAppSelector(getFavoriteOffers);
 
   if (!offers.length) {
     return <FavoritesEmpty />;

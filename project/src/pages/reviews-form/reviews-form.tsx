@@ -5,6 +5,7 @@ import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
 import React from 'react';
 import { setNewReviewSendStatus } from '../../store/offer-item-data/offer-item-data';
+import { getNewReviewSendStatus } from '../../store/offer-item-data/selector';
 
 enum ReviewLimit {
   RatingMinValue = 1,
@@ -17,7 +18,7 @@ type ReviewsFormPropsType = {
 };
 
 function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
-  const newReviewSendStatus = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.newReviewSendStatus);
+  const newReviewSendStatus = useAppSelector(getNewReviewSendStatus);
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);

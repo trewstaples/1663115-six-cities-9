@@ -7,12 +7,13 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import React from 'react';
 import clsx from 'clsx';
 import { setOffers, setOffersSortType } from '../../store/offers-data/offers-data';
+import { getFilteredOffers, getActiveSortType } from '../../store/offers-data/selector';
 
 function OffersSort(): JSX.Element {
   const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
-  const offers = useAppSelector(({ OFFERS }) => OFFERS.filteredOffers);
+  const offers = useAppSelector(getFilteredOffers);
   const [defaultOffers, setDefaultOffers] = useState(offers);
-  const activeSortType = useAppSelector(({ OFFERS }) => OFFERS.offersSortType);
+  const activeSortType = useAppSelector(getActiveSortType);
 
   const dispatch = useAppDispatch();
 

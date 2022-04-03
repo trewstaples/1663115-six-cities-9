@@ -5,10 +5,11 @@ import MainEmpty from '../main-empty/main-empty';
 import OffersList from '../offers-list/offers-list';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setCityTab } from '../../store/offers-data/offers-data';
+import { getActiveCityTab, getFilteredOffers } from '../../store/offers-data/selector';
 
 function MainPage(): JSX.Element {
-  const activeCityTab = useAppSelector(({ OFFERS }) => OFFERS.activeCityTab);
-  const offers = useAppSelector(({ OFFERS }) => OFFERS.filteredOffers);
+  const activeCityTab = useAppSelector(getActiveCityTab);
+  const offers = useAppSelector(getFilteredOffers);
 
   const dispatch = useAppDispatch();
   const onCityTabChange = (newCityTab: CityTabType) => () => {

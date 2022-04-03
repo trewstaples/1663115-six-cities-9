@@ -3,7 +3,8 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { loginAction } from '../../store/user-data/api-action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
+import { getIsUserAuthorized } from '../../store/user-data/selector';
 
 export const LOGIN_NAV_STATE = true;
 
@@ -15,11 +16,11 @@ export const PasswordValidity = {
 function LoginPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
+  const isUserAuthorized = useAppSelector(getIsUserAuthorized);
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  if (authorizationStatus === AuthorizationStatus.Auth) {
+  if (isUserAuthorized) {
     return <Navigate to={AppRoute.Main} />;
   }
 

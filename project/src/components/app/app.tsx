@@ -1,5 +1,4 @@
-import { AppRoute } from '../../const';
-import { AuthorizationStatus } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Favorites from '../../pages/favorites/favorites';
 import Layout from '../layout/layout';
@@ -14,12 +13,15 @@ import { Route } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useEffect } from 'react';
 import { logoutAction } from '../../store/user-data/api-action';
+import { getAuthorizationStatus } from '../../store/user-data/selector';
+import { getIsDataLoaded } from '../../store/offers-data/selector';
 
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
 
 function App(): JSX.Element {
-  const { authorizationStatus } = useAppSelector(({ USER }) => USER);
-  const { isDataLoaded } = useAppSelector(({ OFFERS }) => OFFERS);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isDataLoaded = useAppSelector(getIsDataLoaded);
+
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

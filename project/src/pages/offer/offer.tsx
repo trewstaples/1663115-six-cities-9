@@ -1,4 +1,3 @@
-import { AuthorizationStatus } from '../../const';
 import OfferReviews from '../offer-reviews/offer-reviews';
 import Loading from '../../components/loading/loading';
 import Map from '../map/map';
@@ -10,12 +9,15 @@ import FavoriteButton from '../favorite-button/favorite-button';
 import { useEffect, useMemo } from 'react';
 import { fetchOfferData } from '../../store/offer-item-data/api-action';
 import { useParams } from 'react-router-dom';
+import { getIsUserAuthorized } from '../../store/user-data/selector';
+import { getOffer, getOffersNearby, getReviews } from '../../store/offer-item-data/selector';
 
 function Offer(): JSX.Element {
-  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
-  const reviews = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.reviews);
-  const offer = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.offerItem);
-  const offersNearby = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.offersNearby);
+  const isUserAuthorized = useAppSelector(getIsUserAuthorized);
+  const reviews = useAppSelector(getReviews);
+  const offer = useAppSelector(getOffer);
+  const offersNearby = useAppSelector(getOffersNearby);
+
   const params = useParams();
   const id = +(params?.id || 0);
 
@@ -26,8 +28,6 @@ function Offer(): JSX.Element {
   }, [id, offer, offersNearby, reviews]);
 
   const mapOffers = useMemo(() => (!offer ? [] : [offer, ...offersNearby]), [offer, offersNearby]);
-
-  const isUserAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 
   if (!offer) {
     return <Loading></Loading>;

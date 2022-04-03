@@ -1,6 +1,6 @@
 import React from 'react';
-import { AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
+import { getIsUserAuthorized } from '../../store/user-data/selector';
 import HeaderNav from '../header-nav/header-nav';
 
 type HeaderPropsType = {
@@ -8,7 +8,8 @@ type HeaderPropsType = {
 };
 
 function Header({ isLoginNavState }: HeaderPropsType): JSX.Element {
-  const isUserAuthorized = useAppSelector(({ USER }) => USER.authorizationStatus === AuthorizationStatus.Auth);
+  const isUserAuthorized = useAppSelector(getIsUserAuthorized);
+
   return (
     <header className="header">
       <div className="container">
