@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from './store';
-import { BrowserRouter } from 'react-router-dom';
 
 store.dispatch(fetchOfferAction());
 store.dispatch(checkAuthAction());
@@ -15,13 +14,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ErrorMessage />
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
 
-//чекнуть HistoryRouter + добавить туда обновленный reducer
+//чекнуть HistoryRouter
+
 //Пройтись по критериям, отрефакторить код, вынести повторяющияйся код в функции
