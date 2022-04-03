@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchOfferItemAction, fetchOffersNearbyAction, fetchReviewsAction } from '../../store/offer-item/api-actions';
@@ -59,4 +60,4 @@ function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
   );
 }
 
-export default OfferCard;
+export default React.memo(OfferCard);
