@@ -1,6 +1,6 @@
 import { AppRoute } from '../../const';
 import clsx from 'clsx';
-import { Footer } from '../footer/footer';
+import Footer from '../footer/footer';
 import Header from '../header/header';
 import { Outlet, useLocation } from 'react-router-dom';
 

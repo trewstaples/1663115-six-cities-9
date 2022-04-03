@@ -9,10 +9,10 @@ type MouseOverType = (offerId: number) => void;
 
 type OfferCardPropsType = {
   offer: OfferType;
-  onMouseOver?: MouseOverType;
+  onMouseOverAndLeave?: MouseOverType;
 };
 
-function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
+function OfferCard({ offer, onMouseOverAndLeave }: OfferCardPropsType): JSX.Element {
   const dispatch = useDispatch();
 
   const handleTitleClick = () => {
@@ -22,7 +22,11 @@ function OfferCard({ offer, onMouseOver }: OfferCardPropsType): JSX.Element {
   };
 
   return (
-    <article className="cities__place-card place-card" onMouseOver={() => (onMouseOver instanceof Function ? onMouseOver(offer.id) : null)}>
+    <article
+      className="cities__place-card place-card"
+      onMouseOver={() => (onMouseOverAndLeave instanceof Function ? onMouseOverAndLeave(offer.id) : null)}
+      onMouseLeave={() => (onMouseOverAndLeave instanceof Function ? onMouseOverAndLeave(0) : null)}
+    >
       {offer.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>

@@ -16,4 +16,4 @@ function Footer({ additionalClassName }: FooterProps): JSX.Element {
   );
 }
 
-export { Footer };
+export default Footer;

@@ -24,7 +24,7 @@ function OffersList({ activeCityTab, offers }: OffersListPropsType): JSX.Element
           <OffersSort />
           <div className="cities__places-list places__list tabs__content">
             {offers.map((offer) => (
-              <OfferCard offer={offer} key={offer.id} onMouseOver={setSelectedCardId} />
+              <OfferCard offer={offer} key={offer.id} onMouseOverAndLeave={setSelectedCardId} />
             ))}
           </div>
         </section>
