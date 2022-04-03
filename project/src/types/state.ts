@@ -31,7 +31,16 @@ export type OffersDataType = {
   offersSortType: OffersSortTypeKey;
 };
 
+export type UserType = {
+  avatarUrl: string;
+  email: string;
+  id: number;
+  isPro: boolean;
+  name: string;
+};
+
 export type UserProcessType = {
   authorizationStatus: AuthorizationStatusType;
   error: string;
+  user: UserType;
 };

@@ -23,7 +23,6 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-//Добавить селекторы
 //добавить email (не забыть про NotFoundPage)
 //чекнуть HistoryRouter + добавить туда обновленный reducer
 //Упростить обработчик сортировки в onOffersSortTypeChange

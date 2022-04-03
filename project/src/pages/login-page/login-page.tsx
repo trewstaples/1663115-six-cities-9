@@ -40,7 +40,7 @@ function LoginPage(): JSX.Element {
 
     if (login !== null && password !== null) {
       onSubmit({
-        login: login,
+        email: login,
         password: password,
       });
     }

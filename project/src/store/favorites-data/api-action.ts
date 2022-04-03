@@ -8,7 +8,7 @@ import { fetchOfferData } from '../offer-item-data/api-action';
 import { fetchOfferAction } from '../offers-data/api-action';
 import { loadFavoriteOffers } from './favorites-data';
 
-export const fetchFavoriteOffersAction = createAsyncThunk('favorite/fetchFavoriteOffers', async () => {
+export const fetchFavoriteOffersAction = createAsyncThunk('favorites/fetchFavoriteOffers', async () => {
   try {
     const { data } = await api.get<OffersType>(APIRoute.Favorite);
     store.dispatch(loadFavoriteOffers(data));
@@ -17,7 +17,7 @@ export const fetchFavoriteOffersAction = createAsyncThunk('favorite/fetchFavorit
   }
 });
 
-export const fetchUpdateFavoriteAction = createAsyncThunk('favorite/fetchUpdateFavoriteAction', async ({ offerId, status }: FavoriteOfferStatusData) => {
+export const fetchUpdateFavoriteAction = createAsyncThunk('favorites/fetchUpdateFavoriteAction', async ({ offerId, status }: FavoriteOfferStatusData) => {
   try {
     await api.post(`/favorite/${offerId}/${status}`);
     store.dispatch(fetchOfferAction());

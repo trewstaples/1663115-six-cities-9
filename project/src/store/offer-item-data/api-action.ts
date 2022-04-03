@@ -4,12 +4,11 @@ import { ReviewsType } from '../../types/reviews';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
 import { OfferType, OffersType } from '../../types/offers';
-
 import { NewCommentType } from '../../types/new-comment';
 import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './offer-item-data';
 import { redirectToRoute } from '../user-data/user-process';
 
-export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async (offerId: number) => {
+export const fetchOfferItemAction = createAsyncThunk('offerItem/fetchOfferItem', async (offerId: number) => {
   try {
     const { data } = await api.get<OfferType>(`/hotels/${offerId}`);
     store.dispatch(loadOfferItem(data));
@@ -19,7 +18,7 @@ export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', asyn
   }
 });
 
-export const fetchOffersNearbyAction = createAsyncThunk('data/fetchOffersNearby', async (offerId: number) => {
+export const fetchOffersNearbyAction = createAsyncThunk('offerItem/fetchOffersNearby', async (offerId: number) => {
   try {
     const { data } = await api.get<OffersType>(`/hotels/${offerId}/nearby`);
     store.dispatch(loadOffersNearby(data));
@@ -28,7 +27,7 @@ export const fetchOffersNearbyAction = createAsyncThunk('data/fetchOffersNearby'
   }
 });
 
-export const fetchReviewsAction = createAsyncThunk('data/fetchReviewsAction', async (offerId: number) => {
+export const fetchReviewsAction = createAsyncThunk('offerItem/fetchReviewsAction', async (offerId: number) => {
   try {
     const { data } = await api.get<ReviewsType>(`/comments/${offerId}`);
     store.dispatch(loadReviews(data));
@@ -37,7 +36,7 @@ export const fetchReviewsAction = createAsyncThunk('data/fetchReviewsAction', as
   }
 });
 
-export const fetchNewCommentAction = createAsyncThunk('data/newCommentAction', async (newComment: NewCommentType) => {
+export const fetchNewCommentAction = createAsyncThunk('offerItem/newCommentAction', async (newComment: NewCommentType) => {
   try {
     const { offerId, comment, rating } = newComment;
     await api.post(`/comments/${offerId}`, { comment, rating });

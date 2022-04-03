@@ -6,7 +6,7 @@ import { errorHandle } from '../../services/error-handle';
 import { OffersType } from '../../types/offers';
 import { loadOffers } from './offers-data';
 
-export const fetchOfferAction = createAsyncThunk('data/fetchOffers', async () => {
+export const fetchOfferAction = createAsyncThunk('offers/fetchOffers', async () => {
   try {
     const { data } = await api.get<OffersType>(APIRoute.Offers);
     store.dispatch(loadOffers(data));
