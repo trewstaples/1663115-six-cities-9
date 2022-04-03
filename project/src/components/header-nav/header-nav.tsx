@@ -1,18 +1,11 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { logoutAction } from '../../store/user/api-actions';
 
 type HeaderNavPropsType = {
   isUserAuthorized: boolean;
 };
 
 function HeaderNav({ isUserAuthorized }: HeaderNavPropsType): JSX.Element {
-  const dispatch = useDispatch();
-  const handleLogoutClick = () => {
-    dispatch(logoutAction());
-  };
-
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -24,9 +17,9 @@ function HeaderNav({ isUserAuthorized }: HeaderNavPropsType): JSX.Element {
         </li>
         {isUserAuthorized && (
           <li className="header__nav-item">
-            <a onClick={handleLogoutClick} className="header__nav-link" href="/">
+            <Link className="header__nav-link" to={AppRoute.Logout}>
               <span className="header__signout">Sign out</span>
-            </a>
+            </Link>
           </li>
         )}
       </ul>
