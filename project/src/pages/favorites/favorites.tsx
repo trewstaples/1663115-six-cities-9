@@ -5,7 +5,7 @@ import FavoriteItem from '../favorite-item/favorite-item';
 import { useAppSelector } from '../../hooks';
 
 function Favorites(): JSX.Element {
-  const offers = useAppSelector((state) => state.favoriteOffers);
+  const offers = useAppSelector(({ FAVORITES }) => FAVORITES.favoriteOffers);
 
   if (!offers.length) {
     return <FavoritesEmpty />;

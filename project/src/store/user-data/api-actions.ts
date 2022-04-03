@@ -5,7 +5,7 @@ import { store, api } from '..';
 import { saveToken, dropToken } from '../../services/token';
 import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus } from '../../const';
 import { UserData } from '../../types/user-data';
-import { setError, requireAuthorization } from './action';
+import { setError, requireAuthorization } from './user-process';
 
 export const clearErrorAction = createAsyncThunk('game/clearError', () => {
   setTimeout(() => store.dispatch(setError('')), TIMEOUT_SHOW_ERROR);

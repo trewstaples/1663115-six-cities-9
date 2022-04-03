@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { errorHandle } from '../../services/error-handle';
 import { OffersType } from '../../types/offers';
-import { loadOffers } from './action';
+import { loadOffers } from './offers-data';
 
 export const fetchOfferAction = createAsyncThunk('data/fetchOffers', async () => {
   try {

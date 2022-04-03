@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { AuthorizationStatus, NameSpace } from '../../const';
+import { createAction, createSlice } from '@reduxjs/toolkit';
+import { AppRoute, AuthorizationStatus, NameSpace } from '../../const';
 import { UserProcessType } from '../../types/state';
 
 const initialState: UserProcessType = {
@@ -21,3 +21,5 @@ export const userProcess = createSlice({
 });
 
 export const { requireAuthorization, setError } = userProcess.actions;
+
+export const redirectToRoute = createAction<AppRoute>('user/redirectToRoute');

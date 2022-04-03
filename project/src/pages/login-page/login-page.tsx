@@ -15,7 +15,7 @@ export const PasswordValidity = {
 function LoginPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 

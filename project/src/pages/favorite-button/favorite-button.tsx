@@ -15,7 +15,7 @@ type FavoriteButtonPropsType = {
 };
 
 function FavoriteButton({ offer, cssTag = 'place-card', iconWidth = 18, iconHeight = 19 }: FavoriteButtonPropsType): JSX.Element {
-  const isUserAuthorized = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
+  const isUserAuthorized = useAppSelector(({ USER }) => USER.authorizationStatus === AuthorizationStatus.Auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

@@ -1,7 +1,7 @@
 import { useAppSelector } from '../../hooks';
 
 function MainEmpty(): JSX.Element {
-  const activeCityTab = useAppSelector((state) => state.activeCityTab);
+  const activeCityTab = useAppSelector(({ OFFERS }) => OFFERS.activeCityTab);
   return (
     <div className="cities">
       <div className="cities__places-container cities__places-container--empty container">

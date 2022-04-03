@@ -18,7 +18,8 @@ import { logoutAction } from '../../store/user-data/api-actions';
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean => authorizationStatus === AuthorizationStatus.Unknown;
 
 function App(): JSX.Element {
-  const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
+  const { authorizationStatus } = useAppSelector(({ USER }) => USER);
+  const { isDataLoaded } = useAppSelector(({ OFFERS }) => OFFERS);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

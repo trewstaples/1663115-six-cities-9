@@ -6,7 +6,7 @@ import { FavoriteOfferStatusData } from '../../types/favorite';
 import { OffersType } from '../../types/offers';
 import { fetchOfferData } from '../offer-item-data/api-actions';
 import { fetchOfferAction } from '../offers-data/api-actions';
-import { loadFavoriteOffers } from './action';
+import { loadFavoriteOffers } from './favorites-data';
 
 export const fetchFavoriteOffersAction = createAsyncThunk('favorite/fetchFavoriteOffers', async () => {
   try {

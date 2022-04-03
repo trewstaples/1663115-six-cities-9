@@ -8,7 +8,7 @@ type HeaderPropsType = {
 };
 
 function Header({ isLoginNavState }: HeaderPropsType): JSX.Element {
-  const isUserAuthorized = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
+  const isUserAuthorized = useAppSelector(({ USER }) => USER.authorizationStatus === AuthorizationStatus.Auth);
   return (
     <header className="header">
       <div className="container">

@@ -12,10 +12,10 @@ import { fetchOfferData } from '../../store/offer-item-data/api-actions';
 import { useParams } from 'react-router-dom';
 
 function Offer(): JSX.Element {
-  const offer = useAppSelector((state) => state.offerItem);
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const offersNearby = useAppSelector((state) => state.offersNearby);
-  const reviews = useAppSelector((state) => state.reviews);
+  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
+  const reviews = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.reviews);
+  const offer = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.offerItem);
+  const offersNearby = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.offersNearby);
   const params = useParams();
   const id = +(params?.id || 0);
 

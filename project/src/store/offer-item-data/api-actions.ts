@@ -4,9 +4,10 @@ import { ReviewsType } from '../../types/reviews';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
 import { OfferType, OffersType } from '../../types/offers';
-import { redirectToRoute } from '../user-data/action';
-import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './action';
+
 import { NewCommentType } from '../../types/new-comment';
+import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './offer-item-data';
+import { redirectToRoute } from '../user-data/user-process';
 
 export const fetchOfferItemAction = createAsyncThunk('data/fetchOfferItem', async (offerId: number) => {
   try {
@@ -49,7 +50,7 @@ export const fetchNewCommentAction = createAsyncThunk('data/newCommentAction', a
 
 export const fetchOfferData = (id?: number) => {
   if (!id) {
-    id = store.getState().offerItem?.id;
+    id = store.getState().OFFER_ITEM.offerItem?.id;
 
     if (typeof id === 'undefined') {
       return;

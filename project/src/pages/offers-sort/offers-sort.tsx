@@ -1,17 +1,18 @@
 import { offersSortTypes, OffersSortType, DEFAULT_OFFERS_SORT_TYPE } from '../../const';
 import { OffersSortTypeKey } from '../../types/offers-sort';
-import { setOffers, setOffersSortType } from '../../store/offers-data/action';
+
 import { sortOffersByType } from '../../utils/offers-sort';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import React from 'react';
 import clsx from 'clsx';
+import { setOffers, setOffersSortType } from '../../store/offers-data/offers-data';
 
 function OffersSort(): JSX.Element {
   const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
-  const offers = useAppSelector((state) => state.filteredOffers);
+  const offers = useAppSelector(({ OFFERS }) => OFFERS.filteredOffers);
   const [defaultOffers, setDefaultOffers] = useState(offers);
-  const activeSortType = useAppSelector((state) => state.offersSortType);
+  const activeSortType = useAppSelector(({ OFFERS }) => OFFERS.offersSortType);
 
   const dispatch = useAppDispatch();
 

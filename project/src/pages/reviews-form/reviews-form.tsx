@@ -3,8 +3,8 @@ import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { setNewReviewSendStatus } from '../../store/offer-item-data/action';
 import React from 'react';
+import { setNewReviewSendStatus } from '../../store/offer-item-data/offer-item-data';
 
 enum ReviewLimit {
   RatingMinValue = 1,
@@ -17,7 +17,7 @@ type ReviewsFormPropsType = {
 };
 
 function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
-  const newReviewSendStatus = useAppSelector((state) => state.newReviewSendStatus);
+  const newReviewSendStatus = useAppSelector(({ OFFER_ITEM }) => OFFER_ITEM.newReviewSendStatus);
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
