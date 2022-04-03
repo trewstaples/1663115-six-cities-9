@@ -49,7 +49,7 @@ export const setNewReviewAction = createAsyncThunk('offerItem/setNewReview', asy
 
 export const loadOfferDataAction = (id?: number) => {
   if (!id) {
-    id = store.getState().OFFER_ITEM.offerItem?.id;
+    id = store.getState().OfferItem.offerItem?.id;
 
     if (typeof id === 'undefined') {
       return;

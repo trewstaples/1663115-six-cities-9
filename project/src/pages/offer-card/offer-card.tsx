@@ -1,6 +1,7 @@
+import { AppRoute } from '../../const';
 import FavoriteButton from '../favorite-button/favorite-button';
 import { getRating, getType } from '../../utils/offer-item';
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 import { loadOfferItemAction, loadOffersNearbyAction, loadReviewsAction } from '../../store/offer-item-data/api-action';
 import { OfferType } from '../../types/offers';
 import { useDispatch } from 'react-redux';
@@ -55,7 +56,7 @@ function OfferCard({ offer, onMouseOverAndLeave }: OfferCardPropsType): JSX.Elem
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`} onClick={handleTitleClick}>
+          <Link to={generatePath(AppRoute.Offer, { id: `${offer.id}` })} onClick={handleTitleClick}>
             {offer.title}
           </Link>
         </h2>

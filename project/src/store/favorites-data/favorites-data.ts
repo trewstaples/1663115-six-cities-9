@@ -7,7 +7,7 @@ const initialState: FavoritesDataType = {
 };
 
 export const favoritesData = createSlice({
-  name: NameSpace.favorites,
+  name: NameSpace.Favorites,
   initialState,
   reducers: {
     loadFavoriteOffers: (state, action) => {

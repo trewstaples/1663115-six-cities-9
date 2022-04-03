@@ -10,7 +10,7 @@ const initialState: OfferItemDataType = {
 };
 
 export const offerItemData = createSlice({
-  name: NameSpace.offerItem,
+  name: NameSpace.OfferItem,
   initialState,
   reducers: {
     loadOfferItem: (state, action) => {

@@ -6,8 +6,8 @@ import { offerItemData } from './offer-item-data/offer-item-data';
 import { userProcess } from './user-data/user-process';
 
 export const rootReducer = combineReducers({
-  [NameSpace.favorites]: favoritesData.reducer,
-  [NameSpace.offers]: offersData.reducer,
-  [NameSpace.offerItem]: offerItemData.reducer,
-  [NameSpace.user]: userProcess.reducer,
+  [NameSpace.Favorites]: favoritesData.reducer,
+  [NameSpace.Offers]: offersData.reducer,
+  [NameSpace.OfferItem]: offerItemData.reducer,
+  [NameSpace.User]: userProcess.reducer,
 });

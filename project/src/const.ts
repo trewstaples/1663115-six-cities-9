@@ -21,11 +21,11 @@ export enum AuthorizationStatus {
 }
 
 export enum APIRoute {
-  Offers = '/hotels',
-  OfferItem = '/hotels/:id',
   Favorite = '/favorite',
   Login = '/login',
   Logout = '/logout',
+  Offers = '/hotels',
+  OfferItem = '/hotels/:id',
 }
 
 export enum City {
@@ -49,10 +49,10 @@ export enum HttpCode {
 }
 
 export enum NameSpace {
-  favorites = 'FAVORITES',
-  offerItem = 'OFFER_ITEM',
-  offers = 'OFFERS',
-  user = 'USER',
+  Favorites = 'Favorites',
+  OfferItem = 'OfferItem',
+  Offers = 'Offers',
+  User = 'User',
 }
 
 export enum NewReviewSendStatus {

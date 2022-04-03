@@ -23,5 +23,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-//export type ReviewsType = ReviewType[]; - Массивы названы существительными во множественном числе или с использованием венгерской нотации (указанием типа в названии)
