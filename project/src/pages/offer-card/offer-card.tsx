@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchOfferItemAction, fetchOffersNearbyAction, fetchReviewsAction } from '../../store/offer-item/api-actions';
+import { fetchOfferItemAction, fetchOffersNearbyAction, fetchReviewsAction } from '../../store/offer-item-data/api-actions';
 import { OfferType } from '../../types/offers';
 import FavoriteButton from '../favorite-button/favorite-button';
 

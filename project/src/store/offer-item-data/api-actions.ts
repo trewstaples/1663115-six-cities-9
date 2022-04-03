@@ -4,7 +4,7 @@ import { ReviewsType } from '../../types/reviews';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
 import { OfferType, OffersType } from '../../types/offers';
-import { redirectToRoute } from '../user/action';
+import { redirectToRoute } from '../user-data/action';
 import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './action';
 import { NewCommentType } from '../../types/new-comment';
 

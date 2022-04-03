@@ -1,7 +1,7 @@
 import App from './components/app/app';
-import { checkAuthAction } from './store/user/api-actions';
+import { checkAuthAction } from './store/user-data/api-actions';
 import ErrorMessage from './components/error-message/error-message';
-import { fetchOfferAction } from './store/offers/api-actions';
+import { fetchOfferAction } from './store/offers-data/api-actions';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -23,20 +23,8 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-//Настроить оптимизацию
-
-//Оптимизация /
-//Оптимизировать перерисовку HeaderNav (при переключении сортировки и вкладок) - не получилось
-//Оптимизировать пеперисовку CityTabs (при переключении сортировки и вкладок)
-
-//Оптимизация offer/id
-//Оптимизировать рендеринг Rating при заполнениии text
-//Оптимизировать рендеринг текста при заполнении рейтинга
-
-//Оптимизация /favorites
-
-//Оптимизация /login
-
 //Разбить редьюсер
+//добавить email
+//чекнуть HistoryRouter
 //Упростить обработчик сортировки в onOffersSortTypeChange
 //Пройтись по критериям, отрефакторить код, вынести повторяющияйся код в функции

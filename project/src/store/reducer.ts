@@ -6,10 +6,10 @@ import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE, NewReviewSendStatus } from '../const';
 import { OffersType, OfferType } from '../types/offers';
 import { OffersSortTypeKey } from '../types/offers-sort';
-import { loadReviews, loadOfferItem, loadOffersNearby, setNewReviewSendStatus } from './offer-item/action';
-import { loadOffers, setCityTab, setOffersSortType, setOffers } from './offers/action';
-import { requireAuthorization, setError } from './user/action';
-import { loadFavoriteOffers } from './favorites/action';
+import { loadReviews, loadOfferItem, loadOffersNearby, setNewReviewSendStatus } from './offer-item-data/action';
+import { loadOffers, setCityTab, setOffersSortType, setOffers } from './offers-data/action';
+import { requireAuthorization, setError } from './user-data/action';
+import { loadFavoriteOffers } from './favorites-data/action';
 
 type InitialStateType = {
   authorizationStatus: AuthorizationStatusType;

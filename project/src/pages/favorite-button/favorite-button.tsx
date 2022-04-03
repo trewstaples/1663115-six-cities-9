@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { fetchUpdateFavoriteAction } from '../../store/favorites/api-action';
+import { fetchUpdateFavoriteAction } from '../../store/favorites-data/api-action';
 import { OfferType } from '../../types/offers';
 
 type FavoriteButtonPropsType = {

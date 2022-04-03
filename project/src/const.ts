@@ -101,3 +101,10 @@ export const ratingValues = [
     title: 'terribly',
   },
 ];
+
+export enum NameSpace {
+  favorites = 'FAVORITES',
+  offerItem = 'OFFER_ITEM',
+  offers = 'OFFERS',
+  user = 'USER',
+}

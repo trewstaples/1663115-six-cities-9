@@ -1,9 +1,9 @@
-import { fetchReviewsAction, fetchNewCommentAction } from '../../store/offer-item/api-actions';
+import { fetchReviewsAction, fetchNewCommentAction } from '../../store/offer-item-data/api-actions';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { setNewReviewSendStatus } from '../../store/offer-item/action';
+import { setNewReviewSendStatus } from '../../store/offer-item-data/action';
 import React from 'react';
 
 enum ReviewLimit {

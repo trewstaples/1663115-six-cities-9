@@ -3,7 +3,7 @@ import CityTabs from '../city-tabs/city-tabs';
 import { CityTabType } from '../../types/city-tab';
 import MainEmpty from '../main-empty/main-empty';
 import OffersList from '../offers-list/offers-list';
-import { setCityTab } from '../../store/offers/action';
+import { setCityTab } from '../../store/offers-data/action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
 function MainPage(): JSX.Element {
