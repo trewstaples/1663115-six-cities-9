@@ -1,10 +1,13 @@
+import { AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
 import HeaderNav from '../header-nav/header-nav';
 
 type HeaderPropsType = {
-  loginNavState?: boolean;
+  isLoginNavState?: boolean;
 };
 
-function Header({ loginNavState }: HeaderPropsType): JSX.Element {
+function Header({ isLoginNavState }: HeaderPropsType): JSX.Element {
+  const isUserAuthorized = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
   return (
     <header className="header">
       <div className="container">
@@ -14,7 +17,7 @@ function Header({ loginNavState }: HeaderPropsType): JSX.Element {
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"></img>
             </a>
           </div>
-          {loginNavState && <HeaderNav />}
+          {isLoginNavState && <HeaderNav isUserAuthorized={isUserAuthorized} />}
         </div>
       </div>
     </header>

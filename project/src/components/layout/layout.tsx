@@ -25,7 +25,7 @@ function Layout(): JSX.Element {
         { 'page--gray page--login': location.pathname === AppRoute.Login },
       )}
     >
-      <Header loginNavState={isLayoutWithHeader} />
+      <Header isLoginNavState={isLayoutWithHeader} />
       <Outlet />
       {footer}
     </div>
