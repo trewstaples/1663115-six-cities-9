@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { DEFAULT_ACTIVE_CITY, DEFAULT_ACTIVE_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE, NameSpace } from '../../const';
+import { defaultActiveCity, DEFAULT_ACTIVE_CITY_TAB, DEFAULT_OFFERS_SORT_TYPE, NameSpace } from '../../const';
 import { OffersDataType } from '../../types/state';
 
 const initialState: OffersDataType = {
-  activeCity: DEFAULT_ACTIVE_CITY,
+  activeCity: defaultActiveCity,
   activeCityTab: DEFAULT_ACTIVE_CITY_TAB,
   filteredOffers: [],
   isDataLoaded: false,

@@ -1,16 +1,16 @@
-import { loadReviewsAction, setNewReviewAction } from '../../store/offer-item-data/api-action';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { getNewReviewSendStatus } from '../../store/offer-item-data/selector';
+import { loadReviewsAction, setNewReviewAction } from '../../store/offer-item-data/api-action';
 import { NewReviewSendStatus, ratingValues } from '../../const';
 import { useAppSelector } from '../../hooks';
+import { useDispatch } from 'react-redux';
 import React from 'react';
 import { setNewReviewSendStatus } from '../../store/offer-item-data/offer-item-data';
-import { getNewReviewSendStatus } from '../../store/offer-item-data/selector';
 
 enum ReviewLimit {
-  RatingMinValue = 1,
   CommentMinLength = 50,
   CommentMaxLength = 300,
+  RatingMinValue = 1,
 }
 
 type ReviewsFormPropsType = {
@@ -18,10 +18,10 @@ type ReviewsFormPropsType = {
 };
 
 function ReviewsForm({ offerId }: ReviewsFormPropsType): JSX.Element {
-  const newReviewSendStatus = useAppSelector(getNewReviewSendStatus);
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const newReviewSendStatus = useAppSelector(getNewReviewSendStatus);
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const dispatch = useDispatch();

@@ -1,12 +1,12 @@
-import { AppRoute, NewReviewSendStatus } from '../../const';
 import { api, store } from '..';
-import { ReviewsType } from '../../types/reviews';
+import { AppRoute, NewReviewSendStatus } from '../../const';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
-import { OfferType, OffersType } from '../../types/offers';
-import { NewCommentType } from '../../types/new-comment';
 import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './offer-item-data';
+import { NewCommentType } from '../../types/new-comment';
+import { OfferType, OffersType } from '../../types/offers';
 import { redirectToRoute } from '../user-data/action';
+import { ReviewsType } from '../../types/reviews';
 
 export const loadOfferItemAction = createAsyncThunk('offerItem/loadOfferItem', async (offerId: number) => {
   try {

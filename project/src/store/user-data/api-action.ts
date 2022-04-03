@@ -1,10 +1,10 @@
+import { api, store } from '..';
+import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../../const';
 import { AuthData } from '../../types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
-import { store, api } from '..';
+import { requireAuthorization, setError, setUser, resetUser } from './user-process';
 import { saveToken, dropToken } from '../../services/token';
-import { TIMEOUT_SHOW_ERROR, APIRoute, AuthorizationStatus } from '../../const';
-import { setError, requireAuthorization, setUser, resetUser } from './user-process';
 
 export const clearErrorAction = createAsyncThunk('user/clearError', () => {
   setTimeout(() => store.dispatch(setError('')), TIMEOUT_SHOW_ERROR);

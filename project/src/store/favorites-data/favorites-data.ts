@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { NameSpace } from '../../const';
 import { FavoritesDataType } from '../../types/state';
+import { NameSpace } from '../../const';
 
 const initialState: FavoritesDataType = {
   favoriteOffers: [],

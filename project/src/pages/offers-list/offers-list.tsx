@@ -1,9 +1,9 @@
 import { CityTabType } from '../../types/city-tab';
 import Map from '../map/map';
+import OfferCard from '../offer-card/offer-card';
 import OffersSort from '../offers-sort/offers-sort';
 import { OffersType } from '../../types/offers';
 import { useState } from 'react';
-import OfferCard from '../offer-card/offer-card';
 
 type OffersListPropsType = {
   activeCityTab: CityTabType;

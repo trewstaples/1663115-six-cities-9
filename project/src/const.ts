@@ -1,6 +1,12 @@
-export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+export const DEFAULT_ACTIVE_CITY_TAB = 'Paris';
+
+export const DEFAULT_OFFERS_SORT_TYPE = 'Popular';
+
+export const TIMEOUT_SHOW_ERROR = 2000;
 
 export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+
+export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
 
 export enum AppRoute {
   Favorites = '/favorites',
@@ -35,29 +41,15 @@ export enum City {
   Dusseldorf = 'Dusseldorf',
 }
 
-export enum OffersSortType {
-  Popular = 'Popular',
-  PriceLowToHigh = 'Price: low to high',
-  PriceHighToLow = 'Price: high to low',
-  TopRatedFirst = 'Top rated first',
+export enum DateFormat {
+  Display = 'MMMM YYYY',
+  Markup = 'YYYY-MM-DD',
 }
 
 export enum HttpCode {
   BadRequest = 400,
   Unathorized = 401,
   NotFound = 404,
-}
-
-export enum DateFormat {
-  Display = 'MMMM YYYY',
-  Markup = 'YYYY-MM-DD',
-}
-
-export enum NewReviewSendStatus {
-  NotSend = 'NotSend',
-  InProcess = 'InProcess',
-  Error = 'Error',
-  Success = 'Success',
 }
 
 export enum NameSpace {
@@ -67,17 +59,23 @@ export enum NameSpace {
   user = 'USER',
 }
 
-export const DEFAULT_ACTIVE_CITY_TAB = City.Paris;
+export enum NewReviewSendStatus {
+  NotSend = 'NotSend',
+  InProcess = 'InProcess',
+  Error = 'Error',
+  Success = 'Success',
+}
+
+export enum OffersSortType {
+  Popular = 'Popular',
+  PriceLowToHigh = 'Price: low to high',
+  PriceHighToLow = 'Price: high to low',
+  TopRatedFirst = 'Top rated first',
+}
 
 export const cityTabs = Object.keys(City);
 
-export const offersSortTypes = Object.keys(OffersSortType);
-
-export const DEFAULT_OFFERS_SORT_TYPE = OffersSortType.Popular;
-
-export const TIMEOUT_SHOW_ERROR = 2000;
-
-export const DEFAULT_ACTIVE_CITY = {
+export const defaultActiveCity = {
   location: {
     latitude: 48.85661,
     longitude: 2.351499,
@@ -85,6 +83,8 @@ export const DEFAULT_ACTIVE_CITY = {
   },
   name: 'Paris',
 };
+
+export const offersSortTypes = Object.keys(OffersSortType);
 
 export const ratingValues = [
   {

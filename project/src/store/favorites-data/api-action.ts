@@ -1,12 +1,12 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '..';
 import { APIRoute } from '../../const';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandle } from '../../services/error-handle';
 import { FavoriteOfferStatusData } from '../../types/favorite';
-import { OffersType } from '../../types/offers';
+import { loadFavoriteOffers } from './favorites-data';
 import { loadOfferDataAction } from '../offer-item-data/api-action';
 import { loadOffersAction } from '../offers-data/api-action';
-import { loadFavoriteOffers } from './favorites-data';
+import { OffersType } from '../../types/offers';
 
 export const loadFavoritesOffersAction = createAsyncThunk('favorites/loadFavoritesOffers', async () => {
   try {

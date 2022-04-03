@@ -20,7 +20,7 @@ function FavoriteItem({ cityTab, offers }: FavoriteItemPropsType): JSX.Element {
       </div>
       <div className="favorites__places">
         {offersByCity.map((offerByCity) => (
-          <FavoriteCard offer={offerByCity} key={offerByCity.id} />
+          <FavoriteCard key={offerByCity.id} offer={offerByCity} />
         ))}
       </div>
     </>

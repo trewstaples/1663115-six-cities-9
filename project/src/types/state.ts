@@ -1,11 +1,11 @@
-import { NewReviewSendStatus } from '../const';
-import { store } from '../store';
 import { AuthorizationStatusType } from './auth';
 import { CityType } from './city';
 import { CityTabType } from './city-tab';
+import { NewReviewSendStatus } from '../const';
 import { OffersType, OfferType } from './offers';
 import { OffersSortTypeKey } from './offers-sort';
 import { ReviewsType } from './reviews';
+import { store } from '../store';
 
 export type StateType = ReturnType<typeof store.getState>;
 

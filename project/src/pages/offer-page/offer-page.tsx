@@ -1,24 +1,24 @@
-import OfferReviews from '../offer-reviews/offer-reviews';
-import Loading from '../../components/loading/loading';
-import Map from '../map/map';
-import { useAppSelector } from '../../hooks';
-import ReviewsForm from '../reviews-form/reviews-form';
-import { OfferHost } from '../offer-host/offer-host';
-import OffersNearby from '../offers-nearby/offers-nearby';
 import FavoriteButton from '../favorite-button/favorite-button';
-import { useEffect, useMemo } from 'react';
-import { loadOfferDataAction } from '../../store/offer-item-data/api-action';
-import { useParams } from 'react-router-dom';
 import { getIsUserAuthorized } from '../../store/user-data/selector';
 import { getOffer, getOffersNearby, getReviews } from '../../store/offer-item-data/selector';
+import Loading from '../../components/loading/loading';
+import { loadOfferDataAction } from '../../store/offer-item-data/api-action';
+import Map from '../map/map';
+import { OfferHost } from '../offer-host/offer-host';
+import OffersNearby from '../offers-nearby/offers-nearby';
+import OfferReviews from '../offer-reviews/offer-reviews';
+import { useAppSelector } from '../../hooks';
+import { useEffect, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import ReviewsForm from '../reviews-form/reviews-form';
 
 function OfferPage(): JSX.Element {
   const isUserAuthorized = useAppSelector(getIsUserAuthorized);
-  const reviews = useAppSelector(getReviews);
   const offer = useAppSelector(getOffer);
+  const reviews = useAppSelector(getReviews);
   const offersNearby = useAppSelector(getOffersNearby);
-
   const params = useParams();
+
   const id = +(params?.id || 0);
 
   useEffect(() => {

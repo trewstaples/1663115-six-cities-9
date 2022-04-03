@@ -1,8 +1,8 @@
 import { AppRoute } from '../../const';
+import { getIsUserAuthorized } from '../../store/user-data/selector';
 import { Navigate } from 'react-router-dom';
 import { RouteProps } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import { getIsUserAuthorized } from '../../store/user-data/selector';
 
 type PrivateRoutePropsType = RouteProps & {
   children: JSX.Element;

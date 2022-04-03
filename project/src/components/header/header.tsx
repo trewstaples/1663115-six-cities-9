@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppSelector } from '../../hooks';
 import { getIsUserAuthorized, getUser } from '../../store/user-data/selector';
 import HeaderNavigation from '../header-navigation/header-navigation';
+import { useAppSelector } from '../../hooks';
 
 type HeaderPropsType = {
   isLoginNavState?: boolean;

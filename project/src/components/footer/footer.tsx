@@ -1,12 +1,12 @@
+import { AppRoute } from '../../const';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
 
-type FooterProps = {
+type FooterPropsType = {
   additionalClassName?: string;
 };
 
-function Footer({ additionalClassName }: FooterProps): JSX.Element {
+function Footer({ additionalClassName }: FooterPropsType): JSX.Element {
   return (
     <footer className={clsx('footer', additionalClassName)}>
       <Link className="footer__logo-link" to={AppRoute.Main}>

@@ -1,20 +1,18 @@
-import { offersSortTypes, OffersSortType, DEFAULT_OFFERS_SORT_TYPE } from '../../const';
-import { OffersSortTypeKey } from '../../types/offers-sort';
-
-import { sortOffersByType } from '../../utils/offers-sort';
-import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import React from 'react';
 import clsx from 'clsx';
-import { setOffers, setOffersSortType } from '../../store/offers-data/offers-data';
+import { DEFAULT_OFFERS_SORT_TYPE, offersSortTypes, OffersSortType } from '../../const';
 import { getFilteredOffers, getActiveSortType } from '../../store/offers-data/selector';
+import { OffersSortTypeKey } from '../../types/offers-sort';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useEffect, useState } from 'react';
+import React from 'react';
+import { sortOffersByType } from '../../utils/offers-sort';
+import { setOffers, setOffersSortType } from '../../store/offers-data/offers-data';
 
 function OffersSort(): JSX.Element {
-  const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
   const offers = useAppSelector(getFilteredOffers);
-  const [defaultOffers, setDefaultOffers] = useState(offers);
   const activeSortType = useAppSelector(getActiveSortType);
-
+  const [defaultOffers, setDefaultOffers] = useState(offers);
+  const [isSortOpened, setIsSortOpened] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

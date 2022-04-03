@@ -2,8 +2,8 @@ import { cityTabs } from '../../const';
 import { CityTabType } from '../../types/city-tab';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoriteItem from '../favorite-item/favorite-item';
-import { useAppSelector } from '../../hooks';
 import { getFavoriteOffers } from '../../store/favorites-data/selector';
+import { useAppSelector } from '../../hooks';
 
 function FavoritesPage(): JSX.Element {
   const offers = useAppSelector(getFavoriteOffers);

@@ -1,5 +1,5 @@
-import { ReviewType } from '../../types/reviews';
 import { dateFormat } from '../../utils/date-format';
+import { ReviewType } from '../../types/reviews';
 
 const REVIEWS_RATING = 20;
 

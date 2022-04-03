@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import CityTabs from '../city-tabs/city-tabs';
 import { CityTabType } from '../../types/city-tab';
+import { getActiveCityTab, getFilteredOffers } from '../../store/offers-data/selector';
 import MainEmpty from '../main-empty/main-empty';
 import OffersList from '../offers-list/offers-list';
-import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setCityTab } from '../../store/offers-data/offers-data';
-import { getActiveCityTab, getFilteredOffers } from '../../store/offers-data/selector';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 function MainPage(): JSX.Element {
   const activeCityTab = useAppSelector(getActiveCityTab);

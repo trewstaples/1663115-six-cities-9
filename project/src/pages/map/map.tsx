@@ -1,5 +1,5 @@
 import 'leaflet/dist/leaflet.css';
-import { Icon, Marker, LayerGroup } from 'leaflet';
+import { Icon, LayerGroup, Marker } from 'leaflet';
 import { OffersType } from '../../types/offers';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 import { useEffect, useRef } from 'react';
@@ -10,14 +10,14 @@ type MapPropsType = {
   selectedCardId?: number;
 };
 
-const defaultCustomIcon = new Icon({
-  iconUrl: URL_MARKER_DEFAULT,
+const currentCustomIcon = new Icon({
+  iconUrl: URL_MARKER_CURRENT,
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
 
-const currentCustomIcon = new Icon({
-  iconUrl: URL_MARKER_CURRENT,
+const defaultCustomIcon = new Icon({
+  iconUrl: URL_MARKER_DEFAULT,
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });

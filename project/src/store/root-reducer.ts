@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { NameSpace } from '../const';
 import { favoritesData } from './favorites-data/favorites-data';
+import { NameSpace } from '../const';
 import { offersData } from './offers-data/offers-data';
 import { offerItemData } from './offer-item-data/offer-item-data';
 import { userProcess } from './user-data/user-process';

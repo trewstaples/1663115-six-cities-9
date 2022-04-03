@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthorizationStatus, NameSpace } from '../../const';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserProcessType, UserType } from '../../types/state';
 
 const initialUser = {

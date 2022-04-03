@@ -1,21 +1,21 @@
+import { AppRoute } from '../../const';
 import clsx from 'clsx';
+import { getIsUserAuthorized } from '../../store/user-data/selector';
 import { MouseEvent } from 'react';
+import { OfferType } from '../../types/offers';
+import { updateFavoritesOffersAction } from '../../store/favorites-data/api-action';
+import { useAppSelector } from '../../hooks';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppRoute } from '../../const';
-import { useAppSelector } from '../../hooks';
-import { updateFavoritesOffersAction } from '../../store/favorites-data/api-action';
-import { getIsUserAuthorized } from '../../store/user-data/selector';
-import { OfferType } from '../../types/offers';
 
 type FavoriteButtonPropsType = {
-  offer: OfferType;
   cssTag?: string;
   iconWidth?: number;
   iconHeight?: number;
+  offer: OfferType;
 };
 
-function FavoriteButton({ offer, cssTag = 'place-card', iconWidth = 18, iconHeight = 19 }: FavoriteButtonPropsType): JSX.Element {
+function FavoriteButton({ cssTag = 'place-card', iconWidth = 18, iconHeight = 19, offer }: FavoriteButtonPropsType): JSX.Element {
   const isUserAuthorized = useAppSelector(getIsUserAuthorized);
   const dispatch = useDispatch();
   const navigate = useNavigate();
