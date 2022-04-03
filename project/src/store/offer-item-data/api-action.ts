@@ -8,7 +8,7 @@ import { NewCommentType } from '../../types/new-comment';
 import { loadOfferItem, loadOffersNearby, loadReviews, setNewReviewSendStatus } from './offer-item-data';
 import { redirectToRoute } from '../user-data/action';
 
-export const fetchOfferItemAction = createAsyncThunk('offerItem/fetchOfferItem', async (offerId: number) => {
+export const loadOfferItemAction = createAsyncThunk('offerItem/loadOfferItem', async (offerId: number) => {
   try {
     const { data } = await api.get<OfferType>(`/hotels/${offerId}`);
     store.dispatch(loadOfferItem(data));
@@ -18,7 +18,7 @@ export const fetchOfferItemAction = createAsyncThunk('offerItem/fetchOfferItem',
   }
 });
 
-export const fetchOffersNearbyAction = createAsyncThunk('offerItem/fetchOffersNearby', async (offerId: number) => {
+export const loadOffersNearbyAction = createAsyncThunk('offerItem/loadOffersNearby', async (offerId: number) => {
   try {
     const { data } = await api.get<OffersType>(`/hotels/${offerId}/nearby`);
     store.dispatch(loadOffersNearby(data));
@@ -27,7 +27,7 @@ export const fetchOffersNearbyAction = createAsyncThunk('offerItem/fetchOffersNe
   }
 });
 
-export const fetchReviewsAction = createAsyncThunk('offerItem/fetchReviewsAction', async (offerId: number) => {
+export const loadReviewsAction = createAsyncThunk('offerItem/loadReviews', async (offerId: number) => {
   try {
     const { data } = await api.get<ReviewsType>(`/comments/${offerId}`);
     store.dispatch(loadReviews(data));
@@ -36,7 +36,7 @@ export const fetchReviewsAction = createAsyncThunk('offerItem/fetchReviewsAction
   }
 });
 
-export const fetchNewCommentAction = createAsyncThunk('offerItem/newCommentAction', async (newComment: NewCommentType) => {
+export const setNewReviewAction = createAsyncThunk('offerItem/setNewReview', async (newComment: NewCommentType) => {
   try {
     const { offerId, comment, rating } = newComment;
     await api.post(`/comments/${offerId}`, { comment, rating });
@@ -47,7 +47,7 @@ export const fetchNewCommentAction = createAsyncThunk('offerItem/newCommentActio
   }
 });
 
-export const fetchOfferData = (id?: number) => {
+export const loadOfferDataAction = (id?: number) => {
   if (!id) {
     id = store.getState().OFFER_ITEM.offerItem?.id;
 
@@ -56,7 +56,7 @@ export const fetchOfferData = (id?: number) => {
     }
   }
 
-  store.dispatch(fetchOfferItemAction(id));
-  store.dispatch(fetchReviewsAction(id));
-  store.dispatch(fetchOffersNearbyAction(id));
+  store.dispatch(loadOfferItemAction(id));
+  store.dispatch(loadReviewsAction(id));
+  store.dispatch(loadOffersNearbyAction(id));
 };

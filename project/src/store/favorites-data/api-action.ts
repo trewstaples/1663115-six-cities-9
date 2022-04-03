@@ -4,11 +4,11 @@ import { APIRoute } from '../../const';
 import { errorHandle } from '../../services/error-handle';
 import { FavoriteOfferStatusData } from '../../types/favorite';
 import { OffersType } from '../../types/offers';
-import { fetchOfferData } from '../offer-item-data/api-action';
-import { fetchOfferAction } from '../offers-data/api-action';
+import { loadOfferDataAction } from '../offer-item-data/api-action';
+import { loadOffersAction } from '../offers-data/api-action';
 import { loadFavoriteOffers } from './favorites-data';
 
-export const fetchFavoriteOffersAction = createAsyncThunk('favorites/fetchFavoriteOffers', async () => {
+export const loadFavoritesOffersAction = createAsyncThunk('favorites/loadFavoritesOffers', async () => {
   try {
     const { data } = await api.get<OffersType>(APIRoute.Favorite);
     store.dispatch(loadFavoriteOffers(data));
@@ -17,12 +17,12 @@ export const fetchFavoriteOffersAction = createAsyncThunk('favorites/fetchFavori
   }
 });
 
-export const fetchUpdateFavoriteAction = createAsyncThunk('favorites/fetchUpdateFavoriteAction', async ({ offerId, status }: FavoriteOfferStatusData) => {
+export const updateFavoritesOffersAction = createAsyncThunk('favorites/updateFavoritesOffers', async ({ offerId, status }: FavoriteOfferStatusData) => {
   try {
     await api.post(`/favorite/${offerId}/${status}`);
-    store.dispatch(fetchOfferAction());
-    store.dispatch(fetchFavoriteOffersAction());
-    fetchOfferData();
+    store.dispatch(loadOffersAction());
+    store.dispatch(loadFavoritesOffersAction());
+    loadOfferDataAction();
   } catch (error) {
     errorHandle(error);
   }

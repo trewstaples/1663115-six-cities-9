@@ -7,7 +7,7 @@ import { OfferHost } from '../offer-host/offer-host';
 import OffersNearby from '../offers-nearby/offers-nearby';
 import FavoriteButton from '../favorite-button/favorite-button';
 import { useEffect, useMemo } from 'react';
-import { fetchOfferData } from '../../store/offer-item-data/api-action';
+import { loadOfferDataAction } from '../../store/offer-item-data/api-action';
 import { useParams } from 'react-router-dom';
 import { getIsUserAuthorized } from '../../store/user-data/selector';
 import { getOffer, getOffersNearby, getReviews } from '../../store/offer-item-data/selector';
@@ -23,7 +23,7 @@ function OfferPage(): JSX.Element {
 
   useEffect(() => {
     if (!offer || offer.id !== id) {
-      fetchOfferData(id);
+      loadOfferDataAction(id);
     }
   }, [id, offer, offersNearby, reviews]);
 

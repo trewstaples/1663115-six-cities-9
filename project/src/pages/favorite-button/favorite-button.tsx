@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { fetchUpdateFavoriteAction } from '../../store/favorites-data/api-action';
+import { updateFavoritesOffersAction } from '../../store/favorites-data/api-action';
 import { getIsUserAuthorized } from '../../store/user-data/selector';
 import { OfferType } from '../../types/offers';
 
@@ -28,7 +28,7 @@ function FavoriteButton({ offer, cssTag = 'place-card', iconWidth = 18, iconHeig
     }
 
     dispatch(
-      fetchUpdateFavoriteAction({
+      updateFavoritesOffersAction({
         offerId: offer.id,
         status: +!offer.isFavorite,
       }),
