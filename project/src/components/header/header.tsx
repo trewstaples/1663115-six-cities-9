@@ -1,3 +1,4 @@
+import React from 'react';
 import { AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import HeaderNav from '../header-nav/header-nav';
@@ -24,4 +25,4 @@ function Header({ isLoginNavState }: HeaderPropsType): JSX.Element {
   );
 }
 
-export default Header;
+export default React.memo(Header);

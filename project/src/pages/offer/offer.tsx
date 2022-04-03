@@ -7,7 +7,7 @@ import ReviewsForm from '../reviews-form/reviews-form';
 import { OfferHost } from '../offer-host/offer-host';
 import OffersNearby from '../offers-nearby/offers-nearby';
 import FavoriteButton from '../favorite-button/favorite-button';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { fetchOfferData } from '../../store/offer-item/api-actions';
 import { useParams } from 'react-router-dom';
 
@@ -24,6 +24,8 @@ function Offer(): JSX.Element {
       fetchOfferData(id);
     }
   }, [id, offer, offersNearby, reviews]);
+
+  const mapOffers = useMemo(() => (!offer ? [] : [offer, ...offersNearby]), [offer, offersNearby]);
 
   const isUserAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 
@@ -95,7 +97,7 @@ function Offer(): JSX.Element {
           </div>
         </div>
         <section className="property__map map">
-          <Map offers={[offer, ...offersNearby]} selectedCardId={offer.id} />
+          <Map offers={mapOffers} selectedCardId={offer.id} />
         </section>
       </section>
       <div className="container">
