@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 
 type CityTabsPropsType = {
   activeCityTab: CityTabType;
-  handleListItemChange: (cityTab: CityTabType) => () => void;
+  onCityTabChange: (cityTab: CityTabType) => () => void;
 };
 
-function CityTabs({ activeCityTab, handleListItemChange }: CityTabsPropsType): JSX.Element {
+function CityTabs({ activeCityTab, onCityTabChange }: CityTabsPropsType): JSX.Element {
   const cityTabsTemplate = cityTabs.map((cityTab) => (
-    <li className="locations__item" key={cityTab} onClick={handleListItemChange(cityTab as CityTabType)}>
+    <li className="locations__item" key={cityTab} onClick={onCityTabChange(cityTab as CityTabType)}>
       <Link to="/" className={clsx('locations__item-link', 'tabs__item', { 'tabs__item--active': cityTab === activeCityTab })}>
         <span>{cityTab}</span>
       </Link>

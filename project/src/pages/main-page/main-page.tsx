@@ -12,13 +12,13 @@ function MainPage(): JSX.Element {
   const offers = useAppSelector(getFilteredOffers);
 
   const dispatch = useAppDispatch();
-  const handleListItemChange = (newCityTab: CityTabType) => () => {
+  const onCityTabChange = (newCityTab: CityTabType) => () => {
     dispatch(setCityTab({ cityTab: newCityTab }));
   };
 
   return (
     <main className={clsx('page__main', 'page__main--index', { 'page__main--index-empty': offers.length === 0 })}>
-      <CityTabs activeCityTab={activeCityTab} handleListItemChange={handleListItemChange} />
+      <CityTabs activeCityTab={activeCityTab} onCityTabChange={onCityTabChange} />
       {offers.length === 0 ? <MainEmpty /> : <OffersList activeCityTab={activeCityTab} offers={offers} />}
     </main>
   );
