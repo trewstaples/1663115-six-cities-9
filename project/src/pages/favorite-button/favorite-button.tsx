@@ -8,6 +8,12 @@ import { useAppSelector } from '../../hooks';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+const enum ButtonDefault {
+  CssTag = 'place-card',
+  IconWidth = 18,
+  IconHeight = 19,
+}
+
 type FavoriteButtonPropsType = {
   cssTag?: string;
   iconWidth?: number;
@@ -15,7 +21,7 @@ type FavoriteButtonPropsType = {
   offer: OfferType;
 };
 
-function FavoriteButton({ cssTag = 'place-card', iconWidth = 18, iconHeight = 19, offer }: FavoriteButtonPropsType): JSX.Element {
+function FavoriteButton({ cssTag = ButtonDefault.CssTag, iconWidth = ButtonDefault.IconWidth, iconHeight = ButtonDefault.IconHeight, offer }: FavoriteButtonPropsType): JSX.Element {
   const isUserAuthorized = useAppSelector(getIsUserAuthorized);
   const dispatch = useDispatch();
   const navigate = useNavigate();

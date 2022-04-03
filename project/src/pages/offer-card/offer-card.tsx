@@ -1,4 +1,5 @@
 import FavoriteButton from '../favorite-button/favorite-button';
+import { getRating, getType } from '../../utils/offer-item';
 import { Link } from 'react-router-dom';
 import { loadOfferItemAction, loadOffersNearbyAction, loadReviewsAction } from '../../store/offer-item-data/api-action';
 import { OfferType } from '../../types/offers';
@@ -49,7 +50,7 @@ function OfferCard({ offer, onMouseOverAndLeave }: OfferCardPropsType): JSX.Elem
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${Math.round(offer.rating) * 20}%` }}></span>
+            <span style={{ width: getRating(offer.rating) }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -58,7 +59,7 @@ function OfferCard({ offer, onMouseOverAndLeave }: OfferCardPropsType): JSX.Elem
             {offer.title}
           </Link>
         </h2>
-        <p className="place-card__type">{offer.type[0].toUpperCase() + offer.type.substring(1)}</p>
+        <p className="place-card__type">{getType(offer.type)}</p>
       </div>
     </article>
   );

@@ -4,10 +4,6 @@ export const DEFAULT_OFFERS_SORT_TYPE = 'Popular';
 
 export const TIMEOUT_SHOW_ERROR = 2000;
 
-export const URL_MARKER_CURRENT = 'img/pin-active.svg';
-
-export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
-
 export enum AppRoute {
   Favorites = '/favorites',
   FavoritesEmpty = '/favorites-empty',

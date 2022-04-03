@@ -1,6 +1,7 @@
 import FavoriteButton from '../favorite-button/favorite-button';
 import { getIsUserAuthorized } from '../../store/user-data/selector';
 import { getOffer, getOffersNearby, getReviews } from '../../store/offer-item-data/selector';
+import { getRating, getType } from '../../utils/offer-item';
 import Loading from '../../components/loading/loading';
 import { loadOfferDataAction } from '../../store/offer-item-data/api-action';
 import Map from '../map/map';
@@ -65,13 +66,13 @@ function OfferPage(): JSX.Element {
             </div>
             <div className="property__rating rating">
               <div className="property__stars rating__stars">
-                <span style={{ width: `${Math.round(offer.rating) * 20}%` }}></span>
+                <span style={{ width: getRating(offer.rating) }}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
               <span className="property__rating-value rating__value">{offer.rating}</span>
             </div>
             <ul className="property__features">
-              <li className="property__feature property__feature--entire">{offer.type[0].toUpperCase() + offer.type.substring(1)}</li>
+              <li className="property__feature property__feature--entire">{getType(offer.type)}</li>
               <li className="property__feature property__feature--bedrooms">{offer.bedrooms} Bedrooms</li>
               <li className="property__feature property__feature--adults">Max {offer.maxAdults} adults</li>
             </ul>

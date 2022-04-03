@@ -1,9 +1,18 @@
 import 'leaflet/dist/leaflet.css';
 import { Icon, LayerGroup, Marker } from 'leaflet';
 import { OffersType } from '../../types/offers';
-import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
+
+const enum MarkerUrl {
+  Current = 'img/pin-active.svg',
+  Default = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
+}
+
+const enum MarkerAttribute {
+  Width = 40,
+  Height = 40,
+}
 
 type MapPropsType = {
   offers: OffersType;
@@ -11,15 +20,15 @@ type MapPropsType = {
 };
 
 const currentCustomIcon = new Icon({
-  iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconUrl: MarkerUrl.Current,
+  iconSize: [MarkerAttribute.Width, MarkerAttribute.Height],
+  iconAnchor: [MarkerAttribute.Width / 2, MarkerAttribute.Height],
 });
 
 const defaultCustomIcon = new Icon({
-  iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconUrl: MarkerUrl.Default,
+  iconSize: [MarkerAttribute.Width, MarkerAttribute.Height],
+  iconAnchor: [MarkerAttribute.Width / 2, MarkerAttribute.Height],
 });
 
 function Map({ offers, selectedCardId }: MapPropsType): JSX.Element {

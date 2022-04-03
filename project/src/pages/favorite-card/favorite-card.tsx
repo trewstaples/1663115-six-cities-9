@@ -1,4 +1,5 @@
 import FavoriteButton from '../favorite-button/favorite-button';
+import { getRating, getType } from '../../utils/offer-item';
 import { OfferType } from '../../types/offers';
 
 type FavoriteCardPropsType = {
@@ -26,14 +27,14 @@ function FavoriteCard({ offer }: FavoriteCardPropsType): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${Math.round(offer.rating) * 20}%` }}></span>
+            <span style={{ width: getRating(offer.rating) }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
           <a href="/">{offer.title}</a>
         </h2>
-        <p className="place-card__type">{offer.type[0].toUpperCase() + offer.type.substring(1)}</p>
+        <p className="place-card__type">{getType(offer.type)}</p>
       </div>
     </article>
   );

@@ -1,7 +1,6 @@
 import { dateFormat } from '../../utils/date-format';
 import { ReviewType } from '../../types/reviews';
-
-const REVIEWS_RATING = 20;
+import { getRating } from '../../utils/offer-item';
 
 type ReviewItemPropsType = {
   review: ReviewType;
@@ -19,7 +18,7 @@ function OfferReviewItem({ review }: ReviewItemPropsType): JSX.Element {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{ width: `${Math.round(review.rating) * REVIEWS_RATING}%` }}></span>
+            <span style={{ width: getRating(review.rating) }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
