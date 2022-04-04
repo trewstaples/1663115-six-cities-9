@@ -1,12 +1,12 @@
 import { AppRoute, AuthorizationStatus } from '../../const';
-import FavoritesPage from '../../pages/favorites-page/favorites-page';
+import FavoritesPage from '../pages/favorites-page/favorites-page';
 import Layout from '../layout/layout';
 import Loading from '../loading/loading';
-import LoginPage from '../../pages/login-page/login-page';
+import LoginPage from '../pages/login-page/login-page';
 import { logoutAction } from '../../store/user-data/api-action';
-import MainPage from '../../pages/main-page/main-page';
-import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import OfferPage from '../../pages/offer-page/offer-page';
+import MainPage from '../pages/main-page/main-page';
+import NotFoundPage from '../pages/not-found-page/not-found-page';
+import OfferPage from '../pages/offer-page/offer-page';
 import PrivateRoute from '../private-route/private-route';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
