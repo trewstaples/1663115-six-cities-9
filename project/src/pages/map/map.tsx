@@ -1,39 +1,41 @@
 import 'leaflet/dist/leaflet.css';
-import { CityType } from '../../types/city';
-import { Icon, Marker, LayerGroup } from 'leaflet';
-import { MapMode } from '../../const';
-import { OffersType, OfferType } from '../../types/offers';
-import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
+import { Icon, LayerGroup, Marker } from 'leaflet';
+import { OffersType } from '../../types/offers';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 
+const enum MarkerUrl {
+  Current = 'img/pin-active.svg',
+  Default = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
+}
+
+const enum MarkerAttribute {
+  Width = 40,
+  Height = 40,
+}
+
 type MapPropsType = {
-  city: CityType;
   offers: OffersType;
-  selectedPoint?: OfferType | undefined;
-  mapMode: MapMode;
+  selectedCardId?: number;
 };
 
-const defaultCustomIcon = new Icon({
-  iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-});
-
 const currentCustomIcon = new Icon({
-  iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconUrl: MarkerUrl.Current,
+  iconSize: [MarkerAttribute.Width, MarkerAttribute.Height],
+  iconAnchor: [MarkerAttribute.Width / 2, MarkerAttribute.Height],
 });
 
-function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Element {
+const defaultCustomIcon = new Icon({
+  iconUrl: MarkerUrl.Default,
+  iconSize: [MarkerAttribute.Width, MarkerAttribute.Height],
+  iconAnchor: [MarkerAttribute.Width / 2, MarkerAttribute.Height],
+});
+
+function Map({ offers, selectedCardId }: MapPropsType): JSX.Element {
+  const city = offers[0].city;
+
   const mapRef = useRef<HTMLDivElement | null>(null);
   const map = useMap(mapRef, city);
-
-  let mapContainer;
-  mapMode === MapMode.Main
-    ? (mapContainer = <section className="cities__map map" style={{ height: '980px' }} ref={mapRef} />)
-    : (mapContainer = <section className="property__map map" style={{ height: '579px' }} ref={mapRef} />);
 
   useEffect(() => {
     if (map) {
@@ -44,7 +46,7 @@ function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Elemen
           lng: offer.location.longitude,
         });
 
-        marker.setIcon(selectedPoint !== undefined && offer.id === selectedPoint.id ? currentCustomIcon : defaultCustomIcon);
+        marker.setIcon(selectedCardId !== undefined && offer.id === selectedCardId ? currentCustomIcon : defaultCustomIcon);
         markers.push(marker);
       });
       const layerGroup = new LayerGroup(markers);
@@ -54,9 +56,9 @@ function Map({ offers, city, selectedPoint, mapMode }: MapPropsType): JSX.Elemen
         map?.removeLayer(layerGroup);
       };
     }
-  }, [map, offers, selectedPoint]);
+  }, [map, offers, selectedCardId]);
 
-  return mapContainer;
+  return <div style={{ height: '100%' }} ref={mapRef} />;
 }
 
 export default Map;

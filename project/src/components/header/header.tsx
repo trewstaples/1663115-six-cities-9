@@ -1,22 +1,15 @@
-import { AuthorizationStatus } from '../../const';
-import HeaderEmail from '../../pages/header-email/header-email';
-import HeaderLogin from '../../pages/header-login/header-login';
-import HeaderLogout from '../../pages/header-logout/header-logout';
-// import { logoutAction } from '../../store/api-actions';
+import React from 'react';
+import { getIsUserAuthorized, getUser } from '../../store/user-data/selector';
+import HeaderNavigation from '../header-navigation/header-navigation';
 import { useAppSelector } from '../../hooks';
 
 type HeaderPropsType = {
-  isNavigationState: boolean;
+  isLoginNavState?: boolean;
 };
 
-function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-
-  // const dispatch = useAppDispatch();
-
-  // const onClick = () => {
-  //   dispatch(logoutAction());
-  // };
+function Header({ isLoginNavState }: HeaderPropsType): JSX.Element {
+  const isUserAuthorized = useAppSelector(getIsUserAuthorized);
+  const user = useAppSelector(getUser);
 
   return (
     <header className="header">
@@ -27,27 +20,11 @@ function Header({ isNavigationState: navigationState }: HeaderPropsType): JSX.El
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"></img>
             </a>
           </div>
-          {navigationState ? (
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                {authorizationStatus === AuthorizationStatus.Auth ? (
-                  <>
-                    <HeaderEmail />
-
-                    <HeaderLogin />
-                  </>
-                ) : (
-                  <HeaderLogout />
-                )}
-              </ul>
-            </nav>
-          ) : (
-            ''
-          )}
+          {isLoginNavState && <HeaderNavigation isUserAuthorized={isUserAuthorized} user={user} />}
         </div>
       </div>
     </header>
   );
 }
 
-export default Header;
+export default React.memo(Header);
