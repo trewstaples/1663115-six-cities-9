@@ -1,15 +1,6 @@
 import { getError } from '../../store/user-data/selector';
 import { useAppSelector } from '../../hooks';
-
-const enum ErrorMessageStyle {
-  Position = 'fixed',
-  Top = '30px',
-  Right = '30px',
-  Padding = '10px',
-  BackgroudColor = '#d96666',
-  Color = 'White',
-  BorderRadius = '5px',
-}
+import { ErrorMessageStyle } from './error-message-style';
 
 function ErrorMessage(): JSX.Element | null {
   const error = useAppSelector(getError);
@@ -22,7 +13,7 @@ function ErrorMessage(): JSX.Element | null {
           top: `${ErrorMessageStyle.Top}`,
           right: `${ErrorMessageStyle.Right}`,
           padding: `${ErrorMessageStyle.Padding}`,
-          backgroundColor: `${ErrorMessageStyle.BackgroudColor}`,
+          backgroundColor: `${ErrorMessageStyle.BackgroundColor}`,
           color: `${ErrorMessageStyle.Color}`,
           borderRadius: `${ErrorMessageStyle.BorderRadius}`,
         }}
