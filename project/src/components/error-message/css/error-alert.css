@@ -1,0 +1,9 @@
+.error-alert{
+  position: fixed;
+  top: 30px;
+  right:30px;
+  padding: 10px;
+  background-color: rgba(217, 102, 102);
+  color: white;
+  border-radius: '5px';
+}
