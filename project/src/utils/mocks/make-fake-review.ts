@@ -15,6 +15,4 @@ export const makeFakeReview = (): ReviewType => ({
   user: makeFakeUser(),
 });
 
-// export const makeFakeReviews = (): ReviewsType => Array.from(Array(FakeConstants.ReviewsNumber), () => makeFakeReview());
-
 export const makeFakeReviews = (): ReviewsType => new Array(FakeConstants.ReviewsNumber).fill(null).map(() => makeFakeReview());
