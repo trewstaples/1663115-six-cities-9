@@ -1,4 +1,5 @@
-import { api, store } from '..';
+import { AxiosInstance } from 'axios';
+import { AppDispatchType, StateType } from '../../types/state';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../../const';
 import { AuthData } from '../../types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -6,25 +7,49 @@ import { errorHandle } from '../../services/error-handle';
 import { requireAuthorization, setError, setUser, resetUser } from './user-process';
 import { saveToken, dropToken } from '../../services/token';
 
-export const clearErrorAction = createAsyncThunk('user/clearError', () => {
-  setTimeout(() => store.dispatch(setError('')), TIMEOUT_SHOW_ERROR);
+export const clearErrorAction = createAsyncThunk<
+  void,
+  undefined,
+  {
+    dispatch: AppDispatchType;
+    state: StateType;
+    extra: AxiosInstance;
+  }
+>('user/clearError', (_arg, { dispatch }) => {
+  setTimeout(() => dispatch(setError('')), TIMEOUT_SHOW_ERROR);
 });
 
-export const checkAuthAction = createAsyncThunk('user/checkAuth', async () => {
+export const checkAuthAction = createAsyncThunk<
+  void,
+  undefined,
+  {
+    dispatch: AppDispatchType;
+    state: StateType;
+    extra: AxiosInstance;
+  }
+>('user/checkAuth', async (_arg, { dispatch, extra: api }) => {
   try {
     await api.get(APIRoute.Login);
-    store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
+    dispatch(requireAuthorization(AuthorizationStatus.Auth));
   } catch (error) {
     errorHandle(error);
-    store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
   }
 });
 
-export const loginAction = createAsyncThunk('user/login', async ({ email, password }: AuthData) => {
+export const loginAction = createAsyncThunk<
+  void,
+  AuthData,
+  {
+    dispatch: AppDispatchType;
+    state: StateType;
+    extra: AxiosInstance;
+  }
+>('user/login', async ({ email, password }, { dispatch, extra: api }) => {
   try {
     const { data } = await api.post(APIRoute.Login, { email, password });
-    store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
-    store.dispatch(
+    dispatch(requireAuthorization(AuthorizationStatus.Auth));
+    dispatch(
       setUser({
         avatarUrl: data.avatarUrl,
         email: data.email,
@@ -36,16 +61,24 @@ export const loginAction = createAsyncThunk('user/login', async ({ email, passwo
     saveToken(data.token);
   } catch (error) {
     errorHandle(error);
-    store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
   }
 });
 
-export const logoutAction = createAsyncThunk('user/logout', async () => {
+export const logoutAction = createAsyncThunk<
+  void,
+  undefined,
+  {
+    dispatch: AppDispatchType;
+    state: StateType;
+    extra: AxiosInstance;
+  }
+>('user/logout', async (_arg, { dispatch, extra: api }) => {
   try {
     await api.delete(APIRoute.Logout);
     dropToken();
-    store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
-    store.dispatch(resetUser);
+    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    dispatch(resetUser);
   } catch (error) {
     errorHandle(error);
   }
