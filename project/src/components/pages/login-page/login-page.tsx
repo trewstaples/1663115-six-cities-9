@@ -1,6 +1,7 @@
 import { AppRoute } from '../../../const';
 import { AuthData } from '../../../types/auth';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import CityLink from './city-link';
 import { getIsUserAuthorized } from '../../../store/user-data/selector';
 import { loginAction } from '../../../store/user-data/api-action';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -67,9 +68,7 @@ function LoginPage(): JSX.Element {
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="/">
-              <span>Amsterdam</span>
-            </a>
+            <CityLink />
           </div>
         </section>
       </div>

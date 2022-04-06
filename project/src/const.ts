@@ -5,6 +5,7 @@ export const DEFAULT_OFFERS_SORT_TYPE = 'Popular';
 export const TIMEOUT_SHOW_ERROR = 2000;
 
 export enum AppRoute {
+  City = '/:cityTab',
   Favorites = '/favorites',
   FavoritesEmpty = '/favorites-empty',
   Login = '/login',
