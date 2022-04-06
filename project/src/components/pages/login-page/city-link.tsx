@@ -1,6 +1,6 @@
 import { AppRoute } from '../../../const';
 import { cityTabs } from '../../../const';
-import { generatePath, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { memo } from 'react';
 
 const getRandomInteger = (min: number, max: number) => {
@@ -19,7 +19,7 @@ function CityLink(): JSX.Element {
   const randomCity = cityTabs[getRandomInteger(0, cityTabs.length - 1)];
 
   return (
-    <Link className="locations__item-link" to={generatePath(AppRoute.City, { cityCode: randomCity })}>
+    <Link className="locations__item-link" to={AppRoute.Main}>
       <span>{randomCity}</span>
     </Link>
   );
