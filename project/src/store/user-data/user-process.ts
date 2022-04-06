@@ -2,7 +2,7 @@ import { AuthorizationStatus, NameSpace } from '../../const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserProcessType, UserType } from '../../types/state';
 
-const initialUser = {
+export const initialUser = {
   avatarUrl: '',
   email: '',
   id: 0,

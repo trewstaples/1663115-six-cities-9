@@ -13,7 +13,7 @@ describe('favoritesOffersReducer', () => {
     expect(favoritesData.reducer(undefined, { type: 'UNKNOWN_ACTION' })).toEqual(fakeFavoritesOffersInitialState);
   });
 
-  it('should load favorite offers', () => {
+  it('should load favorites offers', () => {
     expect(favoritesData.reducer(fakeFavoritesOffersInitialState, loadFavoriteOffers(fakeFavoritesOffers))).toEqual({
       favoriteOffers: fakeFavoritesOffers,
     });
