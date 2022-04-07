@@ -1,19 +1,21 @@
 import { createMemoryHistory } from 'history';
 import { render, screen } from '@testing-library/react';
-import ErrorMessage from './error-message';
+import Footer from './footer';
 import HistoryRouter from '../history-router/history-router';
 
-describe('Component: ErrorMessage', () => {
+describe('Component: Footer', () => {
   it('should render correctly', () => {
     const history = createMemoryHistory();
 
     render(
       <HistoryRouter history={history}>
-        <ErrorMessage />
+        <Footer />
       </HistoryRouter>,
     );
+    const footerElement = screen.getByTestId('footer');
+    const linkElement = screen.getByTestId('footer__logo-link');
 
-    const errorElement = screen.getByTestId('error-alert');
-    expect(errorElement).toBeInTheDocument();
+    expect(footerElement).toBeInTheDocument();
+    expect(linkElement).toBeInTheDocument();
   });
 });
