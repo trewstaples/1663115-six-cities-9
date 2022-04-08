@@ -55,11 +55,11 @@ function LoginPage(): JSX.Element {
           <form onSubmit={handleFormSubmit} className="login__form form" action="#" method="post">
             <div className="login__input-wrapper form__input-wrapper">
               <label className="visually-hidden">E-mail</label>
-              <input onChange={handleLoginChange} className="login__input form__input" type="email" name="email" placeholder="Email" required />
+              <input onChange={handleLoginChange} className="login__input form__input" type="email" name="email" placeholder="Email" required data-testid="email" />
             </div>
             <div className="login__input-wrapper form__input-wrapper">
               <label className="visually-hidden">Password</label>
-              <input onChange={handlePasswordChange} className="login__input form__input" type="password" name="password" placeholder="Password" required />
+              <input onChange={handlePasswordChange} className="login__input form__input" type="password" name="password" placeholder="Password" required data-testid="password" />
             </div>
             <button className="login__submit form__submit button" type="submit" disabled={!isValid}>
               Sign in
