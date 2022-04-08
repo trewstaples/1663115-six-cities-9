@@ -13,7 +13,7 @@ function OfferReviews({ reviews, reviewsForm }: OfferReviewsPropsType): JSX.Elem
   const sortedReviews = reviews.slice(0, REVIEWS_MAX_COUNT).sort(sortReviewsByDateDown);
 
   return (
-    <section className="property__reviews reviews">
+    <section className="property__reviews reviews" data-testid="offer-reviews">
       <h2 className="reviews__title">
         Reviews &middot; <span className="reviews__amount">{sortedReviews.length}</span>
       </h2>
