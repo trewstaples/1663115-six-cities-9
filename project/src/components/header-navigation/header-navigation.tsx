@@ -9,7 +9,7 @@ type HeaderNavigationPropsType = {
 
 function HeaderNavigation({ isUserAuthorized, user }: HeaderNavigationPropsType): JSX.Element {
   return (
-    <nav className="header__nav">
+    <nav className="header__nav" data-testid="header-navigation">
       <ul className="header__nav-list">
         <li className="header__nav-item user">
           <Link className="header__nav-link header__nav-link--profile" to={isUserAuthorized ? AppRoute.Favorites : AppRoute.Login}>
