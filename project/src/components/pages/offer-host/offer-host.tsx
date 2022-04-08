@@ -7,7 +7,7 @@ type OfferHostPropsType = {
 
 function OfferHost({ offer }: OfferHostPropsType): JSX.Element {
   return (
-    <div className="property__host">
+    <div className="property__host" data-testid="offer-host">
       <h2 className="property__host-title">Meet the host</h2>
       <div className="property__host-user user">
         <div className={clsx('property__avatar-wrapper', { 'property__avatar-wrapper--pro': offer.host.isPro }, 'user__avatar-wrapper')}>
