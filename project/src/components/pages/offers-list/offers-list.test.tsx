@@ -8,7 +8,7 @@ const history = createMemoryHistory();
 const activeCityTab = 'Paris';
 const offers = makeFakeOffers();
 
-describe('Component: FavoriteCard', () => {
+describe('Component: OffersList', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>

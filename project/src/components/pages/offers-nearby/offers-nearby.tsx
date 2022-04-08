@@ -7,7 +7,7 @@ type OffersNearbyPropsType = {
 
 function OffersNearby({ offersNearby }: OffersNearbyPropsType): JSX.Element {
   return (
-    <section className="near-places places">
+    <section className="near-places places" data-testid="offers-nearby">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
         {offersNearby.map((offerNearby) => (
