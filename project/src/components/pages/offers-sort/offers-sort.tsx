@@ -31,7 +31,7 @@ function OffersSort(): JSX.Element {
   };
 
   return (
-    <form className="places__sorting" action="#" method="get">
+    <form className="places__sorting" action="#" method="get" data-testid="offers-sort">
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" tabIndex={0} onClick={() => setIsSortOpened(!isSortOpened)}>
         {OffersSortType[activeSortType]}
