@@ -10,7 +10,7 @@ type CityTabsPropsType = {
 
 function CityTabs({ activeCityTab, onCityTabChange }: CityTabsPropsType): JSX.Element {
   const cityTabsTemplate = cityTabs.map((cityTab) => (
-    <li className="locations__item" key={cityTab} onClick={onCityTabChange(cityTab as CityTabType)}>
+    <li className="locations__item" key={cityTab} onClick={onCityTabChange(cityTab as CityTabType)} data-testid="city-tab-item">
       <Link to="/" className={clsx('locations__item-link', 'tabs__item', { 'tabs__item--active': cityTab === activeCityTab })}>
         <span>{cityTab}</span>
       </Link>
@@ -20,7 +20,7 @@ function CityTabs({ activeCityTab, onCityTabChange }: CityTabsPropsType): JSX.El
   return (
     <>
       <h1 className="visually-hidden">Cities</h1>
-      <div className="tabs">
+      <div className="tabs" data-testid="city-tabs">
         <section className="locations container">
           <ul className="locations__list tabs__list">{cityTabsTemplate}</ul>
         </section>

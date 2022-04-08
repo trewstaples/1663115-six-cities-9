@@ -8,7 +8,7 @@ type FavoriteCardPropsType = {
 
 function FavoriteCard({ offer }: FavoriteCardPropsType): JSX.Element {
   return (
-    <article className="favorites__card place-card">
+    <article className="favorites__card place-card" data-testid="favorite-card">
       <div className="place-card__mark">
         <span>{offer.isPremium ? 'Premium' : ''}</span>
       </div>
