@@ -5,13 +5,13 @@ import OfferCard from './offer-card';
 import { makeFakeOffer } from '../../../utils/mocks/make-fake-offer';
 
 const history = createMemoryHistory();
-const offer = makeFakeOffer();
+const fakeOffer = makeFakeOffer();
 
 describe('Component: OfferCard', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
-        <OfferCard offer={offer} />
+        <OfferCard offer={fakeOffer} />
       </HistoryRouter>,
     );
 

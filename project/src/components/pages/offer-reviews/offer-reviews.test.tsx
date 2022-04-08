@@ -5,13 +5,13 @@ import OfferReviews from './offer-reviews';
 import { makeFakeReviews } from '../../../utils/mocks/make-fake-review';
 
 const history = createMemoryHistory();
-const reviews = makeFakeReviews();
+const fakeReviews = makeFakeReviews();
 
 describe('Component: OfferReviews', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
-        <OfferReviews reviews={reviews} />
+        <OfferReviews reviews={fakeReviews} />
       </HistoryRouter>,
     );
 

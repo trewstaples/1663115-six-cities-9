@@ -5,18 +5,18 @@ import { OfferHost } from './offer-host';
 import { makeFakeOffer } from '../../../utils/mocks/make-fake-offer';
 
 const history = createMemoryHistory();
-const offer = makeFakeOffer();
+const fakeOffer = makeFakeOffer();
 
 describe('Component: OfferHost', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
-        <OfferHost offer={offer} />
+        <OfferHost offer={fakeOffer} />
       </HistoryRouter>,
     );
 
     expect(screen.getByTestId('offer-host')).toBeInTheDocument();
     expect(screen.getByText('Meet the host')).toBeInTheDocument();
-    expect(screen.getByText(offer.description)).toBeInTheDocument();
+    expect(screen.getByText(fakeOffer.description)).toBeInTheDocument();
   });
 });

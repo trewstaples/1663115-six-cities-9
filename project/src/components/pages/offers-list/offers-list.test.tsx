@@ -5,20 +5,20 @@ import OffersList from './offers-list';
 import { makeFakeOffers } from '../../../utils/mocks/make-fake-offer';
 
 const history = createMemoryHistory();
-const activeCityTab = 'Paris';
-const offers = makeFakeOffers();
+const fakeActiveCityTab = 'Paris';
+const fakeOffers = makeFakeOffers();
 
 describe('Component: OffersList', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
-        <OffersList activeCityTab={activeCityTab} offers={offers} />
+        <OffersList activeCityTab={fakeActiveCityTab} offers={fakeOffers} />
       </HistoryRouter>,
     );
 
     expect(screen.getByTestId('offers-list')).toBeInTheDocument();
     expect(screen.getByText('Places')).toBeInTheDocument();
-    expect(screen.getByText(`${offers.length} places to stay in ${activeCityTab}`)).toBeInTheDocument();
+    expect(screen.getByText(`${fakeOffers.length} places to stay in ${fakeActiveCityTab}`)).toBeInTheDocument();
     expect(screen.getByTestId('offer-card')).toBeInTheDocument();
     expect(screen.getByText('Rating')).toBeInTheDocument();
   });

@@ -5,18 +5,18 @@ import { makeFakeReview } from '../../../utils/mocks/make-fake-review';
 import OfferReviewItem from './offer-review-item';
 
 const history = createMemoryHistory();
-const review = makeFakeReview();
+const fakeReview = makeFakeReview();
 
 describe('Component: OfferReviewItem', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
-        <OfferReviewItem review={review} />
+        <OfferReviewItem review={fakeReview} />
       </HistoryRouter>,
     );
 
     expect(screen.getByTestId('offer-review-item')).toBeInTheDocument();
-    expect(screen.getByText(review.user.name)).toBeInTheDocument();
+    expect(screen.getByText(fakeReview.user.name)).toBeInTheDocument();
     expect(screen.getByText('Rating')).toBeInTheDocument();
   });
 });

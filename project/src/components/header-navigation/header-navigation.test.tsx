@@ -4,16 +4,16 @@ import HistoryRouter from '../history-router/history-router';
 import HeaderNavigation from './header-navigation';
 import { makeFakeUser } from '../../utils/mocks/make-fake-user';
 
-const userAuthorized = true;
-const userNotAuthorized = false;
-const user = makeFakeUser();
+const fakeUserAuthorized = true;
+const fakeUserNotAuthorized = false;
+const fakeUser = makeFakeUser();
 const history = createMemoryHistory();
 
 describe('Component: HeaderNavigation', () => {
   it('should render "HeaderNavigation" when user authorized', () => {
     render(
       <HistoryRouter history={history}>
-        <HeaderNavigation isUserAuthorized={userAuthorized} user={user} />
+        <HeaderNavigation isUserAuthorized={fakeUserAuthorized} user={fakeUser} />
       </HistoryRouter>,
     );
 
@@ -24,7 +24,7 @@ describe('Component: HeaderNavigation', () => {
   it('should not render "HeaderNavigation" when user unauthorized', () => {
     render(
       <HistoryRouter history={history}>
-        <HeaderNavigation isUserAuthorized={userNotAuthorized} user={user} />
+        <HeaderNavigation isUserAuthorized={fakeUserNotAuthorized} user={fakeUser} />
       </HistoryRouter>,
     );
 

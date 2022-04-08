@@ -4,7 +4,7 @@ import HistoryRouter from '../../history-router/history-router';
 import CityLink from './city-link';
 
 const history = createMemoryHistory();
-const cityTab = 'Paris';
+const fakeCityTab = 'Paris';
 
 describe('Component: CityLink', () => {
   it('should render correctly', () => {
@@ -14,6 +14,6 @@ describe('Component: CityLink', () => {
       </HistoryRouter>,
     );
 
-    expect(screen.getByText(cityTab)).toBeInTheDocument();
+    expect(screen.getByText(fakeCityTab)).toBeInTheDocument();
   });
 });

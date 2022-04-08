@@ -5,19 +5,19 @@ import FavoriteItem from './favorite-item';
 import { makeFakeOffers } from '../../../utils/mocks/make-fake-offer';
 
 const history = createMemoryHistory();
-const cityTab = 'Paris';
-const offers = makeFakeOffers();
+const fakeCityTab = 'Paris';
+const fakeOffers = makeFakeOffers();
 
 describe('Component: FavoriteItem', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
-        <FavoriteItem cityTab={cityTab} offers={offers} />
+        <FavoriteItem cityTab={fakeCityTab} offers={fakeOffers} />
       </HistoryRouter>,
     );
 
     expect(screen.getByTestId('favorite-item')).toBeInTheDocument();
-    expect(screen.getByText(cityTab)).toBeInTheDocument();
+    expect(screen.getByText(fakeCityTab)).toBeInTheDocument();
 
     expect(screen.getByTestId('favorite-card')).toBeInTheDocument();
     expect(screen.getByText('Rating')).toBeInTheDocument();

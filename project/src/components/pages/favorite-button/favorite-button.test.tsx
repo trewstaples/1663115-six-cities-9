@@ -6,13 +6,13 @@ import { configureMockStore } from '@jedmao/redux-mock-store';
 import { Provider } from 'react-redux';
 import { makeFakeOffer } from '../../../utils/mocks/make-fake-offer';
 
-const isUserAuthorized = true;
+const fakeIsUserAuthorized = true;
 const fakeOffer = makeFakeOffer();
 
 const mockStore = configureMockStore();
 
 const store = mockStore({
-  USER: { isUserAuthorize: isUserAuthorized },
+  USER: { isUserAuthorize: fakeIsUserAuthorized },
 });
 
 const history = createMemoryHistory();

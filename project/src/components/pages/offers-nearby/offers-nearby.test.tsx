@@ -5,13 +5,13 @@ import OffersNearby from './offers-nearby';
 import { makeFakeOffersNearby } from '../../../utils/mocks/make-fake-offer';
 
 const history = createMemoryHistory();
-const offersNearby = makeFakeOffersNearby();
+const fakeOffersNearby = makeFakeOffersNearby();
 
 describe('Component: OffersNearby', () => {
   it('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
-        <OffersNearby offersNearby={offersNearby} />
+        <OffersNearby offersNearby={fakeOffersNearby} />
       </HistoryRouter>,
     );
 
