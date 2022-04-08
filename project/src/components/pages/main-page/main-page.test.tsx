@@ -1,32 +1,32 @@
 import { createMemoryHistory } from 'history';
 import { render, screen } from '@testing-library/react';
-import MainEmpty from './main-empty';
+import MainPage from './main-page';
 import HistoryRouter from '../../history-router/history-router';
 import { configureMockStore } from '@jedmao/redux-mock-store';
 import { Provider } from 'react-redux';
+import { makeFakeOffers } from '../../../utils/mocks/make-fake-offer';
 
 const fakeActiveCityTab = 'Paris';
+const fake0ffers = makeFakeOffers();
 
 const mockStore = configureMockStore();
 
 const store = mockStore({
-  OFFERS: { activeCityTab: fakeActiveCityTab },
+  OFFERS: { activeCityTab: fakeActiveCityTab, offers: fake0ffers },
 });
 
 const history = createMemoryHistory();
 
-describe('Component: MainEmpty', () => {
+describe('Component: MainPage', () => {
   it('should render correctly', () => {
     render(
       <Provider store={store}>
         <HistoryRouter history={history}>
-          <MainEmpty />
+          <MainPage />
         </HistoryRouter>
       </Provider>,
     );
 
-    expect(screen.getByTestId('main-empty')).toBeInTheDocument();
-    expect(screen.getByText('No places to stay available')).toBeInTheDocument();
-    expect(screen.getByText(`We could not find any property available at the moment in ${fakeActiveCityTab}`)).toBeInTheDocument();
+    expect(screen.getByTestId('page__main')).toBeInTheDocument();
   });
 });
