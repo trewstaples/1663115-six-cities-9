@@ -7,7 +7,11 @@ function ErrorMessage(): JSX.Element | null {
   const error = useAppSelector(getError);
 
   if (error) {
-    return <div className="error-alert">{error}</div>;
+    return (
+      <div className="error-alert" data-testid="error-alert">
+        {error}
+      </div>
+    );
   }
 
   return null;
