@@ -42,7 +42,12 @@ function FavoriteButton({ cssTag = ButtonDefault.CssTag, iconWidth = ButtonDefau
   };
 
   return (
-    <button onClick={handleFavoriteButtonClick} className={clsx(`${cssTag}__bookmark-button`, offer.isFavorite && `${cssTag}__bookmark-button--active`, 'button')} type="button">
+    <button
+      onClick={handleFavoriteButtonClick}
+      className={clsx(`${cssTag}__bookmark-button`, offer.isFavorite && `${cssTag}__bookmark-button--active`, 'button')}
+      type="button"
+      data-testid="favorite-button"
+    >
       <svg className={`${cssTag}__bookmark-icon`} width={iconWidth} height={iconHeight}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
