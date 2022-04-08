@@ -17,7 +17,7 @@ function MainPage(): JSX.Element {
   };
 
   return (
-    <main className={clsx('page__main', 'page__main--index', { 'page__main--index-empty': offers.length === 0 })}>
+    <main className={clsx('page__main', 'page__main--index', { 'page__main--index-empty': offers.length === 0 })} data-testid="page__main">
       <CityTabs activeCityTab={activeCityTab} onCityTabChange={onCityTabChange} />
       {offers.length === 0 ? <MainEmpty /> : <OffersList activeCityTab={activeCityTab} offers={offers} />}
     </main>

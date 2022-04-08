@@ -37,7 +37,7 @@ function OfferPage(): JSX.Element {
   const reviewsForm = isUserAuthorized ? <ReviewsForm offerId={offer.id} /> : undefined;
 
   return (
-    <main className="page__main page__main--property">
+    <main className="page__main page__main--property" data-testid="offer-page">
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">

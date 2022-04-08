@@ -24,6 +24,7 @@ function Layout(): JSX.Element {
         { 'page--favorites-empty': location.pathname === AppRoute.FavoritesEmpty },
         { 'page--gray page--login': location.pathname === AppRoute.Login },
       )}
+      data-testid="page"
     >
       <Header isLoginNavState={isLayoutWithHeader} />
       <Outlet />
