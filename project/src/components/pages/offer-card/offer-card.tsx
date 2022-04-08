@@ -28,6 +28,7 @@ function OfferCard({ offer, onMouseOverAndLeave }: OfferCardPropsType): JSX.Elem
       className="cities__place-card place-card"
       onMouseOver={() => (onMouseOverAndLeave instanceof Function ? onMouseOverAndLeave(offer.id) : null)}
       onMouseLeave={() => (onMouseOverAndLeave instanceof Function ? onMouseOverAndLeave(0) : null)}
+      data-testid="offer-card"
     >
       {offer.isPremium ? (
         <div className="place-card__mark">
