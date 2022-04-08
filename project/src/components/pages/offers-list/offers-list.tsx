@@ -14,7 +14,7 @@ function OffersList({ activeCityTab, offers }: OffersListPropsType): JSX.Element
   const [selectedCardId, setSelectedCardId] = useState<number>(0);
 
   return (
-    <div className="cities">
+    <div className="cities" data-testid="offers-list">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
